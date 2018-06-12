@@ -1,0 +1,6 @@
+[package]
+name = "rustGame"
+version = "0.1.0"
+authors = ["Ethan Brierley <ethanboxx@gmail.com>"]
+
+[dependencies]
