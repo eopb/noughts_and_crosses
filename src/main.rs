@@ -1,5 +1,11 @@
 fn main() {
     println!("Welcome to my noughts and crosses game made in rust.");
+    enum PartStatus {
+        PlayerX,
+        PlayerY,
+        Selected,
+        Empty,
+    }
     draw_game_board();
 }
 
