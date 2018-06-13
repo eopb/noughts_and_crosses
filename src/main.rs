@@ -28,7 +28,7 @@ fn has_someone_won(
     row3: &[&str; 3]
     ) {
     
-    let player = ["x", "y"];
+    let player = ["x", "0"];
     for &player in player.iter() {
         if (row1[0] == player) && (row1[1] == player) && (row1[2] == player){
             println!("1")
