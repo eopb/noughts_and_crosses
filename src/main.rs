@@ -1,12 +1,13 @@
 fn main() {
     println!("Welcome to my noughts and crosses game made in rust.");
-    let mut row1 = ["x","x","x"];
-    let mut row2 = [" "," "," "];
-    let mut row3 = [" "," "," "];
+    let mut row1 = ["0"," "," "];
+    let mut row2 = [" ","0"," "];
+    let mut row3 = [" "," ","0"];
     println!("Crosses goes first.");
 
     draw_game_board(&row1, &row2, &row3);
     let winner = has_someone_won(&row1, &row2, &row3);
+    println!("winner {}", winner)
 }
 
 // Prints out the game board
@@ -34,33 +35,39 @@ fn has_someone_won(
         if (row1[0] == player) && (row1[1] == player) && (row1[2] == player){
             mention_the_winner(player.to_string());
             winner = player.to_string();
-            winner
         }
         else if (row2[0] == player) && (row2[1] == player) && (row2[2] == player){
             mention_the_winner(player.to_string());
+            winner = player.to_string();
         }
         else if (row3[0] == player) && (row3[1] == player) && (row3[2] == player){
             mention_the_winner(player.to_string());
+            winner = player.to_string();
         }
 
 
 
         else if (row1[0] == player) && (row2[0] == player) && (row3[0] == player){
             mention_the_winner(player.to_string());
+            winner = player.to_string();
         }
         else if (row1[1] == player) && (row2[1] == player) && (row3[1] == player){
             mention_the_winner(player.to_string());
+            winner = player.to_string();
         }
         else if (row1[2] == player) && (row2[2] == player) && (row3[2] == player){
             mention_the_winner(player.to_string());
+            winner = player.to_string();
         }
 
 
         else if (row1[0] == player) && (row2[1] == player) && (row3[2] == player){
             mention_the_winner(player.to_string());
+            winner = player.to_string();
         }
         else if (row3[0] == player) && (row2[1] == player) && (row1[2] == player){
             mention_the_winner(player.to_string());
+            winner = player.to_string();
         }
     }
     fn mention_the_winner(winner: String) {
