@@ -5,33 +5,14 @@ fn main() {
     let row3 = ["0"," ","x"];
 
 
-    draw_game_board(
-        row1[0].to_string(),
-        row1[1].to_string(),
-        row1[2].to_string(),
-        row2[0].to_string(),
-        row2[1].to_string(),
-        row2[2].to_string(),
-        row3[0].to_string(),
-        row3[1].to_string(),
-        row3[2].to_string(),);
+    draw_game_board(&row1, &row2, &row3);
 }
 
 // Prints out the game board
-fn draw_game_board(
-        row1col1: String,
-        row1col2: String,
-        row1col3: String,
-        row2col1: String,
-        row2col2: String,
-        row2col3: String,
-        row3col1: String,
-        row3col2: String,
-        row3col3: String,
-    ) {
-    println!("{}|{}|{}", row1col1, row1col2 ,row1col3);
+fn draw_game_board(row1: &[&str; 3],row2: &[&str; 3],row3: &[&str; 3]) {
+    println!("{}|{}|{}", row1[0], row1[1] ,row1[2]);
     println!("_ _ _");
-    println!("{}|{}|{}", row2col1, row2col2 ,row2col3);
+    println!("{}|{}|{}", row2[0], row2[1] ,row2[2]);
     println!("_ _ _");
-    println!("{}|{}|{}", row3col1, row3col2 ,row3col3);
+    println!("{}|{}|{}", row3[0], row3[1] ,row3[2]);
 }
