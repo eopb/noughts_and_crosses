@@ -34,7 +34,7 @@ fn has_someone_won(
         if (row1[0] == player) && (row1[1] == player) && (row1[2] == player){
             mention_the_winner(player.to_string());
             winner = player.to_string();
-            winner.to_string()
+            winner
         }
         else if (row2[0] == player) && (row2[1] == player) && (row2[2] == player){
             mention_the_winner(player.to_string());
