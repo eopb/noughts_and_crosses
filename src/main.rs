@@ -1,8 +1,8 @@
 fn main() {
     println!("Welcome to my noughts and crosses game made in rust.");
-    let mut row1 = ["0"," "," "];
-    let mut row2 = [" ","0"," "];
-    let mut row3 = [" "," ","0"];
+    let mut row1 = ["x","x"," "];
+    let mut row2 = ["0","x","  "];
+    let mut row3 = ["0","x","0"];
     println!("Crosses goes first.");
 
     draw_game_board(&row1, &row2, &row3);
