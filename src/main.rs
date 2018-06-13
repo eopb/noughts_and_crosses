@@ -27,6 +27,39 @@ fn has_someone_won(
     row2: &[&str; 3],
     row3: &[&str; 3]
     ) {
-    println!("We dont know yet")
+    
+    let player = ["x", "y"];
+    for &player in player.iter() {
+        if (row1[0] == player) && (row1[1] == player) && (row1[2] == player){
+            println!("1")
+        }
+        else if (row2[0] == player) && (row2[1] == player) && (row2[2] == player){
+            println!("2")
+        }
+        else if (row3[0] == player) && (row3[1] == player) && (row3[2] == player){
+            println!("3")
+        }
+
+
+
+        else if (row1[0] == player) && (row2[0] == player) && (row3[0] == player){
+            println!("4")
+        }
+        else if (row1[1] == player) && (row2[1] == player) && (row3[1] == player){
+            println!("5")
+        }
+        else if (row1[2] == player) && (row2[2] == player) && (row3[2] == player){
+            println!("6")
+        }
+
+
+        else if (row1[0] == player) && (row2[1] == player) && (row3[2] == player){
+            println!("7")
+        }
+        else if (row3[0] == player) && (row2[1] == player) && (row1[2] == player){
+            println!("8")
+        }
+    }
+
 }
 
