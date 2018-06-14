@@ -2,7 +2,7 @@ pub fn has_someone_won(
     row1: &[&str; 3],
     row2: &[&str; 3],
     row3: &[&str; 3]
-    ) -> std::string::String {
+    ) -> String {
     
     let player = ["x", "0"] ;
     let mut winner = "none".to_string();
