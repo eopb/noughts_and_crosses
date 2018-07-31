@@ -24,6 +24,9 @@ fn main() {
         else if current_player == "x" {
             current_player = "0";
         }
+        draw::draw_game_board(&row1, &row2, &row3, &player_position);
+        let winner = tests::has_someone_won(&row1, &row2, &row3);
+        println!("winner {}", winner);
         loop {
             println!("The player is {}", current_player);
             println!("To move the star left type 4 and hit enter");
@@ -69,7 +72,7 @@ fn main() {
                 player_position = [player_position[0] + 1, player_position[1]];
             }
             else if movement == 0 {
-                break;
+                panic!();
             }
             else if movement == 5 {
                 if player_position[0] == 1 {
