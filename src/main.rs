@@ -20,7 +20,7 @@ fn main() {
         println!("To move the star right type 6 and hit enter");
         println!("To move the star up type 8 and hit enter");
         println!("To move the star down type 2 and hit enter");
-        println!("To place your cross type 0 and hit enter");
+        println!("To place your cross type 5 and hit enter");
         let mut movement = String::new();
 
         io::stdin().read_line(&mut movement)
