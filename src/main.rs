@@ -32,31 +32,31 @@ fn main() {
 
         if movement == 4 {
             if player_position[1] == 1 {
-                continue
+                println!("That move is invalid please try again.");
+                continue;
             }
             player_position = [player_position[0] , player_position[1] - 1];
-            break;
         }
         else if movement == 6 {
             if player_position[1] == 3 {
-                continue
+                println!("That move is invalid please try again.");
+                continue;
             }
             player_position = [player_position[0] , player_position[1] + 1];
-            break;
         }
         else if movement == 8 {
             if player_position[0] == 1 {
-                continue
+                println!("That move is invalid please try again.");
+                continue;
             }
             player_position = [player_position[0] - 1 , player_position[1]];
-            break;
         }
         else if movement == 2 {
             if player_position[0] == 3 {
-                continue
+                println!("That move is invalid please try again.");
+                continue;
             }
             player_position = [player_position[0] + 1, player_position[1]];
-            break;
         }
         else if movement == 0 {
             break;
