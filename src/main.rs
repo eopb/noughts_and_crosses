@@ -61,6 +61,7 @@ fn main() {
         else if movement == 0 {
             break;
         }
+        draw::draw_game_board(&row1, &row2, &row3, &player_position);
     }
 
     draw::draw_game_board(&row1, &row2, &row3, &player_position);
