@@ -122,9 +122,9 @@ fn main() {
         }
     }
 
-    draw::draw_game_board(&row1, &row2, &row3, &player_position);
-    let winner = tests::has_someone_won(&row1, &row2, &row3);
-    println!("winner {}", winner)
+    // draw::draw_game_board(&row1, &row2, &row3, &player_position);
+    // let winner = tests::has_someone_won(&row1, &row2, &row3);
+    // println!("winner {}", winner)
 }
 
 fn move_player(movement: u32, mut player_position: [i32; 2]) -> [i32; 2]{
