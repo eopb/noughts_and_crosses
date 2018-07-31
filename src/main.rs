@@ -62,7 +62,6 @@ fn main() {
             break;
         }
         else if movement == 5 {
-            let place_to_add_player = player_position;
             if player_position[0] == 1 {
                 if player_position[1] == 1 {
                     row1 = ["x", row1[1], row1[2]];
