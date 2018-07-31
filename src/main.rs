@@ -109,6 +109,9 @@ fn main() {
 
                 
             }
+            else if movement == 0 {
+                panic!();
+            }
             else {
                 println!("That move is invalid please try again.");
                 continue; 
@@ -156,9 +159,6 @@ fn move_player(movement: u32, mut player_position: [i32; 2]) -> [i32; 2]{
         else {
             player_position = [player_position[0] + 1, player_position[1]];
         }
-    }
-    else if movement == 0 {
-        panic!();
     }
     player_position
 }
