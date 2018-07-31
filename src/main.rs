@@ -96,13 +96,15 @@ fn main() {
                 }
             }
 
-            continue; 
+            
         }
         else {
             println!("That move is invalid please try again.");
             continue; 
         }
         draw::draw_game_board(&row1, &row2, &row3, &player_position);
+        let winner = tests::has_someone_won(&row1, &row2, &row3);
+        println!("winner {}", winner)
     }
 
     draw::draw_game_board(&row1, &row2, &row3, &player_position);
