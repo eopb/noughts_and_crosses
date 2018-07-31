@@ -61,6 +61,13 @@ fn main() {
         else if movement == 0 {
             break;
         }
+        else if movement == 5 {
+            break;
+        }
+        else {
+            println!("That move is invalid please try again.");
+            continue; 
+        }
         draw::draw_game_board(&row1, &row2, &row3, &player_position);
     }
 
