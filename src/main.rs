@@ -64,35 +64,53 @@ fn main() {
         else if movement == 5 {
             if player_position[0] == 1 {
                 if player_position[1] == 1 {
-                    row1 = ["x", row1[1], row1[2]];
+                    if row1[0] == " " {
+                        row1 = ["x", row1[1], row1[2]];
+                    }
                 }
                 if player_position[1] == 2 {
-                    row1 = [row1[0], "x", row1[2]];
+                    if row1[1] == " " {
+                        row1 = [row1[0], "x", row1[2]];
+                    }
                 }
                 if player_position[1] == 3 {
-                    row1 = [row1[0], row1[1], "x"];
+                    if row1[2] == " " {
+                        row1 = [row1[0], row1[1], "x"];
+                    }
                 }
             }
             if player_position[0] == 2 {
                 if player_position[1] == 1 {
-                    row2 = ["x", row2[1], row2[2]];
+                    if row2[0] == " " {
+                        row2 = ["x", row2[1], row2[2]];
+                    }
                 }
                 if player_position[1] == 2 {
-                    row2 = [row2[0], "x", row2[2]];
+                    if row2[1] == " " {
+                        row2 = [row2[0], "x", row2[2]];
+                    }
                 }
                 if player_position[1] == 3 {
-                    row2 = [row2[0], row2[1], "x"];
+                    if row2[2] == " " {
+                        row2 = [row2[0], row2[1], "x"];
+                    }
                 }
             }
             if player_position[0] == 3 {
                 if player_position[1] == 1 {
-                    row3 = ["x", row3[1], row3[2]];
+                    if row3[0] == " " {
+                        row3 = ["x", row3[1], row3[2]];
+                    }
                 }
                 if player_position[1] == 2 {
-                    row3 = [row3[0], "x", row3[2]];
+                    if row3[1] == " " {
+                        row3 = [row3[0], "x", row3[2]];
+                    }
                 }
                 if player_position[1] == 3 {
-                    row3 = [row3[0], row3[1], "x"];
+                    if row3[2] == " " {
+                        row3 = [row3[0], row3[1], "x"];
+                    }
                 }
             }
 
