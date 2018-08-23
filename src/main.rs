@@ -2,6 +2,22 @@ use std::io;
 // mod draw;
 // mod tests;
 
+struct GameBoard {
+    row_one:[TileStatus; 3],
+    row_two:[TileStatus; 3],
+    row_three:[TileStatus; 3],
+}
+
+enum TileStatus {
+    Player(Players),
+    Couser,
+}
+
+enum Players {
+    PlayerX,
+    Player0,
+}
+
 fn main() {
     println!("Hello World");
 }
