@@ -3,14 +3,15 @@ use std::io;
 // mod tests;
 
 struct GameBoard {
-    row_one:[TileStatus; 3],
-    row_two:[TileStatus; 3],
-    row_three:[TileStatus; 3],
+    row_one: [TileStatus; 3],
+    row_two: [TileStatus; 3],
+    row_three: [TileStatus; 3],
 }
 
 enum TileStatus {
     Player(Players),
     Cursor,
+    None,
 }
 
 enum Players {
@@ -20,6 +21,13 @@ enum Players {
 
 fn main() {
     println!("Welcome to my noughts and crosses game made in rust.");
+    let mut game_board = GameBoard {
+        row_one: [TileStatus::Cursor,TileStatus::None,TileStatus::None],
+        row_two: [TileStatus::None,TileStatus::None,TileStatus::None],
+        row_three: [TileStatus::None,TileStatus::None,TileStatus::None],
+    };
+    let mut current_player = Players::PlayerX;
+    
 }
 
 // fn main() {
