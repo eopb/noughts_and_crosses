@@ -42,6 +42,13 @@ fn main() {
     let mut current_player = Players::Cross;
 
     println!("Crosses goes first.");
+    println!("The board looks like this.");
+    draw_game_board(&game_board);
+    println!("You are the *");
+}
+
+fn draw_game_board(game_board: &GameBoard) {
+    println!("it works");
 }
 
 // fn main() {

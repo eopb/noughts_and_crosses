@@ -1,4 +1,5 @@
-// // Prints out the game board
+// Prints out the game board
+
 
 // pub fn draw_game_board(
 //     row1: &[&str; 3],
