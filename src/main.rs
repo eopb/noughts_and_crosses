@@ -10,7 +10,7 @@ struct GameBoard {
 
 enum TileStatus {
     Player(Players),
-    Couser,
+    Cursor,
 }
 
 enum Players {
