@@ -15,19 +15,33 @@ enum TileStatus {
 }
 
 enum Players {
-    PlayerX,
-    Player0,
+    Nought,
+    Cross,
 }
 
 fn main() {
     println!("Welcome to my noughts and crosses game made in rust.");
+
     let mut game_board = GameBoard {
-        row_one: [TileStatus::Cursor,TileStatus::None,TileStatus::None],
-        row_two: [TileStatus::None,TileStatus::None,TileStatus::None],
-        row_three: [TileStatus::None,TileStatus::None,TileStatus::None],
+        row_one: [
+            TileStatus::Cursor,
+            TileStatus::None,
+            TileStatus::None
+            ],
+        row_two: [
+            TileStatus::None,
+            TileStatus::None,
+            TileStatus::None
+            ],
+        row_three: [
+            TileStatus::None,
+            TileStatus::None,
+            TileStatus::None
+            ],
     };
-    let mut current_player = Players::PlayerX;
-    
+    let mut current_player = Players::Cross;
+
+    println!("Crosses goes first.");
 }
 
 // fn main() {
