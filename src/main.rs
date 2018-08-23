@@ -1,20 +1,20 @@
 use std::io;
-// mod draw;
+mod draw;
 // mod tests;
 
-struct GameBoard {
+pub struct GameBoard {
     row_one: [TileStatus; 3],
     row_two: [TileStatus; 3],
     row_three: [TileStatus; 3],
 }
 
-enum TileStatus {
+pub enum TileStatus {
     Player(Players),
     Cursor,
     None,
 }
 
-enum Players {
+pub enum Players {
     Nought,
     Cross,
 }
@@ -43,13 +43,11 @@ fn main() {
 
     println!("Crosses goes first.");
     println!("The board looks like this.");
-    draw_game_board(&game_board);
+    draw::draw_game_board(&game_board);
     println!("You are the *");
 }
 
-fn draw_game_board(game_board: &GameBoard) {
-    println!("it works");
-}
+
 
 // fn main() {
 //     println!("Welcome to my noughts and crosses game made in rust.");

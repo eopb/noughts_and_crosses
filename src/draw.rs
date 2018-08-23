@@ -1,5 +1,19 @@
 // Prints out the game board
+use GameBoard;
+use TileStatus;
 
+pub fn draw_game_board(game_board: &GameBoard) {
+    println!("it works");
+    println!("{}|{}|{}", x_or_0(&game_board.row_one[1]), x_or_0(&game_board.row_one[1]), x_or_0(&game_board.row_one[1]));
+    println!("_ _ _");
+    println!("{}|{}|{}", x_or_0(&game_board.row_one[1]), x_or_0(&game_board.row_one[1]), x_or_0(&game_board.row_one[1]));
+    println!("_ _ _");
+    println!("{}|{}|{}", x_or_0(&game_board.row_one[1]), x_or_0(&game_board.row_one[1]), x_or_0(&game_board.row_one[1]));
+}
+
+fn x_or_0(player: &TileStatus) -> String{
+    ("meh").to_string()
+}
 
 // pub fn draw_game_board(
 //     row1: &[&str; 3],
