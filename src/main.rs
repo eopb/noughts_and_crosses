@@ -19,7 +19,7 @@ enum Players {
 }
 
 fn main() {
-    println!("Hello World");
+    println!("Welcome to my noughts and crosses game made in rust.");
 }
 
 // fn main() {
