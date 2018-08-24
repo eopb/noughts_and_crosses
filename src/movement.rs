@@ -15,7 +15,11 @@ enum Movement {
 
 pub fn process_movement(game_board: GameBoard) -> GameBoard {
     let input = fetch_input();
-    game_board
+    match input {
+        Movement::Place => place_player(game_board),
+        _ => move_cursor(game_board, input),
+    }
+    
 }
 
 fn fetch_input() -> Movement{
@@ -60,3 +64,65 @@ fn fetch_input() -> Movement{
         panic!();
     }
 }
+
+fn place_player(game_board: GameBoard) -> GameBoard {
+    game_board
+} 
+
+fn move_cursor(game_board: GameBoard, inputed_movement: Movement) -> GameBoard {
+    if is_cursor(game_board.row_one[0]){
+        println!("meh");
+    }
+    game_board
+} 
+
+fn is_cursor(tile: TileStatus) -> bool {
+    match tile {
+        TileStatus::Cursor => true,
+        TileStatus::Nought(cursor) => match cursor {
+            Cursor::True => true,
+            Cursor::None => false,
+            },
+        TileStatus::Cross(cursor) => match cursor {
+            Cursor::True => true,
+            Cursor::None => false,
+            },
+        TileStatus::None => false
+    }
+}
+
+// fn move_player(movement: u32, mut player_position: [i32; 2]) -> [i32; 2]{
+//     if movement == 4 {
+//         if player_position[1] == 1 {
+//             println!("That move is invalid please try again.");
+//         }
+//         else {
+//             player_position = [player_position[0] , player_position[1] - 1];
+//         }
+//     }
+//     else if movement == 6 {
+//         if player_position[1] == 3 {
+//             println!("That move is invalid please try again.");
+//         }
+//         else {
+//             player_position = [player_position[0] , player_position[1] + 1];
+//         }
+//     }
+//     else if movement == 8 {
+//         if player_position[0] == 1 {
+//             println!("That move is invalid please try again.");
+//         }
+//         else {
+//             player_position = [player_position[0] - 1 , player_position[1]];
+//         }
+//     }
+//     else if movement == 2 {
+//         if player_position[0] == 3 {
+//             println!("That move is invalid please try again.");
+//         }
+//         else {
+//             player_position = [player_position[0] + 1, player_position[1]];
+//         }
+//     }
+//     player_position
+// }
