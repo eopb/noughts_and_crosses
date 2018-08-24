@@ -1,8 +1,8 @@
 // use std::io;
 use draw::draw_game_board;
-use tests::has_someone_won;
+use won::has_someone_won;
 mod draw;
-mod tests;
+mod won;
 
 #[derive(Copy, Clone)]
 pub struct GameBoard {
@@ -79,6 +79,12 @@ fn main() {
             Winner::Nought => {println!("Noughts won");}
             Winner::None => {println!("No one has won");}
         }
+        println!("To move the star left type 4 and hit enter");
+        println!("To move the star right type 6 and hit enter");
+        println!("To move the star up type 8 and hit enter");
+        println!("To move the star down type 2 and hit enter");
+        println!("To place your cross type 5 and hit enter");
+        game_board = process_movement(game_board);
         game_status = GameStatus::Finished;
     }
     println!("You are the *");
@@ -91,6 +97,9 @@ fn switch_player(current_player: Players) -> Players {
     }
 }
 
+fn process_movement(game_board: GameBoard) -> GameBoard {
+    game_board
+}
 // fn main() {
 //     println!("Welcome to my noughts and crosses game made in rust.");
 //     let mut row1 = [" "," "," "];
