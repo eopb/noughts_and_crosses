@@ -110,13 +110,13 @@ pub fn move_cursor(game_board: GameBoard, inputed_movement: Movement) -> GameBoa
 fn remove_cursor(tile: TileStatus) -> TileStatus {
     match tile {
         TileStatus::Cross(cursor) => match cursor {
-                Cursor::True => TileStatus::Cross(Cursor::None),
-                Cursor::None => TileStatus::Cross(Cursor::None),
-            },
+            Cursor::True => TileStatus::Cross(Cursor::None),
+            Cursor::None => TileStatus::Cross(Cursor::None),
+        },
         TileStatus::Nought(cursor) => match cursor {
-                Cursor::True => TileStatus::Nought(Cursor::None),
-                Cursor::None => TileStatus::Nought(Cursor::None),
-            },
+            Cursor::True => TileStatus::Nought(Cursor::None),
+            Cursor::None => TileStatus::Nought(Cursor::None),
+        },
         TileStatus::Cursor => TileStatus::None,
         TileStatus::None => TileStatus::None,
     }
@@ -125,13 +125,13 @@ fn remove_cursor(tile: TileStatus) -> TileStatus {
 fn add_cursor(tile: TileStatus) -> TileStatus {
     match tile {
         TileStatus::Cross(cursor) => match cursor {
-                Cursor::True => TileStatus::Cross(Cursor::True),
-                Cursor::None => TileStatus::Cross(Cursor::True),
-            },
+            Cursor::True => TileStatus::Cross(Cursor::True),
+            Cursor::None => TileStatus::Cross(Cursor::True),
+        },
         TileStatus::Nought(cursor) => match cursor {
-                Cursor::True => TileStatus::Nought(Cursor::True),
-                Cursor::None => TileStatus::Nought(Cursor::True),
-            },
+            Cursor::True => TileStatus::Nought(Cursor::True),
+            Cursor::None => TileStatus::Nought(Cursor::True),
+        },
         TileStatus::Cursor => TileStatus::Cursor,
         TileStatus::None => TileStatus::Cursor,
     }
@@ -143,11 +143,11 @@ fn is_cursor(tile: TileStatus) -> bool {
         TileStatus::Nought(cursor) => match cursor {
             Cursor::True => true,
             Cursor::None => false,
-            },
+        },
         TileStatus::Cross(cursor) => match cursor {
             Cursor::True => true,
             Cursor::None => false,
-            },
+        },
         TileStatus::None => false
     }
 }
