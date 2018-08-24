@@ -9,14 +9,15 @@ pub struct GameBoard {
 }
 
 pub enum TileStatus {
-    Player(Players),
+    Nought(Cursor),
+    Cross(Cursor),
     Cursor,
     None,
 }
 
-pub enum Players {
-    Nought(Cursor),
-    Cross(Cursor),
+enum Players {
+    Nought,
+    Cross,
 }
 
 pub enum Cursor {
@@ -30,17 +31,17 @@ fn main() {
     let mut game_board = GameBoard {
         row_one: [
             TileStatus::Cursor,
-            TileStatus::None,
+            TileStatus::Nought(Cursor::True),
             TileStatus::None
             ],
         row_two: [
             TileStatus::None,
-            TileStatus::None,
+            TileStatus::Nought(Cursor::None),
             TileStatus::None
             ],
         row_three: [
             TileStatus::None,
-            TileStatus::None,
+            TileStatus::Cross(Cursor::None),
             TileStatus::None
             ],
     };
