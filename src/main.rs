@@ -15,19 +15,26 @@ pub enum TileStatus {
     None,
 }
 
-enum Players {
-    Nought,
-    Cross,
-}
-
 pub enum Cursor {
     True,
     None,
 }
 
+enum Players {
+    Nought,
+    Cross,
+}
+
+enum GameStatus {
+    Playing,
+    Finished,
+}
+
 fn main() {
     println!("Welcome to my noughts and crosses game made in rust.");
 
+    let mut current_player = Players::Cross;
+    let mut game_status = GameStatus::Playing;
     let mut game_board = GameBoard {
         row_one: [
             TileStatus::Cursor,
@@ -45,11 +52,21 @@ fn main() {
             TileStatus::None
             ],
     };
-    let mut current_player = Players::Cross;
 
     println!("Crosses goes first.");
     println!("The board looks like this.");
     draw::draw_game_board(&game_board);
+    
+    while match game_status {
+        GameStatus::Playing => true,
+        GameStatus::Finished => false,
+    } {
+        game_status = GameStatus::Finished;
+        current_player = match current_player { 
+            Players::Cross => Players::Nought, 
+            Players::Nought => Players::Cross,
+        }
+    }
     println!("You are the *");
 }
 
