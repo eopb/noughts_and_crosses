@@ -1,3 +1,4 @@
+use movement::is_cursor;
 use movement::Movement;
 use Cursor;
 use GameBoard;
@@ -353,20 +354,5 @@ fn add_cursor(tile: TileStatus) -> TileStatus {
         },
         TileStatus::Cursor => TileStatus::Cursor,
         TileStatus::None => TileStatus::Cursor,
-    }
-}
-
-fn is_cursor(tile: TileStatus) -> bool {
-    match tile {
-        TileStatus::Cursor => true,
-        TileStatus::Nought(cursor) => match cursor {
-            Cursor::True => true,
-            Cursor::None => false,
-        },
-        TileStatus::Cross(cursor) => match cursor {
-            Cursor::True => true,
-            Cursor::None => false,
-        },
-        TileStatus::None => false,
     }
 }

@@ -4,7 +4,6 @@ use GameBoard;
 use TileStatus;
 
 pub fn draw_game_board(game_board: GameBoard) {
-    println!("it works");
     println!(
         "{}|{}|{}",
         x_or_0(game_board.row_one[0]),
