@@ -300,6 +300,35 @@ pub fn move_cursor(game_board: GameBoard, inputed_movement: Movement) -> GameBoa
             },
         };
     }
+    else if is_cursor(game_board.row_three[2]){
+        return match inputed_movement {
+            Movement::Left => GameBoard {
+                row_three: [
+                    game_board.row_three[0],
+                    add_cursor(game_board.row_three[1]),
+                    remove_cursor(game_board.row_three[2])
+                ],
+                ..game_board
+            },
+            Movement::Up => GameBoard {
+                row_three: [
+                    game_board.row_three[0],
+                    game_board.row_three[1],
+                    remove_cursor(game_board.row_three[2])
+                ],
+                row_two: [
+                    game_board.row_two[0],
+                    game_board.row_two[1],
+                    add_cursor(game_board.row_two[2])
+                ],
+                ..game_board
+            },
+            _ => {
+                println!("This can not be done");
+                game_board
+            },
+        };
+    }
     else {
         println!("here");
         panic!();
