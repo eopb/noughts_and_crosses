@@ -78,7 +78,13 @@ fn main() {
         println!("To move the star up type 8 and hit enter");
         println!("To move the star down type 2 and hit enter");
         println!("To place your cross type 5 and hit enter");
-        game_board = process_movement(game_board, current_player);
+        game_board = match process_movement(game_board, current_player) {
+            Some(game_board) => game_board,
+            None => {
+                println!("That did not work");
+                continue;
+            }
+        };
         draw_game_board(game_board);
         // game_status = GameStatus::Finished;
     }
