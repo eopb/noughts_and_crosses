@@ -61,7 +61,7 @@ fn main() {
         GameStatus::Playing => true,
         GameStatus::Finished => false,
     } {
-        current_player = switch_player(current_player);
+        // current_player = switch_player(current_player);
         match has_someone_won(current_player, game_board) {
             Winner::Cross => {
                 println!("Crosses won");
