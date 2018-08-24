@@ -1,9 +1,9 @@
-// use std::io;
 use draw::draw_game_board;
 use won::has_someone_won;
 mod draw;
 mod won;
-
+mod movement;
+use movement::process_movement;
 #[derive(Copy, Clone)]
 pub struct GameBoard {
     row_one: [TileStatus; 3],
@@ -97,9 +97,7 @@ fn switch_player(current_player: Players) -> Players {
     }
 }
 
-fn process_movement(game_board: GameBoard) -> GameBoard {
-    game_board
-}
+
 // fn main() {
 //     println!("Welcome to my noughts and crosses game made in rust.");
 //     let mut row1 = [" "," "," "];
