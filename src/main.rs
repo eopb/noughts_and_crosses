@@ -62,33 +62,38 @@ fn main() {
         GameStatus::Finished => false,
     } {
         // current_player = switch_player(current_player);
-        match has_someone_won(current_player, game_board) {
-            Winner::Cross => {
-                println!("Crosses won");
-            }
-            Winner::Nought => {
-                println!("Noughts won");
-            }
-            Winner::None => {
-                println!("No one has won");
-            }
-        }
+
         println!("To move the star left type 4 and hit enter");
         println!("To move the star right type 6 and hit enter");
         println!("To move the star up type 8 and hit enter");
         println!("To move the star down type 2 and hit enter");
         println!("To place your cross type 5 and hit enter");
-        game_board = match process_movement(game_board, current_player) {
-            Some(game_board) => game_board,
-            None => {
-                println!("That did not work");
-                continue;
-            }
-        };
+        loop {
+            game_board = match process_movement(game_board, current_player) {
+                Some(game_board) => game_board,
+                None => {
+                    println!("That did not work");
+                    continue;
+                }
+            };
+            break;
+        }
         draw_game_board(game_board);
+        match has_someone_won(current_player, game_board) {
+            Winner::Cross => {
+                println!("Crosses won");
+                game_status = GameStatus::Finished;
+            }
+            Winner::Nought => {
+                println!("Noughts won");
+                game_status = GameStatus::Finished;
+            }
+            Winner::None => {
+                println!("No one has won");
+            }
+        }
         // game_status = GameStatus::Finished;
     }
-    println!("You are the *");
 }
 
 fn switch_player(current_player: Players) -> Players {

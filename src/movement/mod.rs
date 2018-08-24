@@ -13,12 +13,14 @@ pub enum Movement {
     Up,
     Down,
     Place,
+    None,
 }
 
 pub fn process_movement(game_board: GameBoard, current_player: Players) -> Option<GameBoard> {
     let input = fetch_input();
     match input {
         Movement::Place => place_player(game_board, current_player),
+        Movement::None => Option::None,
         _ => move_cursor(game_board, input),
     }
 }
@@ -26,26 +28,18 @@ pub fn process_movement(game_board: GameBoard, current_player: Players) -> Optio
 fn fetch_input() -> Movement {
     let mut movement = String::new();
     let mut umovement = 0;
-    loop {
-        io::stdin()
-            .read_line(&mut movement)
-            .expect("Failed to read line");
-        umovement = match movement.trim().parse() {
-            Ok(num) => num,
-            Err(_) => {
-                println!("Plese Try again");
-                continue;
-            }
-        };
-        if (umovement == 4)
-            ^ (umovement == 6)
-            ^ (umovement == 8)
-            ^ (umovement == 2)
-            ^ (umovement == 5)
-        {
-            break;
+
+    io::stdin()
+        .read_line(&mut movement)
+        .expect("Failed to read line");
+    umovement = match movement.trim().parse() {
+        Ok(num) => num,
+        Err(_) => {
+            println!("Plese Try again");
+            return Movement::None;
         }
-    }
+    };
+
     if umovement == 4 {
         println!("You have pressed 4 to go Left");
         Movement::Left
@@ -62,7 +56,7 @@ fn fetch_input() -> Movement {
         println!("You have pressed 5 to place you peace");
         Movement::Place
     } else {
-        panic!();
+        Movement::None
     }
 }
 
