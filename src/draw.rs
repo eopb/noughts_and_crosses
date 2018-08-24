@@ -3,7 +3,7 @@ use GameBoard;
 use TileStatus;
 use Cursor;
 
-pub fn draw_game_board(game_board: &GameBoard) {
+pub fn draw_game_board(game_board: GameBoard) {
     println!("it works");
     println!("{}|{}|{}", x_or_0(game_board.row_one[0]), x_or_0(game_board.row_one[1]), x_or_0(game_board.row_one[2]));
     println!("_ _ _");

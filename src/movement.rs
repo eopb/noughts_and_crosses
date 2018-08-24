@@ -71,10 +71,55 @@ fn place_player(game_board: GameBoard) -> GameBoard {
 
 fn move_cursor(game_board: GameBoard, inputed_movement: Movement) -> GameBoard {
     if is_cursor(game_board.row_one[0]){
-        println!("meh");
+        return match inputed_movement {
+            Movement::Right => GameBoard {
+                    row_one: [
+                        remove_cursor(game_board.row_one[0]),
+                        add_cursor(game_board.row_one[1]),
+                        game_board.row_one[2]
+                    ],
+                    ..game_board
+                },
+            // Movement::Down => ,
+            _ => {
+                println!("This can not be done");
+                game_board
+            },
+        };
     }
+    println!("here");
     game_board
 } 
+
+fn remove_cursor(tile: TileStatus) -> TileStatus {
+    match tile {
+        TileStatus::Cross(cursor) => match cursor {
+                Cursor::True => TileStatus::Cross(Cursor::None),
+                Cursor::None => TileStatus::Cross(Cursor::None),
+            },
+        TileStatus::Nought(cursor) => match cursor {
+                Cursor::True => TileStatus::Nought(Cursor::None),
+                Cursor::None => TileStatus::Nought(Cursor::None),
+            },
+        TileStatus::Cursor => TileStatus::None,
+        TileStatus::None => TileStatus::None,
+    }
+}
+
+fn add_cursor(tile: TileStatus) -> TileStatus {
+    match tile {
+        TileStatus::Cross(cursor) => match cursor {
+                Cursor::True => TileStatus::Cross(Cursor::True),
+                Cursor::None => TileStatus::Cross(Cursor::True),
+            },
+        TileStatus::Nought(cursor) => match cursor {
+                Cursor::True => TileStatus::Nought(Cursor::True),
+                Cursor::None => TileStatus::Nought(Cursor::True),
+            },
+        TileStatus::Cursor => TileStatus::Cursor,
+        TileStatus::None => TileStatus::Cursor,
+    }
+}
 
 fn is_cursor(tile: TileStatus) -> bool {
     match tile {

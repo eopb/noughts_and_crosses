@@ -67,7 +67,7 @@ fn main() {
 
     println!("Crosses goes first.");
     println!("The board looks like this.");
-    draw_game_board(&game_board);
+    draw_game_board(game_board);
     
     while match game_status {
         GameStatus::Playing => true,
@@ -85,7 +85,8 @@ fn main() {
         println!("To move the star down type 2 and hit enter");
         println!("To place your cross type 5 and hit enter");
         game_board = process_movement(game_board);
-        game_status = GameStatus::Finished;
+        draw_game_board(game_board);
+        // game_status = GameStatus::Finished;
     }
     println!("You are the *");
 }
