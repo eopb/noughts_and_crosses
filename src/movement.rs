@@ -136,7 +136,7 @@ fn move_cursor(game_board: GameBoard, inputed_movement: Movement) -> GameBoard {
             },
         };
     }
-    else if is_cursor(game_board.row_one[1]){
+    else if is_cursor(game_board.row_one[2]){
         return match inputed_movement {
             Movement::Left => GameBoard {
                 row_one: [
