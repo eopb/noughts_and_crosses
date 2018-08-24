@@ -10,6 +10,7 @@ pub struct GameBoard {
     row_two: [TileStatus; 3],
     row_three: [TileStatus; 3],
 }
+
 #[derive(Copy, Clone)]
 pub enum TileStatus {
     Nought(Cursor),
@@ -17,6 +18,7 @@ pub enum TileStatus {
     Cursor,
     None,
 }
+
 #[derive(Copy, Clone)]
 pub enum Cursor {
     True,
