@@ -1,4 +1,5 @@
-use std::io;
+// use std::io;
+use draw::draw_game_board;
 mod draw;
 // mod tests;
 
@@ -55,22 +56,24 @@ fn main() {
 
     println!("Crosses goes first.");
     println!("The board looks like this.");
-    draw::draw_game_board(&game_board);
+    draw_game_board(&game_board);
     
     while match game_status {
         GameStatus::Playing => true,
         GameStatus::Finished => false,
     } {
+        current_player = switch_player(&current_player);
         game_status = GameStatus::Finished;
-        current_player = match current_player { 
-            Players::Cross => Players::Nought, 
-            Players::Nought => Players::Cross,
-        }
     }
     println!("You are the *");
 }
 
-
+fn switch_player(current_player: &Players) -> Players {
+    match current_player { 
+        Players::Cross => Players::Nought, 
+        Players::Nought => Players::Cross,
+    }
+}
 
 // fn main() {
 //     println!("Welcome to my noughts and crosses game made in rust.");
