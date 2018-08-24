@@ -49,18 +49,18 @@ fn main() {
     let mut game_status = GameStatus::Playing;
     let mut game_board = GameBoard {
         row_one: [
-            TileStatus::Nought(Cursor::None),
-            TileStatus::Nought(Cursor::True),
-            TileStatus::Nought(Cursor::None)
+            TileStatus::Cursor,
+            TileStatus::None,
+            TileStatus::None
             ],
         row_two: [
-            TileStatus::Nought(Cursor::None),
-            TileStatus::Nought(Cursor::None),
+            TileStatus::None,
+            TileStatus::None,
             TileStatus::None
             ],
         row_three: [
-            TileStatus::Nought(Cursor::None),
-            TileStatus::Cross(Cursor::None),
+            TileStatus::None,
+            TileStatus::None,
             TileStatus::None
             ],
     };
