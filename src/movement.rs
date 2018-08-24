@@ -216,39 +216,3 @@ fn is_cursor(tile: TileStatus) -> bool {
         TileStatus::None => false
     }
 }
-
-// fn move_player(movement: u32, mut player_position: [i32; 2]) -> [i32; 2]{
-//     if movement == 4 {
-//         if player_position[1] == 1 {
-//             println!("That move is invalid please try again.");
-//         }
-//         else {
-//             player_position = [player_position[0] , player_position[1] - 1];
-//         }
-//     }
-//     else if movement == 6 {
-//         if player_position[1] == 3 {
-//             println!("That move is invalid please try again.");
-//         }
-//         else {
-//             player_position = [player_position[0] , player_position[1] + 1];
-//         }
-//     }
-//     else if movement == 8 {
-//         if player_position[0] == 1 {
-//             println!("That move is invalid please try again.");
-//         }
-//         else {
-//             player_position = [player_position[0] - 1 , player_position[1]];
-//         }
-//     }
-//     else if movement == 2 {
-//         if player_position[0] == 3 {
-//             println!("That move is invalid please try again.");
-//         }
-//         else {
-//             player_position = [player_position[0] + 1, player_position[1]];
-//         }
-//     }
-//     player_position
-// }
