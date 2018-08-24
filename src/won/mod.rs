@@ -10,8 +10,6 @@ pub fn has_someone_won(current_player: Players, game_board: GameBoard) -> Winner
     }
 }
 
-
-
 fn nought(game_board: GameBoard) -> Winner {
     match nought_first_row(game_board) {
         Winner::Nought => Winner::Nought,
@@ -30,22 +28,22 @@ fn nought(game_board: GameBoard) -> Winner {
                                 _ => match nought_diag_two(game_board) {
                                     Winner::Nought => Winner::Nought,
                                     _ => Winner::None,
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
     }
 }
 
-fn nought_first_row(game_board: GameBoard) -> Winner{
-        match game_board.row_one[0] {
+fn nought_first_row(game_board: GameBoard) -> Winner {
+    match game_board.row_one[0] {
         TileStatus::Nought(_cursor) => match game_board.row_one[1] {
             TileStatus::Nought(_cursor) => match game_board.row_one[2] {
                 TileStatus::Nought(_cursor) => Winner::Nought,
-                _ => Winner::None
+                _ => Winner::None,
             },
             _ => Winner::None,
         },
@@ -53,12 +51,12 @@ fn nought_first_row(game_board: GameBoard) -> Winner{
     }
 }
 
-fn nought_second_row(game_board: GameBoard) -> Winner{
-        match game_board.row_two[0] {
+fn nought_second_row(game_board: GameBoard) -> Winner {
+    match game_board.row_two[0] {
         TileStatus::Nought(_cursor) => match game_board.row_two[1] {
             TileStatus::Nought(_cursor) => match game_board.row_two[2] {
                 TileStatus::Nought(_cursor) => Winner::Nought,
-                _ => Winner::None
+                _ => Winner::None,
             },
             _ => Winner::None,
         },
@@ -66,12 +64,12 @@ fn nought_second_row(game_board: GameBoard) -> Winner{
     }
 }
 
-fn nought_third_row(game_board: GameBoard) -> Winner{
-        match game_board.row_three[0] {
+fn nought_third_row(game_board: GameBoard) -> Winner {
+    match game_board.row_three[0] {
         TileStatus::Nought(_cursor) => match game_board.row_three[1] {
             TileStatus::Nought(_cursor) => match game_board.row_three[2] {
                 TileStatus::Nought(_cursor) => Winner::Nought,
-                _ => Winner::None
+                _ => Winner::None,
             },
             _ => Winner::None,
         },
@@ -79,12 +77,12 @@ fn nought_third_row(game_board: GameBoard) -> Winner{
     }
 }
 
-fn nought_first_col(game_board: GameBoard) -> Winner{
-        match game_board.row_one[0] {
+fn nought_first_col(game_board: GameBoard) -> Winner {
+    match game_board.row_one[0] {
         TileStatus::Nought(_cursor) => match game_board.row_two[0] {
             TileStatus::Nought(_cursor) => match game_board.row_three[0] {
                 TileStatus::Nought(_cursor) => Winner::Nought,
-                _ => Winner::None
+                _ => Winner::None,
             },
             _ => Winner::None,
         },
@@ -92,12 +90,12 @@ fn nought_first_col(game_board: GameBoard) -> Winner{
     }
 }
 
-fn nought_second_col(game_board: GameBoard) -> Winner{
-        match game_board.row_one[1] {
+fn nought_second_col(game_board: GameBoard) -> Winner {
+    match game_board.row_one[1] {
         TileStatus::Nought(_cursor) => match game_board.row_two[1] {
             TileStatus::Nought(_cursor) => match game_board.row_three[1] {
                 TileStatus::Nought(_cursor) => Winner::Nought,
-                _ => Winner::None
+                _ => Winner::None,
             },
             _ => Winner::None,
         },
@@ -105,12 +103,12 @@ fn nought_second_col(game_board: GameBoard) -> Winner{
     }
 }
 
-fn nought_third_col(game_board: GameBoard) -> Winner{
-        match game_board.row_one[2] {
+fn nought_third_col(game_board: GameBoard) -> Winner {
+    match game_board.row_one[2] {
         TileStatus::Nought(_cursor) => match game_board.row_two[2] {
             TileStatus::Nought(_cursor) => match game_board.row_three[2] {
                 TileStatus::Nought(_cursor) => Winner::Nought,
-                _ => Winner::None
+                _ => Winner::None,
             },
             _ => Winner::None,
         },
@@ -118,12 +116,12 @@ fn nought_third_col(game_board: GameBoard) -> Winner{
     }
 }
 
-fn nought_diag_one(game_board: GameBoard) -> Winner{
-        match game_board.row_one[0] {
+fn nought_diag_one(game_board: GameBoard) -> Winner {
+    match game_board.row_one[0] {
         TileStatus::Nought(_cursor) => match game_board.row_two[1] {
             TileStatus::Nought(_cursor) => match game_board.row_three[2] {
                 TileStatus::Nought(_cursor) => Winner::Nought,
-                _ => Winner::None
+                _ => Winner::None,
             },
             _ => Winner::None,
         },
@@ -131,20 +129,18 @@ fn nought_diag_one(game_board: GameBoard) -> Winner{
     }
 }
 
-fn nought_diag_two(game_board: GameBoard) -> Winner{
-        match game_board.row_one[2] {
+fn nought_diag_two(game_board: GameBoard) -> Winner {
+    match game_board.row_one[2] {
         TileStatus::Nought(_cursor) => match game_board.row_two[1] {
             TileStatus::Nought(_cursor) => match game_board.row_three[0] {
                 TileStatus::Nought(_cursor) => Winner::Nought,
-                _ => Winner::None
+                _ => Winner::None,
             },
             _ => Winner::None,
         },
         _ => Winner::None,
     }
 }
-
-
 
 fn cross(game_board: GameBoard) -> Winner {
     match cross_first_row(game_board) {
@@ -164,22 +160,22 @@ fn cross(game_board: GameBoard) -> Winner {
                                 _ => match cross_diag_two(game_board) {
                                     Winner::Cross => Winner::Cross,
                                     _ => Winner::None,
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        }
+                                },
+                            },
+                        },
+                    },
+                },
+            },
+        },
     }
 }
 
-fn cross_first_row(game_board: GameBoard) -> Winner{
-        match game_board.row_one[0] {
+fn cross_first_row(game_board: GameBoard) -> Winner {
+    match game_board.row_one[0] {
         TileStatus::Cross(_cursor) => match game_board.row_one[1] {
             TileStatus::Cross(_cursor) => match game_board.row_one[2] {
                 TileStatus::Cross(_cursor) => Winner::Cross,
-                _ => Winner::None
+                _ => Winner::None,
             },
             _ => Winner::None,
         },
@@ -187,12 +183,12 @@ fn cross_first_row(game_board: GameBoard) -> Winner{
     }
 }
 
-fn cross_second_row(game_board: GameBoard) -> Winner{
-        match game_board.row_two[0] {
+fn cross_second_row(game_board: GameBoard) -> Winner {
+    match game_board.row_two[0] {
         TileStatus::Cross(_cursor) => match game_board.row_two[1] {
             TileStatus::Cross(_cursor) => match game_board.row_two[2] {
                 TileStatus::Cross(_cursor) => Winner::Cross,
-                _ => Winner::None
+                _ => Winner::None,
             },
             _ => Winner::None,
         },
@@ -200,12 +196,12 @@ fn cross_second_row(game_board: GameBoard) -> Winner{
     }
 }
 
-fn cross_third_row(game_board: GameBoard) -> Winner{
-        match game_board.row_three[0] {
+fn cross_third_row(game_board: GameBoard) -> Winner {
+    match game_board.row_three[0] {
         TileStatus::Cross(_cursor) => match game_board.row_three[1] {
             TileStatus::Cross(_cursor) => match game_board.row_three[2] {
                 TileStatus::Cross(_cursor) => Winner::Cross,
-                _ => Winner::None
+                _ => Winner::None,
             },
             _ => Winner::None,
         },
@@ -213,12 +209,12 @@ fn cross_third_row(game_board: GameBoard) -> Winner{
     }
 }
 
-fn cross_first_col(game_board: GameBoard) -> Winner{
-        match game_board.row_one[0] {
+fn cross_first_col(game_board: GameBoard) -> Winner {
+    match game_board.row_one[0] {
         TileStatus::Cross(_cursor) => match game_board.row_two[0] {
             TileStatus::Cross(_cursor) => match game_board.row_three[0] {
                 TileStatus::Cross(_cursor) => Winner::Cross,
-                _ => Winner::None
+                _ => Winner::None,
             },
             _ => Winner::None,
         },
@@ -226,12 +222,12 @@ fn cross_first_col(game_board: GameBoard) -> Winner{
     }
 }
 
-fn cross_second_col(game_board: GameBoard) -> Winner{
-        match game_board.row_one[1] {
+fn cross_second_col(game_board: GameBoard) -> Winner {
+    match game_board.row_one[1] {
         TileStatus::Cross(_cursor) => match game_board.row_two[1] {
             TileStatus::Cross(_cursor) => match game_board.row_three[1] {
                 TileStatus::Cross(_cursor) => Winner::Cross,
-                _ => Winner::None
+                _ => Winner::None,
             },
             _ => Winner::None,
         },
@@ -239,12 +235,12 @@ fn cross_second_col(game_board: GameBoard) -> Winner{
     }
 }
 
-fn cross_third_col(game_board: GameBoard) -> Winner{
-        match game_board.row_one[2] {
+fn cross_third_col(game_board: GameBoard) -> Winner {
+    match game_board.row_one[2] {
         TileStatus::Cross(_cursor) => match game_board.row_two[2] {
             TileStatus::Cross(_cursor) => match game_board.row_three[2] {
                 TileStatus::Cross(_cursor) => Winner::Cross,
-                _ => Winner::None
+                _ => Winner::None,
             },
             _ => Winner::None,
         },
@@ -252,12 +248,12 @@ fn cross_third_col(game_board: GameBoard) -> Winner{
     }
 }
 
-fn cross_diag_one(game_board: GameBoard) -> Winner{
-        match game_board.row_one[0] {
+fn cross_diag_one(game_board: GameBoard) -> Winner {
+    match game_board.row_one[0] {
         TileStatus::Cross(_cursor) => match game_board.row_two[1] {
             TileStatus::Cross(_cursor) => match game_board.row_three[2] {
                 TileStatus::Cross(_cursor) => Winner::Cross,
-                _ => Winner::None
+                _ => Winner::None,
             },
             _ => Winner::None,
         },
@@ -265,12 +261,12 @@ fn cross_diag_one(game_board: GameBoard) -> Winner{
     }
 }
 
-fn cross_diag_two(game_board: GameBoard) -> Winner{
-        match game_board.row_one[2] {
+fn cross_diag_two(game_board: GameBoard) -> Winner {
+    match game_board.row_one[2] {
         TileStatus::Cross(_cursor) => match game_board.row_two[1] {
             TileStatus::Cross(_cursor) => match game_board.row_three[0] {
                 TileStatus::Cross(_cursor) => Winner::Cross,
-                _ => Winner::None
+                _ => Winner::None,
             },
             _ => Winner::None,
         },

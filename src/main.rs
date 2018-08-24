@@ -1,8 +1,8 @@
 use draw::draw_game_board;
 use won::has_someone_won;
 mod draw;
-mod won;
 mod movement;
+mod won;
 use movement::process_movement;
 #[derive(Copy, Clone)]
 pub struct GameBoard {
@@ -48,36 +48,30 @@ fn main() {
     let mut current_player = Players::Cross;
     let mut game_status = GameStatus::Playing;
     let mut game_board = GameBoard {
-        row_one: [
-            TileStatus::Cursor,
-            TileStatus::None,
-            TileStatus::None
-            ],
-        row_two: [
-            TileStatus::None,
-            TileStatus::None,
-            TileStatus::None
-            ],
-        row_three: [
-            TileStatus::None,
-            TileStatus::None,
-            TileStatus::None
-            ],
+        row_one: [TileStatus::Cursor, TileStatus::None, TileStatus::None],
+        row_two: [TileStatus::None, TileStatus::None, TileStatus::None],
+        row_three: [TileStatus::None, TileStatus::None, TileStatus::None],
     };
 
     println!("Crosses goes first.");
     println!("The board looks like this.");
     draw_game_board(game_board);
-    
+
     while match game_status {
         GameStatus::Playing => true,
         GameStatus::Finished => false,
     } {
         current_player = switch_player(current_player);
         match has_someone_won(current_player, game_board) {
-            Winner::Cross => {println!("Crosses won");}
-            Winner::Nought => {println!("Noughts won");}
-            Winner::None => {println!("No one has won");}
+            Winner::Cross => {
+                println!("Crosses won");
+            }
+            Winner::Nought => {
+                println!("Noughts won");
+            }
+            Winner::None => {
+                println!("No one has won");
+            }
         }
         println!("To move the star left type 4 and hit enter");
         println!("To move the star right type 6 and hit enter");
@@ -92,12 +86,11 @@ fn main() {
 }
 
 fn switch_player(current_player: Players) -> Players {
-    match current_player { 
+    match current_player {
         Players::Cross => Players::Nought,
         Players::Nought => Players::Cross,
     }
 }
-
 
 // fn main() {
 //     println!("Welcome to my noughts and crosses game made in rust.");
@@ -204,14 +197,13 @@ fn switch_player(current_player: Players) -> Players {
 //                     }
 //                 }
 
-                
 //             }
 //             else if movement == 0 {
 //                 panic!();
 //             }
 //             else {
 //                 println!("That move is invalid please try again.");
-//                 continue; 
+//                 continue;
 //             }
 //             draw::draw_game_board(&row1, &row2, &row3, &player_position);
 //             let winner = tests::has_someone_won(&row1, &row2, &row3);
