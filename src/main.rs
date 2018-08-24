@@ -34,6 +34,12 @@ enum GameStatus {
     Finished,
 }
 
+pub enum Winner {
+    Nought,
+    Cross,
+    None,
+}
+
 fn main() {
     println!("Welcome to my noughts and crosses game made in rust.");
 
@@ -41,17 +47,17 @@ fn main() {
     let mut game_status = GameStatus::Playing;
     let mut game_board = GameBoard {
         row_one: [
-            TileStatus::Cursor,
+            TileStatus::Nought(Cursor::None),
             TileStatus::Nought(Cursor::True),
-            TileStatus::None
+            TileStatus::Nought(Cursor::None)
             ],
         row_two: [
-            TileStatus::None,
+            TileStatus::Nought(Cursor::None),
             TileStatus::Nought(Cursor::None),
             TileStatus::None
             ],
         row_three: [
-            TileStatus::None,
+            TileStatus::Nought(Cursor::None),
             TileStatus::Cross(Cursor::None),
             TileStatus::None
             ],
@@ -67,8 +73,9 @@ fn main() {
     } {
         current_player = switch_player(current_player);
         match has_someone_won(current_player, game_board) {
-            Players::Cross => {println!("Crosses won");}
-            Players::Nought => {println!("Noughts won");}
+            Winner::Cross => {println!("Crosses won");}
+            Winner::Nought => {println!("Noughts won");}
+            Winner::None => {println!("No one has won");}
         }
         game_status = GameStatus::Finished;
     }

@@ -1,9 +1,149 @@
 use GameBoard;
 use Players;
+use TileStatus;
+use Winner;
 
-pub fn has_someone_won(current_player: Players, game_board: GameBoard) -> Players {
-    current_player
+pub fn has_someone_won(current_player: Players, game_board: GameBoard) -> Winner {
+    let player_being_tested = [Players::Nought, Players::Cross];
+    match current_player {
+        Players::Nought => nought(game_board),
+        Players::Cross => Winner::None,
+    }
 }
+
+fn nought(game_board: GameBoard) -> Winner {
+    match nought_first_row(game_board) {
+        Winner::Nought => Winner::Nought,
+        _ => match nought_second_row(game_board) {
+            Winner::Nought => Winner::Nought,
+            _ => match nought_third_row(game_board) {
+                Winner::Nought => Winner::Nought,
+                _ => match nought_first_col(game_board) {
+                    Winner::Nought => Winner::Nought,
+                    _ => match nought_second_col(game_board) {
+                        Winner::Nought => Winner::Nought,
+                        _ => match nought_third_col(game_board) {
+                            Winner::Nought => Winner::Nought,
+                            _ => match nought_diag_one(game_board) {
+                                Winner::Nought => Winner::Nought,
+                                _ => match nought_diag_two(game_board) {
+                                    Winner::Nought => Winner::Nought,
+                                    _ => Winner::None,
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+fn nought_first_row(game_board: GameBoard) -> Winner{
+        match game_board.row_one[0] {
+        TileStatus::Nought(_cursor) => match game_board.row_one[1] {
+            TileStatus::Nought(_cursor) => match game_board.row_one[2] {
+                TileStatus::Nought(_cursor) => Winner::Nought,
+                _ => Winner::None
+            },
+            _ => Winner::None,
+        },
+        _ => Winner::None,
+    }
+}
+
+fn nought_second_row(game_board: GameBoard) -> Winner{
+        match game_board.row_two[0] {
+        TileStatus::Nought(_cursor) => match game_board.row_two[1] {
+            TileStatus::Nought(_cursor) => match game_board.row_two[2] {
+                TileStatus::Nought(_cursor) => Winner::Nought,
+                _ => Winner::None
+            },
+            _ => Winner::None,
+        },
+        _ => Winner::None,
+    }
+}
+
+fn nought_third_row(game_board: GameBoard) -> Winner{
+        match game_board.row_three[0] {
+        TileStatus::Nought(_cursor) => match game_board.row_three[1] {
+            TileStatus::Nought(_cursor) => match game_board.row_three[2] {
+                TileStatus::Nought(_cursor) => Winner::Nought,
+                _ => Winner::None
+            },
+            _ => Winner::None,
+        },
+        _ => Winner::None,
+    }
+}
+
+fn nought_first_col(game_board: GameBoard) -> Winner{
+        match game_board.row_one[0] {
+        TileStatus::Nought(_cursor) => match game_board.row_two[0] {
+            TileStatus::Nought(_cursor) => match game_board.row_three[0] {
+                TileStatus::Nought(_cursor) => Winner::Nought,
+                _ => Winner::None
+            },
+            _ => Winner::None,
+        },
+        _ => Winner::None,
+    }
+}
+
+fn nought_second_col(game_board: GameBoard) -> Winner{
+        match game_board.row_one[1] {
+        TileStatus::Nought(_cursor) => match game_board.row_two[1] {
+            TileStatus::Nought(_cursor) => match game_board.row_three[1] {
+                TileStatus::Nought(_cursor) => Winner::Nought,
+                _ => Winner::None
+            },
+            _ => Winner::None,
+        },
+        _ => Winner::None,
+    }
+}
+
+fn nought_third_col(game_board: GameBoard) -> Winner{
+        match game_board.row_one[2] {
+        TileStatus::Nought(_cursor) => match game_board.row_two[2] {
+            TileStatus::Nought(_cursor) => match game_board.row_three[2] {
+                TileStatus::Nought(_cursor) => Winner::Nought,
+                _ => Winner::None
+            },
+            _ => Winner::None,
+        },
+        _ => Winner::None,
+    }
+}
+
+fn nought_diag_one(game_board: GameBoard) -> Winner{
+        match game_board.row_one[0] {
+        TileStatus::Nought(_cursor) => match game_board.row_two[1] {
+            TileStatus::Nought(_cursor) => match game_board.row_three[2] {
+                TileStatus::Nought(_cursor) => Winner::Nought,
+                _ => Winner::None
+            },
+            _ => Winner::None,
+        },
+        _ => Winner::None,
+    }
+}
+
+fn nought_diag_two(game_board: GameBoard) -> Winner{
+        match game_board.row_one[2] {
+        TileStatus::Nought(_cursor) => match game_board.row_two[1] {
+            TileStatus::Nought(_cursor) => match game_board.row_three[0] {
+                TileStatus::Nought(_cursor) => Winner::Nought,
+                _ => Winner::None
+            },
+            _ => Winner::None,
+        },
+        _ => Winner::None,
+    }
+}
+
+
 
 // pub fn has_someone_won(
 //     row1: &[&str; 3],
