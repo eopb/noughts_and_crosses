@@ -78,7 +78,6 @@ fn place_player(game_board: GameBoard, current_player: Players) -> GameBoard {
                     ],
                     ..game_board
                 },
-                _ => game_board,
             },
             _ => game_board,
         }
@@ -93,7 +92,6 @@ fn place_player(game_board: GameBoard, current_player: Players) -> GameBoard {
                     ],
                     ..game_board
                 },
-                _ => game_board,
             },
             _ => game_board,
         }
@@ -108,7 +106,6 @@ fn place_player(game_board: GameBoard, current_player: Players) -> GameBoard {
                     ],
                     ..game_board
                 },
-                _ => game_board,
             },
             _ => game_board,
         }
@@ -123,7 +120,6 @@ fn place_player(game_board: GameBoard, current_player: Players) -> GameBoard {
                     ],
                     ..game_board
                 },
-                _ => game_board,
             },
             _ => game_board,
         }
@@ -138,7 +134,6 @@ fn place_player(game_board: GameBoard, current_player: Players) -> GameBoard {
                     ],
                     ..game_board
                 },
-                _ => game_board,
             },
             _ => game_board,
         }
@@ -153,7 +148,6 @@ fn place_player(game_board: GameBoard, current_player: Players) -> GameBoard {
                     ],
                     ..game_board
                 },
-                _ => game_board,
             },
             _ => game_board,
         }
@@ -168,7 +162,6 @@ fn place_player(game_board: GameBoard, current_player: Players) -> GameBoard {
                     ],
                     ..game_board
                 },
-                _ => game_board,
             },
             _ => game_board,
         }
@@ -183,7 +176,6 @@ fn place_player(game_board: GameBoard, current_player: Players) -> GameBoard {
                     ],
                     ..game_board
                 },
-                _ => game_board,
             },
             _ => game_board,
         }
@@ -198,7 +190,6 @@ fn place_player(game_board: GameBoard, current_player: Players) -> GameBoard {
                     ],
                     ..game_board
                 },
-                _ => game_board,
             },
             _ => game_board,
         }
