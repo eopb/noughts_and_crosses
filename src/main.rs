@@ -15,8 +15,13 @@ pub enum TileStatus {
 }
 
 pub enum Players {
-    Nought,
-    Cross,
+    Nought(Cursor),
+    Cross(Cursor),
+}
+
+pub enum Cursor {
+    True,
+    None,
 }
 
 fn main() {
