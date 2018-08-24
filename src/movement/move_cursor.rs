@@ -3,7 +3,7 @@ use TileStatus;
 use Cursor;
 use movement::Movement;
 
-
+#[allow(needless_return)]
 pub fn move_cursor(game_board: GameBoard, inputed_movement: Movement) -> GameBoard {
     if is_cursor(game_board.row_one[0]){
         return match inputed_movement {
