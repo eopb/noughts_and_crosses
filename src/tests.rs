@@ -1,3 +1,10 @@
+use GameBoard;
+use Players;
+
+pub fn has_someone_won(current_player: Players, game_board: GameBoard) -> Players {
+    current_player
+}
+
 // pub fn has_someone_won(
 //     row1: &[&str; 3],
 //     row2: &[&str; 3],

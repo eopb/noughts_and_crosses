@@ -1,27 +1,30 @@
 // use std::io;
 use draw::draw_game_board;
+use tests::has_someone_won;
 mod draw;
-// mod tests;
+mod tests;
 
+#[derive(Copy, Clone)]
 pub struct GameBoard {
     row_one: [TileStatus; 3],
     row_two: [TileStatus; 3],
     row_three: [TileStatus; 3],
 }
-
+#[derive(Copy, Clone)]
 pub enum TileStatus {
     Nought(Cursor),
     Cross(Cursor),
     Cursor,
     None,
 }
-
+#[derive(Copy, Clone)]
 pub enum Cursor {
     True,
     None,
 }
 
-enum Players {
+#[derive(Copy, Clone)]
+pub enum Players {
     Nought,
     Cross,
 }
@@ -62,15 +65,19 @@ fn main() {
         GameStatus::Playing => true,
         GameStatus::Finished => false,
     } {
-        current_player = switch_player(&current_player);
+        current_player = switch_player(current_player);
+        match has_someone_won(current_player, game_board) {
+            Players::Cross => {println!("Crosses won");}
+            Players::Nought => {println!("Noughts won");}
+        }
         game_status = GameStatus::Finished;
     }
     println!("You are the *");
 }
 
-fn switch_player(current_player: &Players) -> Players {
+fn switch_player(current_player: Players) -> Players {
     match current_player { 
-        Players::Cross => Players::Nought, 
+        Players::Cross => Players::Nought,
         Players::Nought => Players::Cross,
     }
 }
