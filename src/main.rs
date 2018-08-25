@@ -1,8 +1,10 @@
 use draw::draw_game_board;
 use won::has_someone_won;
+mod ai;
 mod draw;
 mod movement;
 mod won;
+use ai::process_ai;
 use movement::process_movement;
 #[derive(Copy, Clone)]
 pub struct GameBoard {
@@ -102,6 +104,14 @@ fn main() {
                     println!("No one has won");
                 }
             }
+            match game_mode {
+                GameMode::TwoPlayer => {
+                    current_player = switch_player(current_player);
+                }
+                GameMode::SinglePlayer => {
+                    game_board = process_ai(game_board);
+                }
+            };
             current_player = switch_player(current_player);
             draw_game_board(game_board);
             continue;
