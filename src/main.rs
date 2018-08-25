@@ -51,6 +51,11 @@ enum GameMode {
     SinglePlayer,
 }
 
+enum AiMode {
+    Random,
+    SmartRandom,
+}
+
 pub struct MovementReturn {
     game_board: Option<GameBoard>,
     placed: bool,
