@@ -95,23 +95,49 @@ fn main() {
         if movement_return.placed {
             match has_someone_won(current_player, game_board) {
                 Winner::Cross => {
-                    println!("Crosses won");
+                    match game_mode {
+                        GameMode::SinglePlayer => {
+                            println!("You won");
+                        }
+                        GameMode::TwoPlayer => {
+                            println!("Crosses won");
+                        }
+                    }
                     game_status = GameStatus::Finished;
+                    continue;
                 }
                 Winner::Nought => {
                     println!("Noughts won");
                     game_status = GameStatus::Finished;
+                    continue;
                 }
                 Winner::None => {
                     println!("No one has won");
                 }
-            }
+            };
             match game_mode {
                 GameMode::TwoPlayer => {
                     current_player = switch_player(current_player);
                 }
                 GameMode::SinglePlayer => {
                     game_board = process_ai(game_board);
+                    current_player = switch_player(current_player);
+                    match has_someone_won(current_player, game_board) {
+                        Winner::Cross => {
+                            println!("You won");
+                            game_status = GameStatus::Finished;
+                            continue;
+                        }
+                        Winner::Nought => {
+                            println!("Noughts won");
+                            game_status = GameStatus::Finished;
+                            continue;
+                        }
+                        Winner::None => {
+                            println!("No one has won");
+                        }
+                    };
+                    current_player = switch_player(current_player);
                 }
             };
             draw_game_board(game_board);
