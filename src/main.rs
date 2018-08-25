@@ -113,7 +113,6 @@ fn main() {
                     game_board = process_ai(game_board);
                 }
             };
-            current_player = switch_player(current_player);
             draw_game_board(game_board);
             continue;
         };
