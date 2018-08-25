@@ -45,7 +45,7 @@ pub enum Winner {
 fn main() {
     println!("Welcome to my noughts and crosses game made in rust.");
 
-    let mut current_player = Players::Cross;
+    let mut current_player = Players::Nought;
     let mut game_status = GameStatus::Playing;
     let mut game_board = GameBoard {
         row_one: [TileStatus::Cursor, TileStatus::None, TileStatus::None],
