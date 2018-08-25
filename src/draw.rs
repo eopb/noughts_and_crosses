@@ -29,8 +29,8 @@ pub fn draw_game_board(game_board: GameBoard) {
 fn x_or_0(tile_status: TileStatus) -> String {
     match tile_status {
         TileStatus::Nought(cursor) => match cursor {
-            Cursor::True => ("0*").to_string(),
-            Cursor::None => ("0").to_string(),
+            Cursor::True => ("O*").to_string(),
+            Cursor::None => ("O").to_string(),
         },
         TileStatus::Cross(cursor) => match cursor {
             Cursor::True => ("X*").to_string(),
