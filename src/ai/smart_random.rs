@@ -2,7 +2,7 @@ use ai::no_player;
 use ai::place_player;
 use GameBoard;
 use Players;
-
+#[derive(Debug)]
 pub struct RatingBoard {
     row_one: [Option<f64>; 3],
     row_two: [Option<f64>; 3],
@@ -10,7 +10,8 @@ pub struct RatingBoard {
 }
 
 pub fn smart_random_placement(game_board: GameBoard, player_to_place: Players) -> GameBoard {
-    let ratingboard = full_mean_rating(game_board, player_to_place);
+    let rating_board = full_mean_rating(game_board, player_to_place);
+    println!("{:#?}", rating_board);
     game_board
 }
 
