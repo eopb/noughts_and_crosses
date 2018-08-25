@@ -175,15 +175,16 @@ fn rate_board(game_board: GameBoard, player_to_place: Players) -> f64 {
                 panic!();
             }
         };
+        let mut next_player_to_place = switch_player(player_to_place);
         loop {
-            testing_game_board =
-                match random_placement(testing_game_board, switch_player(player_to_place)) {
-                    Option::Some(game_board) => game_board,
-                    Option::None => {
-                        println!("This should not happen the board is full 1");
-                        panic!();
-                    }
-                };
+            next_player_to_place = switch_player(next_player_to_place);
+            testing_game_board = match random_placement(testing_game_board, next_player_to_place) {
+                Option::Some(game_board) => game_board,
+                Option::None => {
+                    println!("This should not happen the board is full 1");
+                    panic!();
+                }
+            };
             println!("{:#?}", testing_game_board);
         }
     }
