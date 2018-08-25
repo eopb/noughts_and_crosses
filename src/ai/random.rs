@@ -1,27 +1,9 @@
-use Cursor;
 use GameBoard;
 use Players;
-use TileStatus;
 extern crate rand;
 use self::rand::Rng;
 use ai::no_player;
-
-fn place_player(tile: TileStatus, player_to_place: Players) -> TileStatus {
-    match tile {
-        TileStatus::Nought(_cursor) | TileStatus::Cross(_cursor) => {
-            println!("Error going to painc");
-            panic!();
-        }
-        TileStatus::Cursor => match player_to_place {
-            Players::Cross => TileStatus::Cross(Cursor::True),
-            Players::Nought => TileStatus::Nought(Cursor::True),
-        },
-        TileStatus::None => match player_to_place {
-            Players::Cross => TileStatus::Cross(Cursor::None),
-            Players::Nought => TileStatus::Nought(Cursor::None),
-        },
-    }
-}
+use ai::place_player;
 
 pub fn random_placement(game_board: GameBoard, player_to_place: Players) -> GameBoard {
     loop {
