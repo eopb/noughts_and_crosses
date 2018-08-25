@@ -6,6 +6,7 @@ mod ai;
 mod draw;
 mod movement;
 mod won;
+use std::io;
 
 #[derive(Copy, Clone)]
 pub struct GameBoard {
@@ -57,9 +58,9 @@ pub struct MovementReturn {
 fn main() {
     println!("Welcome to my noughts and crosses game made in rust.");
 
+    let game_mode = game_mode_choice();
     let mut current_player = Players::Cross;
     let mut game_status = GameStatus::Playing;
-    let game_mode = GameMode::TwoPlayer;
     let mut game_board = GameBoard {
         row_one: [TileStatus::Cursor, TileStatus::None, TileStatus::None],
         row_two: [TileStatus::None, TileStatus::None, TileStatus::None],
@@ -129,6 +130,31 @@ fn switch_player(current_player: Players) -> Players {
         Players::Nought => {
             println!("Current player was switched to Cross");
             Players::Cross
+        }
+    }
+}
+
+fn game_mode_choice() -> GameMode {
+    println!("Input the number of players you want to play.");
+    loop {
+        let mut inputed_choice = String::new();
+        io::stdin()
+            .read_line(&mut inputed_choice)
+            .expect("Failed to read line");
+        let inputed_choice: u32 = match inputed_choice.trim().parse() {
+            Ok(num) => num,
+            Err(_) => {
+                println!("Plese Try again");
+                continue;
+            }
+        };
+        if inputed_choice == 1 {
+            return GameMode::SinglePlayer;
+        } else if inputed_choice == 2 {
+            return GameMode::TwoPlayer;
+        } else {
+            println!("Plese Try again");
+            continue;
         }
     }
 }
