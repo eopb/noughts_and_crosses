@@ -109,7 +109,6 @@ pub fn random_placement(game_board: GameBoard, player_to_place: Players) -> Opti
             && !(no_player(game_board.row_three[1]))
             && !(no_player(game_board.row_three[2]))
         {
-            println!("hereljadf");
             return Option::None;
         } else {
             continue;
