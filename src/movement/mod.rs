@@ -21,22 +21,23 @@ pub fn process_movement(game_board: GameBoard, current_player: Players) -> Movem
     let input = fetch_input();
     match input {
         Movement::Place => MovementReturn {
-            GameBoard: place_player(game_board, current_player),
-            Placed: true,
+            game_board: place_player(game_board, current_player),
+            placed: true,
         },
         Movement::None => MovementReturn {
-            GameBoard: Option::None,
-            Placed: false,
+            game_board: Option::None,
+            placed: false,
         },
         _ => MovementReturn {
-            GameBoard: move_cursor(game_board, input),
-            Placed: false,
+            game_board: move_cursor(game_board, input),
+            placed: false,
         },
     }
 }
 
 fn fetch_input() -> Movement {
     let mut movement = String::new();
+    #[allow(unused_assignments)]
     let mut umovement = 0;
 
     io::stdin()

@@ -42,8 +42,8 @@ pub enum Winner {
     None,
 }
 pub struct MovementReturn {
-    GameBoard: Option<GameBoard>,
-    Placed: bool,
+    game_board: Option<GameBoard>,
+    placed: bool,
 }
 fn main() {
     println!("Welcome to my noughts and crosses game made in rust.");
@@ -71,7 +71,7 @@ fn main() {
         println!("To place your cross type 5 and hit enter");
         let mut movement_return = process_movement(game_board, current_player);
         loop {
-            game_board = match movement_return.GameBoard {
+            game_board = match movement_return.game_board {
                 Some(game_board) => game_board,
                 None => {
                     println!("That did not work");
@@ -81,7 +81,7 @@ fn main() {
             };
             break;
         }
-        if movement_return.Placed {
+        if movement_return.placed {
             match has_someone_won(current_player, game_board) {
                 Winner::Cross => {
                     println!("Crosses won");
