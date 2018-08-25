@@ -41,6 +41,12 @@ pub enum Winner {
     Cross,
     None,
 }
+
+enum GameMode {
+    TwoPlayer,
+    SinglePlayer,
+}
+
 pub struct MovementReturn {
     game_board: Option<GameBoard>,
     placed: bool,
@@ -50,6 +56,7 @@ fn main() {
 
     let mut current_player = Players::Cross;
     let mut game_status = GameStatus::Playing;
+    let game_mode = GameMode::TwoPlayer;
     let mut game_board = GameBoard {
         row_one: [TileStatus::Cursor, TileStatus::None, TileStatus::None],
         row_two: [TileStatus::None, TileStatus::None, TileStatus::None],
