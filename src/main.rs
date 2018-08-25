@@ -144,16 +144,18 @@ fn game_mode_choice() -> GameMode {
         let inputed_choice: u32 = match inputed_choice.trim().parse() {
             Ok(num) => num,
             Err(_) => {
-                println!("Plese Try again");
+                println!("I did not understand that number. Plese Try again");
                 continue;
             }
         };
         if inputed_choice == 1 {
+            println!("Welcome to single player mode.");
             return GameMode::SinglePlayer;
         } else if inputed_choice == 2 {
+            println!("Welcome to two player mode.");
             return GameMode::TwoPlayer;
         } else {
-            println!("Plese Try again");
+            println!("This game only works with 1 or 2 players. Please try again.");
             continue;
         }
     }
