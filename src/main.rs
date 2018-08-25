@@ -100,7 +100,6 @@ fn main() {
             continue;
         };
         draw_game_board(game_board);
-        // game_status = GameStatus::Finished;
     }
 }
 
