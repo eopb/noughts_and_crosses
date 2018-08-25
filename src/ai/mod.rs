@@ -1,6 +1,5 @@
-mod random;
 mod smart_random;
-use self::random::random_placement;
+use self::smart_random::random::random_placement;
 use self::smart_random::smart_random_placement;
 use AiMode;
 use Cursor;

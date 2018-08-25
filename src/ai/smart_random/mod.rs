@@ -1,7 +1,10 @@
+pub mod random;
+use self::random::random_placement;
 use ai::no_player;
 use ai::place_player;
 use GameBoard;
 use Players;
+
 #[derive(Debug)]
 pub struct RatingBoard {
     row_one: [Option<f64>; 3],
