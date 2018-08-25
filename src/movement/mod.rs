@@ -3,6 +3,7 @@ use self::move_cursor::move_cursor;
 use std::io;
 use Cursor;
 use GameBoard;
+use MovementReturn;
 use Players;
 use TileStatus;
 
@@ -16,12 +17,21 @@ pub enum Movement {
     None,
 }
 
-pub fn process_movement(game_board: GameBoard, current_player: Players) -> Option<GameBoard> {
+pub fn process_movement(game_board: GameBoard, current_player: Players) -> MovementReturn {
     let input = fetch_input();
     match input {
-        Movement::Place => place_player(game_board, current_player),
-        Movement::None => Option::None,
-        _ => move_cursor(game_board, input),
+        Movement::Place => MovementReturn {
+            GameBoard: place_player(game_board, current_player),
+            Placed: true,
+        },
+        Movement::None => MovementReturn {
+            GameBoard: Option::None,
+            Placed: false,
+        },
+        _ => MovementReturn {
+            GameBoard: move_cursor(game_board, input),
+            Placed: false,
+        },
     }
 }
 
