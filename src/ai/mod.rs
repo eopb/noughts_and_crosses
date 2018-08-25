@@ -9,7 +9,7 @@ pub fn process_ai(game_board: GameBoard) -> GameBoard {
     let player_to_place = Players::Nought;
     loop {
         let random_tile = rand::thread_rng().gen_range(1, 10);
-        println!("{}", random_tile);
+        println!("Trying {}", random_tile);
         if no_player(game_board.row_one[0]) && (random_tile == 1) {
             return GameBoard {
                 row_one: [
