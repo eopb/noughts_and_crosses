@@ -275,7 +275,7 @@ fn place_player(game_board: GameBoard, current_player: Players) -> Option<GameBo
     }
 }
 
-pub fn is_cursor(tile: TileStatus) -> bool {
+fn is_cursor(tile: TileStatus) -> bool {
     match tile {
         TileStatus::Cursor => true,
         TileStatus::Nought(cursor) => match cursor {

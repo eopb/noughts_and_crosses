@@ -1,9 +1,13 @@
+use ai::process_ai;
 use draw::draw_game_board;
+use movement::process_movement;
 use won::has_someone_won;
+mod ai;
 mod draw;
 mod movement;
 mod won;
-use movement::process_movement;
+use std::io;
+
 #[derive(Copy, Clone)]
 pub struct GameBoard {
     row_one: [TileStatus; 3],
@@ -41,6 +45,12 @@ pub enum Winner {
     Cross,
     None,
 }
+
+enum GameMode {
+    TwoPlayer,
+    SinglePlayer,
+}
+
 pub struct MovementReturn {
     game_board: Option<GameBoard>,
     placed: bool,
@@ -48,6 +58,7 @@ pub struct MovementReturn {
 fn main() {
     println!("Welcome to my noughts and crosses game made in rust.");
 
+    let game_mode = game_mode_choice();
     let mut current_player = Players::Cross;
     let mut game_status = GameStatus::Playing;
     let mut game_board = GameBoard {
@@ -84,18 +95,51 @@ fn main() {
         if movement_return.placed {
             match has_someone_won(current_player, game_board) {
                 Winner::Cross => {
-                    println!("Crosses won");
+                    match game_mode {
+                        GameMode::SinglePlayer => {
+                            println!("You won");
+                        }
+                        GameMode::TwoPlayer => {
+                            println!("Crosses won");
+                        }
+                    }
                     game_status = GameStatus::Finished;
+                    continue;
                 }
                 Winner::Nought => {
                     println!("Noughts won");
                     game_status = GameStatus::Finished;
+                    continue;
                 }
                 Winner::None => {
                     println!("No one has won");
                 }
-            }
-            current_player = switch_player(current_player);
+            };
+            match game_mode {
+                GameMode::TwoPlayer => {
+                    current_player = switch_player(current_player);
+                }
+                GameMode::SinglePlayer => {
+                    game_board = process_ai(game_board);
+                    current_player = switch_player(current_player);
+                    match has_someone_won(current_player, game_board) {
+                        Winner::Cross => {
+                            println!("You won");
+                            game_status = GameStatus::Finished;
+                            continue;
+                        }
+                        Winner::Nought => {
+                            println!("Noughts won");
+                            game_status = GameStatus::Finished;
+                            continue;
+                        }
+                        Winner::None => {
+                            println!("No one has won");
+                        }
+                    };
+                    current_player = switch_player(current_player);
+                }
+            };
             draw_game_board(game_board);
             continue;
         };
@@ -112,6 +156,33 @@ fn switch_player(current_player: Players) -> Players {
         Players::Nought => {
             println!("Current player was switched to Cross");
             Players::Cross
+        }
+    }
+}
+
+fn game_mode_choice() -> GameMode {
+    println!("Input the number of players you want to play.");
+    loop {
+        let mut inputed_choice = String::new();
+        io::stdin()
+            .read_line(&mut inputed_choice)
+            .expect("Failed to read line");
+        let inputed_choice: u32 = match inputed_choice.trim().parse() {
+            Ok(num) => num,
+            Err(_) => {
+                println!("I did not understand that number. Plese Try again");
+                continue;
+            }
+        };
+        if inputed_choice == 1 {
+            println!("Welcome to single player mode.");
+            return GameMode::SinglePlayer;
+        } else if inputed_choice == 2 {
+            println!("Welcome to two player mode.");
+            return GameMode::TwoPlayer;
+        } else {
+            println!("This game only works with 1 or 2 players. Please try again.");
+            continue;
         }
     }
 }
