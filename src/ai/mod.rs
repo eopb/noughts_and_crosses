@@ -10,7 +10,13 @@ use TileStatus;
 pub fn process_ai(game_board: GameBoard, ai_mode: AiMode) -> GameBoard {
     let player_to_place = Players::Nought;
     match ai_mode {
-        AiMode::Random => random_placement(game_board, player_to_place),
+        AiMode::Random => match random_placement(game_board, player_to_place) {
+            Option::Some(game_board) => game_board,
+            Option::None => {
+                println!("This should not happen the board is full");
+                panic!();
+            }
+        },
         AiMode::SmartRandom => smart_random_placement(game_board, player_to_place),
         AiMode::None => {
             println!("This really should not be happening");

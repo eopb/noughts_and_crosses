@@ -8,14 +8,14 @@ mod movement;
 mod won;
 use std::io;
 
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, Debug)]
 pub struct GameBoard {
     row_one: [TileStatus; 3],
     row_two: [TileStatus; 3],
     row_three: [TileStatus; 3],
 }
 
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, Debug)]
 pub enum TileStatus {
     Nought(Cursor),
     Cross(Cursor),
@@ -23,7 +23,7 @@ pub enum TileStatus {
     None,
 }
 
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, Debug)]
 pub enum Cursor {
     True,
     None,
