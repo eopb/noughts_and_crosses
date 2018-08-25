@@ -29,11 +29,108 @@ fn full_mean_rating(game_board: GameBoard, player_to_place: Players) -> RatingBo
             } else {
                 Option::None
             },
-            Option::None,
-            Option::None,
+            if no_player(game_board.row_one[1]) {
+                Option::Some(rate_board(GameBoard {
+                    row_one: [
+                        game_board.row_one[0],
+                        place_player(game_board.row_one[1], player_to_place),
+                        game_board.row_one[2],
+                    ],
+                    ..game_board
+                }))
+            } else {
+                Option::None
+            },
+            if no_player(game_board.row_one[2]) {
+                Option::Some(rate_board(GameBoard {
+                    row_one: [
+                        game_board.row_one[0],
+                        game_board.row_one[1],
+                        place_player(game_board.row_one[2], player_to_place),
+                    ],
+                    ..game_board
+                }))
+            } else {
+                Option::None
+            },
         ],
-        row_two: [Option::None, Option::None, Option::None],
-        row_three: [Option::None, Option::None, Option::None],
+        row_two: [
+            if no_player(game_board.row_two[0]) {
+                Option::Some(rate_board(GameBoard {
+                    row_two: [
+                        place_player(game_board.row_two[0], player_to_place),
+                        game_board.row_two[1],
+                        game_board.row_two[2],
+                    ],
+                    ..game_board
+                }))
+            } else {
+                Option::None
+            },
+            if no_player(game_board.row_two[1]) {
+                Option::Some(rate_board(GameBoard {
+                    row_two: [
+                        game_board.row_two[0],
+                        place_player(game_board.row_two[1], player_to_place),
+                        game_board.row_two[2],
+                    ],
+                    ..game_board
+                }))
+            } else {
+                Option::None
+            },
+            if no_player(game_board.row_two[2]) {
+                Option::Some(rate_board(GameBoard {
+                    row_two: [
+                        game_board.row_two[0],
+                        game_board.row_two[1],
+                        place_player(game_board.row_two[2], player_to_place),
+                    ],
+                    ..game_board
+                }))
+            } else {
+                Option::None
+            },
+        ],
+
+        row_three: [
+            if no_player(game_board.row_three[0]) {
+                Option::Some(rate_board(GameBoard {
+                    row_three: [
+                        place_player(game_board.row_three[0], player_to_place),
+                        game_board.row_three[1],
+                        game_board.row_three[2],
+                    ],
+                    ..game_board
+                }))
+            } else {
+                Option::None
+            },
+            if no_player(game_board.row_three[1]) {
+                Option::Some(rate_board(GameBoard {
+                    row_three: [
+                        game_board.row_three[0],
+                        place_player(game_board.row_three[1], player_to_place),
+                        game_board.row_three[2],
+                    ],
+                    ..game_board
+                }))
+            } else {
+                Option::None
+            },
+            if no_player(game_board.row_three[2]) {
+                Option::Some(rate_board(GameBoard {
+                    row_three: [
+                        game_board.row_three[0],
+                        game_board.row_three[1],
+                        place_player(game_board.row_three[2], player_to_place),
+                    ],
+                    ..game_board
+                }))
+            } else {
+                Option::None
+            },
+        ],
     }
 }
 
