@@ -1,11 +1,12 @@
+use ai::process_ai;
 use draw::draw_game_board;
+use movement::process_movement;
 use won::has_someone_won;
 mod ai;
 mod draw;
 mod movement;
 mod won;
-use ai::process_ai;
-use movement::process_movement;
+
 #[derive(Copy, Clone)]
 pub struct GameBoard {
     row_one: [TileStatus; 3],
