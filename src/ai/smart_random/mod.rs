@@ -188,27 +188,27 @@ fn rate_board(game_board: GameBoard, player_to_place: Players) -> f64 {
                     Winner::None => game_board,
                     Winner::Nought => match player_to_place {
                         Players::Cross => {
-                            scores.push(1);
+                            scores.push(0);
                             break;
                         }
                         Players::Nought => {
-                            scores.push(1);
+                            scores.push(3);
                             break;
                         }
                     },
                     Winner::Cross => match player_to_place {
                         Players::Cross => {
-                            scores.push(1);
+                            scores.push(3);
                             break;
                         }
                         Players::Nought => {
-                            scores.push(1);
+                            scores.push(0);
                             break;
                         }
                     },
                 },
                 Option::None => {
-                    scores.push(1);
+                    scores.push(2);
                     break;
                 }
             };
