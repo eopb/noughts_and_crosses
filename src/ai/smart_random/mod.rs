@@ -351,65 +351,83 @@ fn highest_rating(rating_being_tested: Option<f64>, rating_board: RatingBoard) -
     println!("rating{:#?}", rating_board);
     println!("ratingone{:#?}", rating_board.row_one);
     // println!("tested{:#?}", rating_being_tested);
+
     match rating_being_tested {
         Option::None => {
             println!("d4");
             return false;
         }
         Option::Some(rating_being_tested) => {
-            for rating in &rating_board.row_one {
-                println!("rating bla bla{:#?}", *rating);
-                match rating {
-                    Option::None => {
-                        println!("d3");
-                        continue;
-                    }
-                    Option::Some(rating) => {
-                        if rating_being_tested >= *rating {
-                            println!("d1");
-                        } else {
-                            println!("d2");
-                            continue;
-                        };
-                    }
-                };
+            if (match rating_board.row_one[0] {
+                None => true,
+                Some(rating) => if rating_being_tested >= rating {
+                    true
+                } else {
+                    false
+                },
+            }) && (match rating_board.row_one[1] {
+                None => true,
+                Some(rating) => if rating_being_tested >= rating {
+                    true
+                } else {
+                    false
+                },
+            }) && (match rating_board.row_one[2] {
+                None => true,
+                Some(rating) => if rating_being_tested >= rating {
+                    true
+                } else {
+                    false
+                },
+            }) && (match rating_board.row_two[0] {
+                None => true,
+                Some(rating) => if rating_being_tested >= rating {
+                    true
+                } else {
+                    false
+                },
+            }) && (match rating_board.row_two[1] {
+                None => true,
+                Some(rating) => if rating_being_tested >= rating {
+                    true
+                } else {
+                    false
+                },
+            }) && (match rating_board.row_two[2] {
+                None => true,
+                Some(rating) => if rating_being_tested >= rating {
+                    true
+                } else {
+                    false
+                },
+            }) && (match rating_board.row_three[0] {
+                None => true,
+                Some(rating) => if rating_being_tested >= rating {
+                    true
+                } else {
+                    false
+                },
+            }) && (match rating_board.row_three[1] {
+                None => true,
+                Some(rating) => if rating_being_tested >= rating {
+                    true
+                } else {
+                    false
+                },
+            }) && (match rating_board.row_three[2] {
+                None => true,
+                Some(rating) => if rating_being_tested >= rating {
+                    true
+                } else {
+                    false
+                },
+            }) {
+                println!("d5");
+                return true;
+            } else {
+                println!("d6");
+                return false;
             }
-            for rating in &rating_board.row_two {
-                println!("rating{:#?}", *rating);
-                match rating {
-                    Option::None => {
-                        println!("d3");
-                        continue;
-                    }
-                    Option::Some(rating) => {
-                        if rating_being_tested >= *rating {
-                            println!("d1");
-                        } else {
-                            println!("d2");
-                            continue;
-                        };
-                    }
-                };
-            }
-            for rating in &rating_board.row_three {
-                println!("rating{:#?}", *rating);
-                match rating {
-                    Option::None => {
-                        println!("d3");
-                        continue;
-                    }
-                    Option::Some(rating) => {
-                        if rating_being_tested >= *rating {
-                            println!("d1");
-                        } else {
-                            println!("d2");
-                            continue;
-                        };
-                    }
-                };
-            }
-            println!("d55555555555555555555555555555555555555555555555555555555555555555");
-            return true;
         }
     };
 }
