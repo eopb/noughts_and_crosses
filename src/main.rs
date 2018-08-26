@@ -8,14 +8,14 @@ mod movement;
 mod won;
 use std::io;
 
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, Debug)]
 pub struct GameBoard {
     row_one: [TileStatus; 3],
     row_two: [TileStatus; 3],
     row_three: [TileStatus; 3],
 }
 
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, Debug)]
 pub enum TileStatus {
     Nought(Cursor),
     Cross(Cursor),
@@ -23,7 +23,7 @@ pub enum TileStatus {
     None,
 }
 
-#[derive(Copy, Clone)]
+#[derive(Copy, Clone, Debug)]
 pub enum Cursor {
     True,
     None,
@@ -50,6 +50,12 @@ enum GameMode {
     TwoPlayer,
     SinglePlayer,
 }
+#[derive(Copy, Clone)]
+pub enum AiMode {
+    Random,
+    SmartRandom,
+    None,
+}
 
 pub struct MovementReturn {
     game_board: Option<GameBoard>,
@@ -57,8 +63,15 @@ pub struct MovementReturn {
 }
 fn main() {
     println!("Welcome to my noughts and crosses game made in rust.");
-
+    print_instructions();
+    let mut ai_mode = AiMode::None;
     let game_mode = game_mode_choice();
+    match game_mode {
+        GameMode::SinglePlayer => {
+            ai_mode = ai_mode_choice();
+        }
+        _ => (),
+    };
     let mut current_player = Players::Cross;
     let mut game_status = GameStatus::Playing;
     let mut game_board = GameBoard {
@@ -75,11 +88,6 @@ fn main() {
         GameStatus::Playing => true,
         GameStatus::Finished => false,
     } {
-        println!("To move the star left type 4 and hit enter");
-        println!("To move the star right type 6 and hit enter");
-        println!("To move the star up type 8 and hit enter");
-        println!("To move the star down type 2 and hit enter");
-        println!("To place your cross type 5 and hit enter");
         let mut movement_return = process_movement(game_board, current_player);
         loop {
             game_board = match movement_return.game_board {
@@ -93,7 +101,7 @@ fn main() {
             break;
         }
         if movement_return.placed {
-            match has_someone_won(current_player, game_board) {
+            match has_someone_won(game_board) {
                 Winner::Cross => {
                     match game_mode {
                         GameMode::SinglePlayer => {
@@ -120,9 +128,8 @@ fn main() {
                     current_player = switch_player(current_player);
                 }
                 GameMode::SinglePlayer => {
-                    game_board = process_ai(game_board);
-                    current_player = switch_player(current_player);
-                    match has_someone_won(current_player, game_board) {
+                    game_board = process_ai(game_board, ai_mode);
+                    match has_someone_won(game_board) {
                         Winner::Cross => {
                             println!("You won");
                             game_status = GameStatus::Finished;
@@ -137,7 +144,6 @@ fn main() {
                             println!("No one has won");
                         }
                     };
-                    current_player = switch_player(current_player);
                 }
             };
             draw_game_board(game_board);
@@ -185,4 +191,39 @@ fn game_mode_choice() -> GameMode {
             continue;
         }
     }
+}
+
+fn ai_mode_choice() -> AiMode {
+    println!("Input the ai mode you want to play against. One or town?");
+    loop {
+        let mut inputed_choice = String::new();
+        io::stdin()
+            .read_line(&mut inputed_choice)
+            .expect("Failed to read line");
+        let inputed_choice: u32 = match inputed_choice.trim().parse() {
+            Ok(num) => num,
+            Err(_) => {
+                println!("I did not understand that number. Plese Try again");
+                continue;
+            }
+        };
+        if inputed_choice == 1 {
+            println!("Welcome to Random mode.");
+            return AiMode::Random;
+        } else if inputed_choice == 2 {
+            println!("Welcome to SmartRandom mode.");
+            return AiMode::SmartRandom;
+        } else {
+            println!("This game only works with ai 1 or 2");
+            continue;
+        }
+    }
+}
+
+fn print_instructions() {
+    println!("To move the star left type 4 and hit enter");
+    println!("To move the star right type 6 and hit enter");
+    println!("To move the star up type 8 and hit enter");
+    println!("To move the star down type 2 and hit enter");
+    println!("To place your cross type 5 and hit enter");
 }
