@@ -2,10 +2,11 @@ pub mod random;
 use self::random::random_placement;
 use ai::no_player;
 use ai::place_player;
+use has_someone_won;
 use switch_player;
 use GameBoard;
 use Players;
-
+use Winner;
 #[derive(Debug)]
 pub struct RatingBoard {
     row_one: [Option<f64>; 3],
@@ -15,7 +16,7 @@ pub struct RatingBoard {
 
 pub fn smart_random_placement(game_board: GameBoard, player_to_place: Players) -> GameBoard {
     let rating_board = full_mean_rating(game_board, player_to_place);
-    println!("{:#?}", rating_board);
+    println!("This is the rating baord{:#?}", rating_board);
     game_board
 }
 
@@ -167,6 +168,7 @@ fn full_mean_rating(game_board: GameBoard, player_to_place: Players) -> RatingBo
 }
 
 fn rate_board(game_board: GameBoard, player_to_place: Players) -> f64 {
+    let mut scores: Vec<i32> = Vec::new();
     for x in 0..10 {
         let mut testing_game_board = match random_placement(game_board, player_to_place) {
             Option::Some(game_board) => game_board,
@@ -176,17 +178,53 @@ fn rate_board(game_board: GameBoard, player_to_place: Players) -> f64 {
             }
         };
         let mut next_player_to_place = switch_player(player_to_place);
+        let mut loop_count = 0;
         loop {
+            loop_count = loop_count + 1;
+            println!("loop count is {}", loop_count);
             next_player_to_place = switch_player(next_player_to_place);
             testing_game_board = match random_placement(testing_game_board, next_player_to_place) {
-                Option::Some(game_board) => game_board,
+                Option::Some(game_board) => match has_someone_won(game_board) {
+                    Winner::None => game_board,
+                    Winner::Nought => match player_to_place {
+                        Players::Cross => {
+                            scores.push(0);
+                            break;
+                        }
+                        Players::Nought => {
+                            scores.push(3);
+                            break;
+                        }
+                    },
+                    Winner::Cross => match player_to_place {
+                        Players::Cross => {
+                            scores.push(3);
+                            break;
+                        }
+                        Players::Nought => {
+                            scores.push(0);
+                            break;
+                        }
+                    },
+                },
                 Option::None => {
-                    println!("This should not happen the board is full 1");
-                    panic!();
+                    scores.push(2);
+                    break;
                 }
             };
             println!("{:#?}", testing_game_board);
         }
     }
-    10.0
+    println!("vector of scores {:#?}", scores);
+    println!("avarage of scores {:#?}", find_average(&scores));
+    find_average(&scores)
+}
+
+fn find_average(numbers: &Vec<i32>) -> f64 {
+    let mut sum: i32 = 0;
+    for x in numbers {
+        sum = sum + x;
+    }
+
+    sum as f64 / numbers.len() as f64
 }
