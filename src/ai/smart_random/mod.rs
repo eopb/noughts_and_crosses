@@ -171,7 +171,7 @@ fn full_mean_rating(game_board: GameBoard, player_to_place: Players) -> RatingBo
 
 fn rate_board(game_board: GameBoard, player_to_place: Players) -> f64 {
     let mut scores: Vec<i32> = Vec::new();
-    for x in 0..10 {
+    for x in 0..100 {
         let mut testing_game_board = match random_placement(game_board, player_to_place) {
             Option::Some(game_board) => game_board,
             Option::None => {
@@ -237,7 +237,7 @@ fn process_rating_board(
 ) -> GameBoard {
     loop {
         let random_tile = rand::thread_rng().gen_range(1, 10);
-        println!("Trying {}", random_tile);
+        println!("Trying2 {}", random_tile);
         if highest_rating(rating_board.row_one[0], rating_board) && (random_tile == 1) {
             return GameBoard {
                 row_one: [
@@ -345,9 +345,71 @@ fn process_rating_board(
             continue;
         };
     }
-    game_board
 }
 
 fn highest_rating(rating_being_tested: Option<f64>, rating_board: RatingBoard) -> bool {
-    true
+    println!("rating{:#?}", rating_board);
+    println!("ratingone{:#?}", rating_board.row_one);
+    // println!("tested{:#?}", rating_being_tested);
+    match rating_being_tested {
+        Option::None => {
+            println!("d4");
+            return false;
+        }
+        Option::Some(rating_being_tested) => {
+            for rating in &rating_board.row_one {
+                println!("rating bla bla{:#?}", *rating);
+                match rating {
+                    Option::None => {
+                        println!("d3");
+                        continue;
+                    }
+                    Option::Some(rating) => {
+                        if rating_being_tested >= *rating {
+                            println!("d1");
+                        } else {
+                            println!("d2");
+                            continue;
+                        };
+                    }
+                };
+            }
+            for rating in &rating_board.row_two {
+                println!("rating{:#?}", *rating);
+                match rating {
+                    Option::None => {
+                        println!("d3");
+                        continue;
+                    }
+                    Option::Some(rating) => {
+                        if rating_being_tested >= *rating {
+                            println!("d1");
+                        } else {
+                            println!("d2");
+                            continue;
+                        };
+                    }
+                };
+            }
+            for rating in &rating_board.row_three {
+                println!("rating{:#?}", *rating);
+                match rating {
+                    Option::None => {
+                        println!("d3");
+                        continue;
+                    }
+                    Option::Some(rating) => {
+                        if rating_being_tested >= *rating {
+                            println!("d1");
+                        } else {
+                            println!("d2");
+                            continue;
+                        };
+                    }
+                };
+            }
+            println!("d55555555555555555555555555555555555555555555555555555555555555555");
+            return true;
+        }
+    };
 }
