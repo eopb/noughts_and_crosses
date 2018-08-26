@@ -2,10 +2,11 @@ pub mod random;
 use self::random::random_placement;
 use ai::no_player;
 use ai::place_player;
+use has_someone_won;
 use switch_player;
 use GameBoard;
 use Players;
-
+use Winner;
 #[derive(Debug)]
 pub struct RatingBoard {
     row_one: [Option<f64>; 3],
@@ -176,10 +177,18 @@ fn rate_board(game_board: GameBoard, player_to_place: Players) -> f64 {
             }
         };
         let mut next_player_to_place = switch_player(player_to_place);
+        let mut loop_count = 0;
+        let mut scors = Vec::new();
         loop {
+            loop_count = loop_count + 1;
+            println!("loop count is {}", loop_count);
             next_player_to_place = switch_player(next_player_to_place);
             testing_game_board = match random_placement(testing_game_board, next_player_to_place) {
-                Option::Some(game_board) => game_board,
+                Option::Some(game_board) => match has_someone_won(game_board) {
+                    Winner::None => game_board,
+                    Winner::Nought =>,
+                    Winner::Cross =>,
+                },
                 Option::None => {
                     println!("This should not happen the board is full 1");
                     panic!();
