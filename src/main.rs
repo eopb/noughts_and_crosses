@@ -101,7 +101,7 @@ fn main() {
             break;
         }
         if movement_return.placed {
-            match has_someone_won(current_player, game_board) {
+            match has_someone_won(game_board) {
                 Winner::Cross => {
                     match game_mode {
                         GameMode::SinglePlayer => {
@@ -129,8 +129,7 @@ fn main() {
                 }
                 GameMode::SinglePlayer => {
                     game_board = process_ai(game_board, ai_mode);
-                    current_player = switch_player(current_player);
-                    match has_someone_won(current_player, game_board) {
+                    match has_someone_won(game_board) {
                         Winner::Cross => {
                             println!("You won");
                             game_status = GameStatus::Finished;
@@ -145,7 +144,6 @@ fn main() {
                             println!("No one has won");
                         }
                     };
-                    current_player = switch_player(current_player);
                 }
             };
             draw_game_board(game_board);
