@@ -171,7 +171,7 @@ fn full_mean_rating(game_board: GameBoard, player_to_place: Players) -> RatingBo
 
 fn rate_board(game_board: GameBoard, player_to_place: Players) -> f64 {
     let mut scores: Vec<i32> = Vec::new();
-    for x in 0..100 {
+    for _x in 0..100 {
         let mut testing_game_board = match random_placement(game_board, player_to_place) {
             Option::Some(game_board) => game_board,
             Option::None => {
@@ -190,27 +190,35 @@ fn rate_board(game_board: GameBoard, player_to_place: Players) -> f64 {
                     Winner::None => game_board,
                     Winner::Nought => match player_to_place {
                         Players::Cross => {
-                            scores.push(0);
+                            if loop_count == 1 {
+                                scores.push(0);
+                            } else {
+                                scores.push((1 * (loop_count + 1)) * 100000);
+                            }
                             break;
                         }
                         Players::Nought => {
-                            scores.push(3);
+                            scores.push((4 * (100 / (loop_count + 1))) * 100000);
                             break;
                         }
                     },
                     Winner::Cross => match player_to_place {
                         Players::Cross => {
-                            scores.push(3);
+                            scores.push((4 * (100 / (loop_count + 1))) * 100000);
                             break;
                         }
                         Players::Nought => {
-                            scores.push(0);
+                            if loop_count == 1 {
+                                scores.push(0);
+                            } else {
+                                scores.push((1 * (loop_count + 1)) * 100000);
+                            }
                             break;
                         }
                     },
                 },
                 Option::None => {
-                    scores.push(2);
+                    scores.push((3 * loop_count) * 100000);
                     break;
                 }
             };
