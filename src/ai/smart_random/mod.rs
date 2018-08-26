@@ -190,27 +190,35 @@ fn rate_board(game_board: GameBoard, player_to_place: Players) -> f64 {
                     Winner::None => game_board,
                     Winner::Nought => match player_to_place {
                         Players::Cross => {
-                            scores.push(1 * (loop_count + 1));
+                            if loop_count == 1 {
+                                scores.push(0);
+                            } else {
+                                scores.push((1 * (loop_count + 1)) * 100000);
+                            }
                             break;
                         }
                         Players::Nought => {
-                            scores.push((4 * (100 / (loop_count + 1))) * 1000);
+                            scores.push((4 * (100 / (loop_count + 1))) * 100000);
                             break;
                         }
                     },
                     Winner::Cross => match player_to_place {
                         Players::Cross => {
-                            scores.push((4 * (100 / (loop_count + 1))) * 1000);
+                            scores.push((4 * (100 / (loop_count + 1))) * 100000);
                             break;
                         }
                         Players::Nought => {
-                            scores.push(1 * (loop_count + 1));
+                            if loop_count == 1 {
+                                scores.push(0);
+                            } else {
+                                scores.push((1 * (loop_count + 1)) * 100000);
+                            }
                             break;
                         }
                     },
                 },
                 Option::None => {
-                    scores.push((3 * loop_count) * 1000);
+                    scores.push((3 * loop_count) * 100000);
                     break;
                 }
             };
