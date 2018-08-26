@@ -7,7 +7,9 @@ use switch_player;
 use GameBoard;
 use Players;
 use Winner;
-#[derive(Debug)]
+extern crate rand;
+use self::rand::Rng;
+#[derive(Copy, Clone, Debug)]
 pub struct RatingBoard {
     row_one: [Option<f64>; 3],
     row_two: [Option<f64>; 3],
@@ -17,7 +19,7 @@ pub struct RatingBoard {
 pub fn smart_random_placement(game_board: GameBoard, player_to_place: Players) -> GameBoard {
     let rating_board = full_mean_rating(game_board, player_to_place);
     println!("This is the rating baord{:#?}", rating_board);
-    game_board
+    process_rating_board(game_board, rating_board, player_to_place)
 }
 
 fn full_mean_rating(game_board: GameBoard, player_to_place: Players) -> RatingBoard {
@@ -227,4 +229,125 @@ fn find_average(numbers: &Vec<i32>) -> f64 {
     }
 
     sum as f64 / numbers.len() as f64
+}
+fn process_rating_board(
+    game_board: GameBoard,
+    rating_board: RatingBoard,
+    player_to_place: Players,
+) -> GameBoard {
+    loop {
+        let random_tile = rand::thread_rng().gen_range(1, 10);
+        println!("Trying {}", random_tile);
+        if highest_rating(rating_board.row_one[0], rating_board) && (random_tile == 1) {
+            return GameBoard {
+                row_one: [
+                    place_player(game_board.row_one[0], player_to_place),
+                    game_board.row_one[1],
+                    game_board.row_one[2],
+                ],
+                ..game_board
+            };
+        }
+        if highest_rating(rating_board.row_one[1], rating_board) && (random_tile == 2) {
+            return GameBoard {
+                row_one: [
+                    game_board.row_one[0],
+                    place_player(game_board.row_one[1], player_to_place),
+                    game_board.row_one[2],
+                ],
+                ..game_board
+            };
+        }
+        if highest_rating(rating_board.row_one[2], rating_board) && (random_tile == 3) {
+            return GameBoard {
+                row_one: [
+                    game_board.row_one[0],
+                    game_board.row_one[1],
+                    place_player(game_board.row_one[2], player_to_place),
+                ],
+                ..game_board
+            };
+        }
+        if highest_rating(rating_board.row_two[0], rating_board) && (random_tile == 4) {
+            return GameBoard {
+                row_two: [
+                    place_player(game_board.row_two[0], player_to_place),
+                    game_board.row_two[1],
+                    game_board.row_two[2],
+                ],
+                ..game_board
+            };
+        }
+        if highest_rating(rating_board.row_two[1], rating_board) && (random_tile == 5) {
+            return GameBoard {
+                row_two: [
+                    game_board.row_two[0],
+                    place_player(game_board.row_two[1], player_to_place),
+                    game_board.row_two[2],
+                ],
+                ..game_board
+            };
+        }
+        if highest_rating(rating_board.row_two[2], rating_board) && (random_tile == 6) {
+            return GameBoard {
+                row_two: [
+                    game_board.row_two[0],
+                    game_board.row_two[1],
+                    place_player(game_board.row_two[2], player_to_place),
+                ],
+                ..game_board
+            };
+        }
+
+        if highest_rating(rating_board.row_three[0], rating_board) && (random_tile == 7) {
+            return GameBoard {
+                row_three: [
+                    place_player(game_board.row_three[0], player_to_place),
+                    game_board.row_three[1],
+                    game_board.row_three[2],
+                ],
+                ..game_board
+            };
+        }
+        if highest_rating(rating_board.row_three[1], rating_board) && (random_tile == 8) {
+            return GameBoard {
+                row_three: [
+                    game_board.row_three[0],
+                    place_player(game_board.row_three[1], player_to_place),
+                    game_board.row_three[2],
+                ],
+                ..game_board
+            };
+        }
+        if highest_rating(rating_board.row_three[2], rating_board) && (random_tile == 9) {
+            return GameBoard {
+                row_three: [
+                    game_board.row_three[0],
+                    game_board.row_three[1],
+                    place_player(game_board.row_three[2], player_to_place),
+                ],
+                ..game_board
+            };
+        }
+        if !(no_player(game_board.row_one[0]))
+            && !(no_player(game_board.row_one[1]))
+            && !(no_player(game_board.row_one[2]))
+            && !(no_player(game_board.row_two[0]))
+            && !(no_player(game_board.row_two[1]))
+            && !(no_player(game_board.row_two[2]))
+            && !(no_player(game_board.row_three[0]))
+            && !(no_player(game_board.row_three[1]))
+            && !(no_player(game_board.row_three[2]))
+        {
+            println!("This should not be happening :(");
+            panic!();
+        } else {
+            continue;
+        };
+    }
+    game_board
+}
+
+fn highest_rating(rating_being_tested: Option<f64>, rating_board: RatingBoard) -> bool {
+    true
 }
