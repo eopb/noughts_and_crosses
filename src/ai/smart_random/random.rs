@@ -4,6 +4,7 @@ extern crate rand;
 use self::rand::Rng;
 use ai::no_player;
 use ai::place_player;
+use is_board_full;
 use IS_DEBUG;
 
 pub fn random_placement(game_board: GameBoard, player_to_place: Players) -> Option<GameBoard> {
@@ -102,16 +103,7 @@ pub fn random_placement(game_board: GameBoard, player_to_place: Players) -> Opti
                 ..game_board
             });
         }
-        if !(no_player(game_board.row_one[0]))
-            && !(no_player(game_board.row_one[1]))
-            && !(no_player(game_board.row_one[2]))
-            && !(no_player(game_board.row_two[0]))
-            && !(no_player(game_board.row_two[1]))
-            && !(no_player(game_board.row_two[2]))
-            && !(no_player(game_board.row_three[0]))
-            && !(no_player(game_board.row_three[1]))
-            && !(no_player(game_board.row_three[2]))
-        {
+        if is_board_full(game_board) {
             return Option::None;
         } else {
             continue;

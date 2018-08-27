@@ -1,3 +1,4 @@
+use ai::no_player;
 use ai::process_ai;
 use draw::draw_game_board;
 use movement::process_movement;
@@ -234,4 +235,21 @@ fn print_instructions() {
     println!("To move the star up type 8 and hit enter");
     println!("To move the star down type 2 and hit enter");
     println!("To place your cross type 5 and hit enter");
+}
+
+fn is_board_full(game_board: GameBoard) -> bool {
+    if !(no_player(game_board.row_one[0]))
+        && !(no_player(game_board.row_one[1]))
+        && !(no_player(game_board.row_one[2]))
+        && !(no_player(game_board.row_two[0]))
+        && !(no_player(game_board.row_two[1]))
+        && !(no_player(game_board.row_two[2]))
+        && !(no_player(game_board.row_three[0]))
+        && !(no_player(game_board.row_three[1]))
+        && !(no_player(game_board.row_three[2]))
+    {
+        true
+    } else {
+        false
+    }
 }
