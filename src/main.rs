@@ -7,7 +7,7 @@ mod draw;
 mod movement;
 mod won;
 use std::io;
-
+const IS_DEBUG: bool = false;
 #[derive(Copy, Clone, Debug)]
 pub struct GameBoard {
     row_one: [TileStatus; 3],
@@ -120,7 +120,9 @@ fn main() {
                     continue;
                 }
                 Winner::None => {
-                    println!("No one has won");
+                    if IS_DEBUG {
+                        println!("No one has won");
+                    };
                 }
             };
             match game_mode {
@@ -141,7 +143,9 @@ fn main() {
                             continue;
                         }
                         Winner::None => {
-                            println!("No one has won");
+                            if IS_DEBUG {
+                                println!("No one has won");
+                            };
                         }
                     };
                 }
@@ -156,11 +160,15 @@ fn main() {
 fn switch_player(current_player: Players) -> Players {
     match current_player {
         Players::Cross => {
-            println!("Current player was switched to Nought");
+            if IS_DEBUG {
+                println!("Current player was switched to Nought");
+            };
             Players::Nought
         }
         Players::Nought => {
-            println!("Current player was switched to Cross");
+            if IS_DEBUG {
+                println!("Current player was switched to Cross");
+            };
             Players::Cross
         }
     }

@@ -8,6 +8,7 @@ use Players;
 use TileStatus;
 
 pub fn process_ai(game_board: GameBoard, ai_mode: AiMode) -> GameBoard {
+    println!("Thinking");
     let player_to_place = Players::Nought;
     match ai_mode {
         AiMode::Random => match random_placement(game_board, player_to_place) {

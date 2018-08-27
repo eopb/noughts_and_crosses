@@ -9,6 +9,7 @@ use Players;
 use Winner;
 extern crate rand;
 use self::rand::Rng;
+use IS_DEBUG;
 #[derive(Copy, Clone, Debug)]
 pub struct RatingBoard {
     row_one: [Option<f64>; 3],
@@ -18,7 +19,9 @@ pub struct RatingBoard {
 
 pub fn smart_random_placement(game_board: GameBoard, player_to_place: Players) -> GameBoard {
     let rating_board = full_mean_rating(game_board, player_to_place);
-    println!("This is the rating baord{:#?}", rating_board);
+    if IS_DEBUG {
+        println!("This is the rating baord{:#?}", rating_board);
+    };
     process_rating_board(game_board, rating_board, player_to_place)
 }
 
@@ -118,7 +121,6 @@ fn full_mean_rating(game_board: GameBoard, player_to_place: Players) -> RatingBo
                 Option::None
             },
         ],
-
         row_three: [
             if no_player(game_board.row_three[0]) {
                 Option::Some(rate_board(
@@ -171,7 +173,7 @@ fn full_mean_rating(game_board: GameBoard, player_to_place: Players) -> RatingBo
 
 fn rate_board(game_board: GameBoard, player_to_place: Players) -> f64 {
     let mut scores: Vec<i32> = Vec::new();
-    for _x in 0..100 {
+    for _x in 0..250 {
         let mut testing_game_board = match random_placement(game_board, player_to_place) {
             Option::Some(game_board) => game_board,
             Option::None => {
@@ -183,7 +185,9 @@ fn rate_board(game_board: GameBoard, player_to_place: Players) -> f64 {
         let mut loop_count = 0;
         loop {
             loop_count = loop_count + 1;
-            println!("loop count is {}", loop_count);
+            if IS_DEBUG {
+                println!("loop count is {}", loop_count);
+            };
             next_player_to_place = switch_player(next_player_to_place);
             testing_game_board = match random_placement(testing_game_board, next_player_to_place) {
                 Option::Some(game_board) => match has_someone_won(game_board) {
@@ -222,11 +226,14 @@ fn rate_board(game_board: GameBoard, player_to_place: Players) -> f64 {
                     break;
                 }
             };
-            println!("{:#?}", testing_game_board);
         }
     }
-    println!("vector of scores {:#?}", scores);
-    println!("avarage of scores {:#?}", find_average(&scores));
+    if IS_DEBUG {
+        println!("vector of scores {:#?}", scores);
+    };
+    if IS_DEBUG {
+        println!("avarage of scores {:#?}", find_average(&scores));
+    };
     find_average(&scores)
 }
 
@@ -245,7 +252,9 @@ fn process_rating_board(
 ) -> GameBoard {
     loop {
         let random_tile = rand::thread_rng().gen_range(1, 10);
-        println!("Trying2 {}", random_tile);
+        if IS_DEBUG {
+            println!("Trying2 {}", random_tile);
+        };
         if highest_rating(rating_board.row_one[0], rating_board) && (random_tile == 1) {
             return GameBoard {
                 row_one: [
@@ -356,13 +365,15 @@ fn process_rating_board(
 }
 
 fn highest_rating(rating_being_tested: Option<f64>, rating_board: RatingBoard) -> bool {
-    println!("rating{:#?}", rating_board);
-    println!("ratingone{:#?}", rating_board.row_one);
-    // println!("tested{:#?}", rating_being_tested);
+    if IS_DEBUG {
+        println!("rating{:#?}", rating_board);
+    };
+    if IS_DEBUG {
+        println!("tested{:#?}", rating_being_tested);
+    };
 
     match rating_being_tested {
         Option::None => {
-            println!("d4");
             return false;
         }
         Option::Some(rating_being_tested) => {
@@ -430,10 +441,8 @@ fn highest_rating(rating_being_tested: Option<f64>, rating_board: RatingBoard) -
                     false
                 },
             }) {
-                println!("d5");
                 return true;
             } else {
-                println!("d6");
                 return false;
             }
         }

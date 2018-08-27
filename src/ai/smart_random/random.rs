@@ -4,11 +4,14 @@ extern crate rand;
 use self::rand::Rng;
 use ai::no_player;
 use ai::place_player;
+use IS_DEBUG;
 
 pub fn random_placement(game_board: GameBoard, player_to_place: Players) -> Option<GameBoard> {
     loop {
         let random_tile = rand::thread_rng().gen_range(1, 10);
-        println!("Trying {}", random_tile);
+        if IS_DEBUG {
+            println!("Trying {}", random_tile);
+        };
         if no_player(game_board.row_one[0]) && (random_tile == 1) {
             return Option::Some(GameBoard {
                 row_one: [
