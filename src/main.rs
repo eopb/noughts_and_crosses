@@ -124,6 +124,11 @@ fn main() {
                     if IS_DEBUG {
                         println!("No one has won");
                     };
+                    if is_board_full(game_board) {
+                        println!("It is a tie!");
+                        game_status = GameStatus::Finished;
+                        continue;
+                    };
                 }
             };
             match game_mode {
@@ -146,6 +151,11 @@ fn main() {
                         Winner::None => {
                             if IS_DEBUG {
                                 println!("No one has won");
+                            };
+                            if is_board_full(game_board) {
+                                println!("It is a tie!");
+                                game_status = GameStatus::Finished;
+                                continue;
                             };
                         }
                     };
