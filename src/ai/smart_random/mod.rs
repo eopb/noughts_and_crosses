@@ -173,7 +173,7 @@ fn full_mean_rating(game_board: GameBoard, player_to_place: Players) -> RatingBo
 
 fn rate_board(game_board: GameBoard, player_to_place: Players) -> f64 {
     let mut scores: Vec<i32> = Vec::new();
-    for _x in 0..150 {
+    for _x in 0..100 {
         let mut testing_game_board = game_board;
         let mut next_player_to_place = player_to_place;
         let mut loop_count = 0;
