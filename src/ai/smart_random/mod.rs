@@ -173,15 +173,9 @@ fn full_mean_rating(game_board: GameBoard, player_to_place: Players) -> RatingBo
 
 fn rate_board(game_board: GameBoard, player_to_place: Players) -> f64 {
     let mut scores: Vec<i32> = Vec::new();
-    for _x in 0..100 {
-        let mut testing_game_board = match random_placement(game_board, player_to_place) {
-            Option::Some(game_board) => game_board,
-            Option::None => {
-                println!("This should not happen the board is full 1");
-                panic!();
-            }
-        };
-        let mut next_player_to_place = switch_player(player_to_place);
+    for _x in 0..150 {
+        let mut testing_game_board = game_board;
+        let mut next_player_to_place = player_to_place;
         let mut loop_count = 0;
         loop {
             loop_count = loop_count + 1;
@@ -189,39 +183,63 @@ fn rate_board(game_board: GameBoard, player_to_place: Players) -> f64 {
                 println!("loop count is {}", loop_count);
             };
             next_player_to_place = switch_player(next_player_to_place);
-            testing_game_board = match random_placement(testing_game_board, next_player_to_place) {
-                Option::Some(game_board) => match has_someone_won(game_board) {
-                    Winner::None => game_board,
-                    Winner::Nought => match player_to_place {
-                        Players::Cross => {
-                            if loop_count == 1 {
-                                scores.push(0);
-                            } else {
-                                scores.push((1 * (loop_count + 1)) * 100000);
-                            }
-                            break;
+
+            match has_someone_won(testing_game_board) {
+                Winner::None => (),
+                Winner::Nought => match player_to_place {
+                    Players::Cross => {
+                        if (loop_count == 1) || (loop_count == 2) {
+                            if IS_DEBUG {
+                                println!("f1");
+                            };
+                            scores.push(0);
+                        } else {
+                            if IS_DEBUG {
+                                println!("f2");
+                            };
+                            scores.push((1 * (loop_count + 1)) * 100000);
                         }
-                        Players::Nought => {
-                            scores.push((4 * (100 / (loop_count + 1))) * 100000);
-                            break;
-                        }
-                    },
-                    Winner::Cross => match player_to_place {
-                        Players::Cross => {
-                            scores.push((4 * (100 / (loop_count + 1))) * 100000);
-                            break;
-                        }
-                        Players::Nought => {
-                            if loop_count == 1 {
-                                scores.push(0);
-                            } else {
-                                scores.push((1 * (loop_count + 1)) * 100000);
-                            }
-                            break;
-                        }
-                    },
+                        break;
+                    }
+                    Players::Nought => {
+                        if IS_DEBUG {
+                            println!("f3");
+                        };
+                        scores.push((4 * (100 / (loop_count + 1))) * 100000);
+                        break;
+                    }
                 },
+                Winner::Cross => match player_to_place {
+                    Players::Cross => {
+                        if IS_DEBUG {
+                            println!("f4");
+                        };
+                        scores.push((4 * (100 / (loop_count + 1))) * 100000);
+                        break;
+                    }
+                    Players::Nought => {
+                        if (loop_count == 1) || (loop_count == 2) {
+                            if IS_DEBUG {
+                                println!("f5");
+                            };
+                            scores.push(0);
+                        } else {
+                            if IS_DEBUG {
+                                println!("f6");
+                            };
+                            scores.push((1 * (loop_count + 1)) * 100000);
+                        }
+                        break;
+                    }
+                },
+            };
+
+            testing_game_board = match random_placement(testing_game_board, next_player_to_place) {
+                Option::Some(testing_game_board) => testing_game_board,
                 Option::None => {
+                    if IS_DEBUG {
+                        println!("f7");
+                    };
                     scores.push((3 * loop_count) * 100000);
                     break;
                 }
