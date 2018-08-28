@@ -199,15 +199,19 @@ fn game_mode_choice() -> GameMode {
                 continue;
             }
         };
-        if inputed_choice == 1 {
-            println!("Welcome to single player mode.");
-            return GameMode::SinglePlayer;
-        } else if inputed_choice == 2 {
-            println!("Welcome to two player mode.");
-            return GameMode::TwoPlayer;
-        } else {
-            println!("This game only works with 1 or 2 players. Please try again.");
-            continue;
+        match inputed_choice {
+            1 => {
+                println!("Welcome to single player mode.");
+                return GameMode::SinglePlayer;
+            }
+            2 => {
+                println!("Welcome to two player mode.");
+                return GameMode::TwoPlayer;
+            }
+            _ => {
+                println!("This game only works with 1 or 2 players. Please try again.");
+                continue;
+            }
         }
     }
 }
@@ -226,15 +230,19 @@ fn ai_mode_choice() -> AiMode {
                 continue;
             }
         };
-        if inputed_choice == 1 {
-            println!("Welcome to Random mode.");
-            return AiMode::Random;
-        } else if inputed_choice == 2 {
-            println!("Welcome to SmartRandom mode.");
-            return AiMode::SmartRandom;
-        } else {
-            println!("This game only works with ai 1 or 2");
-            continue;
+        match inputed_choice {
+            1 => {
+                println!("Welcome to Random mode.");
+                return AiMode::Random;
+            }
+            2 => {
+                println!("Welcome to SmartRandom mode.");
+                return AiMode::SmartRandom;
+            }
+            _ => {
+                println!("This game only works with ai 1 or 2");
+                continue;
+            }
         }
     }
 }
