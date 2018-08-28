@@ -4,6 +4,7 @@ use Cursor;
 use GameBoard;
 use TileStatus;
 
+#[allow(unknown_lints)]
 #[allow(cyclomatic_complexity)]
 pub fn move_cursor(game_board: GameBoard, inputed_movement: Movement) -> Option<GameBoard> {
     if is_cursor(game_board.row_one[0]) {
