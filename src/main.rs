@@ -267,7 +267,7 @@ fn print_instructions() {
 }
 
 fn is_board_full(game_board: GameBoard) -> bool {
-    if !(no_player(game_board.row_one[0]))
+    !(no_player(game_board.row_one[0]))
         && !(no_player(game_board.row_one[1]))
         && !(no_player(game_board.row_one[2]))
         && !(no_player(game_board.row_two[0]))
@@ -276,9 +276,4 @@ fn is_board_full(game_board: GameBoard) -> bool {
         && !(no_player(game_board.row_three[0]))
         && !(no_player(game_board.row_three[1]))
         && !(no_player(game_board.row_three[2]))
-    {
-        true
-    } else {
-        false
-    }
 }

@@ -390,78 +390,36 @@ fn highest_rating(rating_being_tested: Option<f64>, rating_board: RatingBoard) -
     };
 
     match rating_being_tested {
-        Option::None => {
-            return false;
-        }
+        Option::None => false,
         Option::Some(rating_being_tested) => {
-            if (match rating_board.row_one[0] {
+            (match rating_board.row_one[0] {
                 None => true,
-                Some(rating) => if rating_being_tested >= rating {
-                    true
-                } else {
-                    false
-                },
+                Some(rating) => rating_being_tested >= rating,
             }) && (match rating_board.row_one[1] {
                 None => true,
-                Some(rating) => if rating_being_tested >= rating {
-                    true
-                } else {
-                    false
-                },
+                Some(rating) => rating_being_tested >= rating,
             }) && (match rating_board.row_one[2] {
                 None => true,
-                Some(rating) => if rating_being_tested >= rating {
-                    true
-                } else {
-                    false
-                },
+                Some(rating) => rating_being_tested >= rating,
             }) && (match rating_board.row_two[0] {
                 None => true,
-                Some(rating) => if rating_being_tested >= rating {
-                    true
-                } else {
-                    false
-                },
+                Some(rating) => rating_being_tested >= rating,
             }) && (match rating_board.row_two[1] {
                 None => true,
-                Some(rating) => if rating_being_tested >= rating {
-                    true
-                } else {
-                    false
-                },
+                Some(rating) => rating_being_tested >= rating,
             }) && (match rating_board.row_two[2] {
                 None => true,
-                Some(rating) => if rating_being_tested >= rating {
-                    true
-                } else {
-                    false
-                },
+                Some(rating) => rating_being_tested >= rating,
             }) && (match rating_board.row_three[0] {
                 None => true,
-                Some(rating) => if rating_being_tested >= rating {
-                    true
-                } else {
-                    false
-                },
+                Some(rating) => rating_being_tested >= rating,
             }) && (match rating_board.row_three[1] {
                 None => true,
-                Some(rating) => if rating_being_tested >= rating {
-                    true
-                } else {
-                    false
-                },
+                Some(rating) => rating_being_tested >= rating,
             }) && (match rating_board.row_three[2] {
                 None => true,
-                Some(rating) => if rating_being_tested >= rating {
-                    true
-                } else {
-                    false
-                },
-            }) {
-                return true;
-            } else {
-                return false;
-            }
+                Some(rating) => rating_being_tested >= rating,
+            })
         }
-    };
+    }
 }
