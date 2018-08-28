@@ -178,7 +178,7 @@ fn rate_board(game_board: GameBoard, player_to_place: Players) -> f64 {
         let mut next_player_to_place = player_to_place;
         let mut loop_count = 0;
         loop {
-            loop_count = loop_count + 1;
+            loop_count += 1;
             if IS_DEBUG {
                 println!("loop count is {}", loop_count);
             };
