@@ -259,7 +259,7 @@ fn find_average(numbers: &Vec<i32>) -> f64 {
     for x in numbers {
         sum += x;
     }
-    sum as f64 / numbers.len() as f64
+    f64::from(sum) / numbers.len() as f64
 }
 fn process_rating_board(
     game_board: GameBoard,
