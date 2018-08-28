@@ -3,6 +3,7 @@ use self::random::random_placement;
 use ai::no_player;
 use ai::place_player;
 use has_someone_won;
+use is_board_full;
 use switch_player;
 use GameBoard;
 use Players;
@@ -370,16 +371,7 @@ fn process_rating_board(
                 ..game_board
             };
         }
-        if !(no_player(game_board.row_one[0]))
-            && !(no_player(game_board.row_one[1]))
-            && !(no_player(game_board.row_one[2]))
-            && !(no_player(game_board.row_two[0]))
-            && !(no_player(game_board.row_two[1]))
-            && !(no_player(game_board.row_two[2]))
-            && !(no_player(game_board.row_three[0]))
-            && !(no_player(game_board.row_three[1]))
-            && !(no_player(game_board.row_three[2]))
-        {
+        if is_board_full(game_board) {
             println!("This should not be happening :(");
             panic!();
         } else {
