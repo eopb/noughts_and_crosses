@@ -60,7 +60,6 @@ pub struct MovementReturn {
 }
 fn main() {
     println!("Welcome to my noughts and crosses game made in rust.");
-    print_instructions();
     let mut ai_mode = AiMode::None;
     let game_mode = game_mode_choice();
     match game_mode {
@@ -69,6 +68,7 @@ fn main() {
         }
         _ => (),
     };
+    print_instructions();
     let mut current_player = Players::Cross;
     let mut game_board = GameBoard {
         row_one: [TileStatus::Cursor, TileStatus::None, TileStatus::None],
@@ -228,7 +228,7 @@ fn game_mode_choice() -> GameMode {
 }
 
 fn ai_mode_choice() -> AiMode {
-    println!("Input the ai mode you want to play against. One or town?");
+    println!("Input the ai mode you want to play against. One or two?");
     loop {
         let mut inputed_choice = String::new();
         io::stdin()
