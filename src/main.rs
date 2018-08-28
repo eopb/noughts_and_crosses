@@ -136,7 +136,9 @@ fn main() {
                     current_player = switch_player(current_player);
                 }
                 GameMode::SinglePlayer => {
-                    game_board = process_ai(game_board, ai_mode);
+                    current_player = switch_player(current_player);
+                    game_board = process_ai(game_board, ai_mode, current_player);
+                    current_player = switch_player(current_player);
                     match has_someone_won(game_board) {
                         Winner::Cross => {
                             println!("You won");
