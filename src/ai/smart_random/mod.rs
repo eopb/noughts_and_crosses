@@ -173,7 +173,8 @@ fn full_mean_rating(game_board: GameBoard, player_to_place: Players) -> RatingBo
 
 fn rate_board(game_board: GameBoard, player_to_place: Players) -> f64 {
     let mut scores: Vec<i32> = Vec::new();
-    for _x in 0..100 {
+    for _x in 0..50000 {
+        // println!("{}", _x);
         let mut testing_game_board = game_board;
         let mut next_player_to_place = player_to_place;
         let mut loop_count = 0;
@@ -196,7 +197,7 @@ fn rate_board(game_board: GameBoard, player_to_place: Players) -> f64 {
                             if IS_DEBUG {
                                 println!("f2");
                             };
-                            scores.push((loop_count + 1) * 100_000);
+                            scores.push((loop_count + 1) * 1_000_000);
                         }
                         break;
                     }
@@ -204,7 +205,7 @@ fn rate_board(game_board: GameBoard, player_to_place: Players) -> f64 {
                         if IS_DEBUG {
                             println!("f3");
                         };
-                        scores.push((4 * (100 / (loop_count + 1))) * 100_000);
+                        scores.push((4 * (100 / (loop_count + 1))) * 1_000_000);
                         break;
                     }
                 },
@@ -213,7 +214,7 @@ fn rate_board(game_board: GameBoard, player_to_place: Players) -> f64 {
                         if IS_DEBUG {
                             println!("f4");
                         };
-                        scores.push((4 * (100 / (loop_count + 1))) * 100_000);
+                        scores.push((4 * (100 / (loop_count + 1))) * 1_000_000);
                         break;
                     }
                     Players::Nought => {
@@ -226,7 +227,7 @@ fn rate_board(game_board: GameBoard, player_to_place: Players) -> f64 {
                             if IS_DEBUG {
                                 println!("f6");
                             };
-                            scores.push((loop_count + 1) * 100_000);
+                            scores.push((loop_count + 1) * 1_000_000);
                         }
                         break;
                     }
@@ -239,7 +240,7 @@ fn rate_board(game_board: GameBoard, player_to_place: Players) -> f64 {
                     if IS_DEBUG {
                         println!("f7");
                     };
-                    scores.push((3 * loop_count) * 100_000);
+                    scores.push((3 * loop_count) * 1_000_000);
                     break;
                 }
             };
@@ -255,11 +256,11 @@ fn rate_board(game_board: GameBoard, player_to_place: Players) -> f64 {
 }
 
 fn find_average(numbers: &[i32]) -> f64 {
-    let mut sum: i32 = 0;
+    let mut sum: i64 = 0;
     for x in numbers {
-        sum += x;
+        sum += i64::from(*x);
     }
-    f64::from(sum) / numbers.len() as f64
+    sum as f64 / numbers.len() as f64
 }
 fn process_rating_board(
     game_board: GameBoard,
