@@ -2,7 +2,11 @@
 name = "rust_game"
 version = "0.1.0"
 authors = ["Ethan Brierley <ethanboxx@gmail.com>"]
-
+readme = "README.md"
+repository = "https://gitlab.com/efunb/rustGame"
+description = """
+RustGame.
+"""
 [dependencies]
 
-rand = "0.3.14"
+rand = "0.5"
