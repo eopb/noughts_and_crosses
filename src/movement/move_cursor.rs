@@ -5,10 +5,10 @@ use GameBoard;
 use TileStatus;
 
 #[allow(unknown_lints)]
-#[allow(needless_return)]
+#[allow(cyclomatic_complexity)]
 pub fn move_cursor(game_board: GameBoard, inputed_movement: Movement) -> Option<GameBoard> {
     if is_cursor(game_board.row_one[0]) {
-        return match inputed_movement {
+        match inputed_movement {
             Movement::Right => Option::Some(GameBoard {
                 row_one: [
                     remove_cursor(game_board.row_one[0]),
@@ -34,9 +34,9 @@ pub fn move_cursor(game_board: GameBoard, inputed_movement: Movement) -> Option<
                 println!("This can not be done");
                 Option::None
             }
-        };
+        }
     } else if is_cursor(game_board.row_one[1]) {
-        return match inputed_movement {
+        match inputed_movement {
             Movement::Right => Option::Some(GameBoard {
                 row_one: [
                     game_board.row_one[0],
@@ -70,9 +70,9 @@ pub fn move_cursor(game_board: GameBoard, inputed_movement: Movement) -> Option<
                 println!("This can not be done");
                 Option::None
             }
-        };
+        }
     } else if is_cursor(game_board.row_one[2]) {
-        return match inputed_movement {
+        match inputed_movement {
             Movement::Left => Option::Some(GameBoard {
                 row_one: [
                     game_board.row_one[0],
@@ -98,9 +98,9 @@ pub fn move_cursor(game_board: GameBoard, inputed_movement: Movement) -> Option<
                 println!("This can not be done");
                 Option::None
             }
-        };
+        }
     } else if is_cursor(game_board.row_two[0]) {
-        return match inputed_movement {
+        match inputed_movement {
             Movement::Right => Option::Some(GameBoard {
                 row_two: [
                     remove_cursor(game_board.row_two[0]),
@@ -139,9 +139,9 @@ pub fn move_cursor(game_board: GameBoard, inputed_movement: Movement) -> Option<
                 println!("This can not be done");
                 Option::None
             }
-        };
+        }
     } else if is_cursor(game_board.row_two[1]) {
-        return match inputed_movement {
+        match inputed_movement {
             Movement::Right => Option::Some(GameBoard {
                 row_two: [
                     game_board.row_two[0],
@@ -188,9 +188,9 @@ pub fn move_cursor(game_board: GameBoard, inputed_movement: Movement) -> Option<
                 println!("This can not be done");
                 Option::None
             }
-        };
+        }
     } else if is_cursor(game_board.row_two[2]) {
-        return match inputed_movement {
+        match inputed_movement {
             Movement::Left => Option::Some(GameBoard {
                 row_two: [
                     game_board.row_two[0],
@@ -229,9 +229,9 @@ pub fn move_cursor(game_board: GameBoard, inputed_movement: Movement) -> Option<
                 println!("This can not be done");
                 Option::None
             }
-        };
+        }
     } else if is_cursor(game_board.row_three[0]) {
-        return match inputed_movement {
+        match inputed_movement {
             Movement::Right => Option::Some(GameBoard {
                 row_three: [
                     remove_cursor(game_board.row_three[0]),
@@ -257,9 +257,9 @@ pub fn move_cursor(game_board: GameBoard, inputed_movement: Movement) -> Option<
                 println!("This can not be done");
                 Option::None
             }
-        };
+        }
     } else if is_cursor(game_board.row_three[1]) {
-        return match inputed_movement {
+        match inputed_movement {
             Movement::Right => Option::Some(GameBoard {
                 row_three: [
                     game_board.row_three[0],
@@ -293,9 +293,9 @@ pub fn move_cursor(game_board: GameBoard, inputed_movement: Movement) -> Option<
                 println!("This can not be done");
                 Option::None
             }
-        };
+        }
     } else if is_cursor(game_board.row_three[2]) {
-        return match inputed_movement {
+        match inputed_movement {
             Movement::Left => Option::Some(GameBoard {
                 row_three: [
                     game_board.row_three[0],
@@ -321,7 +321,7 @@ pub fn move_cursor(game_board: GameBoard, inputed_movement: Movement) -> Option<
                 println!("This can not be done");
                 Option::None
             }
-        };
+        }
     } else {
         println!("here");
         panic!();

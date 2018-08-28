@@ -71,6 +71,8 @@ fn fetch_input() -> Movement {
     }
 }
 
+#[allow(unknown_lints)]
+#[allow(cyclomatic_complexity)]
 fn place_player(game_board: GameBoard, current_player: Players) -> Option<GameBoard> {
     if is_cursor(game_board.row_one[0]) {
         match game_board.row_one[0] {
