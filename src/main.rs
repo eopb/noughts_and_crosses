@@ -148,7 +148,7 @@ fn main() {
                     current_player = switch_player(current_player);
                     match has_someone_won(game_board) {
                         Winner::Cross => {
-                            println!("Crosses");
+                            println!("Crosses won");
                             draw_game_board(game_board, &game_mode);
                             break;
                         }
