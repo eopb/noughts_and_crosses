@@ -258,7 +258,14 @@ fn rate_board(game_board: GameBoard, player_to_place: Players) -> f64 {
 fn find_average(numbers: &[i32]) -> f64 {
     let mut sum: i64 = 0;
     for x in numbers {
-        sum += i64::from(*x);
+        match x {
+            0 => {
+                return 0.0;
+            }
+            _ => {
+                sum += i64::from(*x);
+            }
+        }
     }
     sum as f64 / numbers.len() as f64
 }
