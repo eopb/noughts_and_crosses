@@ -183,7 +183,6 @@ fn rate_board(game_board: GameBoard, player_to_place: Players) -> f64 {
                 println!("loop count is {}", loop_count);
             };
             next_player_to_place = switch_player(next_player_to_place);
-
             match has_someone_won(testing_game_board) {
                 Winner::None => (),
                 Winner::Nought => match player_to_place {
@@ -197,7 +196,7 @@ fn rate_board(game_board: GameBoard, player_to_place: Players) -> f64 {
                             if IS_DEBUG {
                                 println!("f2");
                             };
-                            scores.push((1 * (loop_count + 1)) * 100000);
+                            scores.push((1 * (loop_count + 1)) * 100_000);
                         }
                         break;
                     }
@@ -205,7 +204,7 @@ fn rate_board(game_board: GameBoard, player_to_place: Players) -> f64 {
                         if IS_DEBUG {
                             println!("f3");
                         };
-                        scores.push((4 * (100 / (loop_count + 1))) * 100000);
+                        scores.push((4 * (100 / (loop_count + 1))) * 100_000);
                         break;
                     }
                 },
@@ -214,7 +213,7 @@ fn rate_board(game_board: GameBoard, player_to_place: Players) -> f64 {
                         if IS_DEBUG {
                             println!("f4");
                         };
-                        scores.push((4 * (100 / (loop_count + 1))) * 100000);
+                        scores.push((4 * (100 / (loop_count + 1))) * 100_000);
                         break;
                     }
                     Players::Nought => {
@@ -227,7 +226,7 @@ fn rate_board(game_board: GameBoard, player_to_place: Players) -> f64 {
                             if IS_DEBUG {
                                 println!("f6");
                             };
-                            scores.push((1 * (loop_count + 1)) * 100000);
+                            scores.push((1 * (loop_count + 1)) * 100_000);
                         }
                         break;
                     }
@@ -240,7 +239,7 @@ fn rate_board(game_board: GameBoard, player_to_place: Players) -> f64 {
                     if IS_DEBUG {
                         println!("f7");
                     };
-                    scores.push((3 * loop_count) * 100000);
+                    scores.push((3 * loop_count) * 100_000);
                     break;
                 }
             };
