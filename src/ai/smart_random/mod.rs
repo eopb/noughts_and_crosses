@@ -254,7 +254,7 @@ fn rate_board(game_board: GameBoard, player_to_place: Players) -> f64 {
     find_average(&scores)
 }
 
-fn find_average(numbers: &Vec<i32>) -> f64 {
+fn find_average(numbers: &[i32]) -> f64 {
     let mut sum: i32 = 0;
     for x in numbers {
         sum += x;
