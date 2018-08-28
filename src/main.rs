@@ -50,6 +50,7 @@ pub enum Winner {
 enum GameMode {
     TwoPlayer,
     SinglePlayer,
+    Spectate,
 }
 #[derive(Copy, Clone)]
 pub enum AiMode {
@@ -68,7 +69,7 @@ fn main() {
     let mut ai_mode = AiMode::None;
     let game_mode = game_mode_choice();
     match game_mode {
-        GameMode::SinglePlayer => {
+        GameMode::SinglePlayer | GameMode::Spectate => {
             ai_mode = ai_mode_choice();
         }
         _ => (),
@@ -89,18 +90,28 @@ fn main() {
         GameStatus::Playing => true,
         GameStatus::Finished => false,
     } {
-        let mut movement_return = process_movement(game_board, current_player);
-        loop {
-            game_board = match movement_return.game_board {
-                Some(game_board) => game_board,
-                None => {
-                    println!("That did not work");
-                    movement_return = process_movement(game_board, current_player);
-                    continue;
+        let movement_return = match game_mode {
+            GameMode::Spectate => MovementReturn {
+                game_board: Option::Some(game_board),
+                placed: true,
+            },
+            _ => {
+                let mut movement_return = process_movement(game_board, current_player);
+                loop {
+                    game_board = match movement_return.game_board {
+                        Some(game_board) => game_board,
+                        None => {
+                            println!("That did not work");
+                            movement_return = process_movement(game_board, current_player);
+                            continue;
+                        }
+                    };
+                    break;
                 }
-            };
-            break;
-        }
+                movement_return
+            }
+        };
+
         if movement_return.placed {
             match has_someone_won(game_board) {
                 Winner::Cross => {
@@ -108,17 +119,17 @@ fn main() {
                         GameMode::SinglePlayer => {
                             println!("You won");
                         }
-                        GameMode::TwoPlayer => {
+                        GameMode::TwoPlayer | GameMode::Spectate => {
                             println!("Crosses won");
                         }
                     }
-                    game_status = GameStatus::Finished;
-                    continue;
+                    draw_game_board(game_board);
+                    break;
                 }
                 Winner::Nought => {
                     println!("Noughts won");
-                    game_status = GameStatus::Finished;
-                    continue;
+                    draw_game_board(game_board);
+                    break;
                 }
                 Winner::None => {
                     if IS_DEBUG {
@@ -126,27 +137,33 @@ fn main() {
                     };
                     if is_board_full(game_board) {
                         println!("It is a tie!");
-                        game_status = GameStatus::Finished;
-                        continue;
+                        draw_game_board(game_board);
+                        break;
                     };
                 }
             };
+
             match game_mode {
                 GameMode::TwoPlayer => {
                     current_player = switch_player(current_player);
                 }
-                GameMode::SinglePlayer => {
-                    game_board = process_ai(game_board, ai_mode);
+                GameMode::SinglePlayer | GameMode::Spectate => {
+                    current_player = match game_mode {
+                        GameMode::SinglePlayer => switch_player(current_player),
+                        _ => current_player,
+                    };
+                    game_board = process_ai(game_board, ai_mode, current_player);
+                    current_player = switch_player(current_player);
                     match has_someone_won(game_board) {
                         Winner::Cross => {
-                            println!("You won");
-                            game_status = GameStatus::Finished;
-                            continue;
+                            println!("Crosses");
+                            draw_game_board(game_board);
+                            break;
                         }
                         Winner::Nought => {
                             println!("Noughts won");
-                            game_status = GameStatus::Finished;
-                            continue;
+                            draw_game_board(game_board);
+                            break;
                         }
                         Winner::None => {
                             if IS_DEBUG {
@@ -154,17 +171,16 @@ fn main() {
                             };
                             if is_board_full(game_board) {
                                 println!("It is a tie!");
-                                game_status = GameStatus::Finished;
-                                continue;
+                                draw_game_board(game_board);
+                                break;
                             };
                         }
                     };
                 }
             };
-            draw_game_board(game_board);
-            continue;
         };
         draw_game_board(game_board);
+        continue;
     }
 }
 
@@ -200,6 +216,10 @@ fn game_mode_choice() -> GameMode {
             }
         };
         match inputed_choice {
+            0 => {
+                println!("Welcome to single spectate mode.");
+                return GameMode::Spectate;
+            }
             1 => {
                 println!("Welcome to single player mode.");
                 return GameMode::SinglePlayer;
