@@ -196,7 +196,7 @@ fn rate_board(game_board: GameBoard, player_to_place: Players) -> f64 {
                             if IS_DEBUG {
                                 println!("f2");
                             };
-                            scores.push((1 * (loop_count + 1)) * 100_000);
+                            scores.push((loop_count + 1) * 100_000);
                         }
                         break;
                     }
@@ -226,7 +226,7 @@ fn rate_board(game_board: GameBoard, player_to_place: Players) -> f64 {
                             if IS_DEBUG {
                                 println!("f6");
                             };
-                            scores.push((1 * (loop_count + 1)) * 100_000);
+                            scores.push((loop_count + 1) * 100_000);
                         }
                         break;
                     }
