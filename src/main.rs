@@ -36,11 +36,6 @@ pub enum Players {
     Cross,
 }
 
-enum GameStatus {
-    Playing,
-    Finished,
-}
-
 pub enum Winner {
     Nought,
     Cross,
@@ -75,7 +70,6 @@ fn main() {
         _ => (),
     };
     let mut current_player = Players::Cross;
-    let mut game_status = GameStatus::Playing;
     let mut game_board = GameBoard {
         row_one: [TileStatus::Cursor, TileStatus::None, TileStatus::None],
         row_two: [TileStatus::None, TileStatus::None, TileStatus::None],
@@ -86,10 +80,7 @@ fn main() {
     println!("The board looks like this.");
     draw_game_board(game_board);
 
-    while match game_status {
-        GameStatus::Playing => true,
-        GameStatus::Finished => false,
-    } {
+    loop {
         let movement_return = match game_mode {
             GameMode::Spectate => MovementReturn {
                 game_board: Option::Some(game_board),
