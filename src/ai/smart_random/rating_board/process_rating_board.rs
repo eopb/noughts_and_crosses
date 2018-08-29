@@ -2,7 +2,7 @@ use ai::place_player;
 extern crate rand;
 use self::rand::Rng;
 use ai::smart_random::RatingBoard;
-use is_board_full;
+
 use GameBoard;
 use Players;
 use IS_DEBUG;
@@ -108,7 +108,7 @@ impl GameBoard {
                     ..self
                 };
             }
-            if is_board_full(self) {
+            if self.is_board_full() {
                 println!("This should not be happening :(");
                 panic!();
             } else {

@@ -1,7 +1,5 @@
-use ai::no_player;
 use ai::place_player;
 use ai::smart_random::RatingBoard;
-use has_someone_won;
 use switch_player;
 use GameBoard;
 use Players;
@@ -11,7 +9,7 @@ mod process_rating_board;
 pub fn full_mean_rating(game_board: GameBoard, player_to_place: Players) -> RatingBoard {
     RatingBoard {
         row_one: [
-            if no_player(game_board.row_one[0]) {
+            if game_board.row_one[0].no_player() {
                 Option::Some(
                     GameBoard {
                         row_one: [
@@ -25,7 +23,7 @@ pub fn full_mean_rating(game_board: GameBoard, player_to_place: Players) -> Rati
             } else {
                 Option::None
             },
-            if no_player(game_board.row_one[1]) {
+            if game_board.row_one[1].no_player() {
                 Option::Some(
                     GameBoard {
                         row_one: [
@@ -39,7 +37,7 @@ pub fn full_mean_rating(game_board: GameBoard, player_to_place: Players) -> Rati
             } else {
                 Option::None
             },
-            if no_player(game_board.row_one[2]) {
+            if game_board.row_one[2].no_player() {
                 Option::Some(
                     GameBoard {
                         row_one: [
@@ -55,7 +53,7 @@ pub fn full_mean_rating(game_board: GameBoard, player_to_place: Players) -> Rati
             },
         ],
         row_two: [
-            if no_player(game_board.row_two[0]) {
+            if game_board.row_two[0].no_player() {
                 Option::Some(
                     GameBoard {
                         row_two: [
@@ -69,7 +67,7 @@ pub fn full_mean_rating(game_board: GameBoard, player_to_place: Players) -> Rati
             } else {
                 Option::None
             },
-            if no_player(game_board.row_two[1]) {
+            if game_board.row_two[1].no_player() {
                 Option::Some(
                     GameBoard {
                         row_two: [
@@ -83,7 +81,7 @@ pub fn full_mean_rating(game_board: GameBoard, player_to_place: Players) -> Rati
             } else {
                 Option::None
             },
-            if no_player(game_board.row_two[2]) {
+            if game_board.row_two[2].no_player() {
                 Option::Some(
                     GameBoard {
                         row_two: [
@@ -99,7 +97,7 @@ pub fn full_mean_rating(game_board: GameBoard, player_to_place: Players) -> Rati
             },
         ],
         row_three: [
-            if no_player(game_board.row_three[0]) {
+            if game_board.row_three[0].no_player() {
                 Option::Some(
                     GameBoard {
                         row_three: [
@@ -113,7 +111,7 @@ pub fn full_mean_rating(game_board: GameBoard, player_to_place: Players) -> Rati
             } else {
                 Option::None
             },
-            if no_player(game_board.row_three[1]) {
+            if game_board.row_three[1].no_player() {
                 Option::Some(
                     GameBoard {
                         row_three: [
@@ -127,7 +125,7 @@ pub fn full_mean_rating(game_board: GameBoard, player_to_place: Players) -> Rati
             } else {
                 Option::None
             },
-            if no_player(game_board.row_three[2]) {
+            if game_board.row_three[2].no_player() {
                 Option::Some(
                     GameBoard {
                         row_three: [
@@ -159,7 +157,7 @@ impl GameBoard {
                     println!("loop count is {}", loop_count);
                 };
                 next_player_to_place = switch_player(next_player_to_place);
-                match has_someone_won(testing_game_board) {
+                match testing_game_board.has_someone_won() {
                     Winner::None => (),
                     Winner::Nought => match player_to_place {
                         Players::Cross => {

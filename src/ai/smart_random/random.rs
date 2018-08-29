@@ -2,9 +2,8 @@ use GameBoard;
 use Players;
 extern crate rand;
 use self::rand::Rng;
-use ai::no_player;
 use ai::place_player;
-use is_board_full;
+
 use IS_DEBUG;
 
 impl GameBoard {
@@ -14,7 +13,7 @@ impl GameBoard {
             if IS_DEBUG {
                 println!("Trying {}", random_tile);
             };
-            if no_player(self.row_one[0]) && (random_tile == 1) {
+            if self.row_one[0].no_player() && (random_tile == 1) {
                 return Option::Some(GameBoard {
                     row_one: [
                         place_player(self.row_one[0], player_to_place),
@@ -24,7 +23,7 @@ impl GameBoard {
                     ..self
                 });
             }
-            if no_player(self.row_one[1]) && (random_tile == 2) {
+            if self.row_one[1].no_player() && (random_tile == 2) {
                 return Option::Some(GameBoard {
                     row_one: [
                         self.row_one[0],
@@ -34,7 +33,7 @@ impl GameBoard {
                     ..self
                 });
             }
-            if no_player(self.row_one[2]) && (random_tile == 3) {
+            if self.row_one[2].no_player() && (random_tile == 3) {
                 return Option::Some(GameBoard {
                     row_one: [
                         self.row_one[0],
@@ -44,7 +43,7 @@ impl GameBoard {
                     ..self
                 });
             }
-            if no_player(self.row_two[0]) && (random_tile == 4) {
+            if self.row_two[0].no_player() && (random_tile == 4) {
                 return Option::Some(GameBoard {
                     row_two: [
                         place_player(self.row_two[0], player_to_place),
@@ -54,7 +53,7 @@ impl GameBoard {
                     ..self
                 });
             }
-            if no_player(self.row_two[1]) && (random_tile == 5) {
+            if self.row_two[1].no_player() && (random_tile == 5) {
                 return Option::Some(GameBoard {
                     row_two: [
                         self.row_two[0],
@@ -64,7 +63,7 @@ impl GameBoard {
                     ..self
                 });
             }
-            if no_player(self.row_two[2]) && (random_tile == 6) {
+            if self.row_two[2].no_player() && (random_tile == 6) {
                 return Option::Some(GameBoard {
                     row_two: [
                         self.row_two[0],
@@ -74,7 +73,7 @@ impl GameBoard {
                     ..self
                 });
             }
-            if no_player(self.row_three[0]) && (random_tile == 7) {
+            if self.row_three[0].no_player() && (random_tile == 7) {
                 return Option::Some(GameBoard {
                     row_three: [
                         place_player(self.row_three[0], player_to_place),
@@ -84,7 +83,7 @@ impl GameBoard {
                     ..self
                 });
             }
-            if no_player(self.row_three[1]) && (random_tile == 8) {
+            if self.row_three[1].no_player() && (random_tile == 8) {
                 return Option::Some(GameBoard {
                     row_three: [
                         self.row_three[0],
@@ -94,7 +93,7 @@ impl GameBoard {
                     ..self
                 });
             }
-            if no_player(self.row_three[2]) && (random_tile == 9) {
+            if self.row_three[2].no_player() && (random_tile == 9) {
                 return Option::Some(GameBoard {
                     row_three: [
                         self.row_three[0],
@@ -104,7 +103,7 @@ impl GameBoard {
                     ..self
                 });
             }
-            if is_board_full(self) {
+            if self.is_board_full() {
                 return Option::None;
             } else {
                 continue;

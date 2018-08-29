@@ -23,15 +23,6 @@ pub fn process_ai(game_board: GameBoard, ai_mode: AiMode, player_to_place: Playe
     }
 }
 
-pub fn no_player(tile: TileStatus) -> bool {
-    match tile {
-        TileStatus::Cursor => true,
-        TileStatus::Nought(_cursor) => false,
-        TileStatus::Cross(_cursor) => false,
-        TileStatus::None => true,
-    }
-}
-
 pub fn place_player(tile: TileStatus, player_to_place: Players) -> TileStatus {
     match tile {
         TileStatus::Nought(_cursor) | TileStatus::Cross(_cursor) => {
