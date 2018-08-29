@@ -2,10 +2,12 @@ use GameBoard;
 use TileStatus;
 use Winner;
 
-pub fn has_someone_won(game_board: GameBoard) -> Winner {
-    match cross(game_board) {
-        Winner::Nought | Winner::Cross => Winner::Cross,
-        Winner::None => nought(game_board),
+impl GameBoard {
+    pub fn has_someone_won(self) -> Winner {
+        match cross(self) {
+            Winner::Nought | Winner::Cross => Winner::Cross,
+            Winner::None => nought(self),
+        }
     }
 }
 

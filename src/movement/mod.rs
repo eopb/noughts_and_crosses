@@ -1,5 +1,4 @@
 mod move_cursor;
-use self::move_cursor::move_cursor;
 use std::io;
 use Cursor;
 use GameBoard;
@@ -21,7 +20,7 @@ pub fn process_movement(game_board: GameBoard, current_player: Players) -> Movem
     let input = fetch_input();
     match input {
         Movement::Place => MovementReturn {
-            game_board: place_player(game_board, current_player),
+            game_board: place_player_on_cursor(game_board, current_player),
             placed: true,
         },
         Movement::None => MovementReturn {
@@ -29,7 +28,7 @@ pub fn process_movement(game_board: GameBoard, current_player: Players) -> Movem
             placed: false,
         },
         _ => MovementReturn {
-            game_board: move_cursor(game_board, input),
+            game_board: game_board.move_cursor(input),
             placed: false,
         },
     }
@@ -71,205 +70,113 @@ fn fetch_input() -> Movement {
     }
 }
 
-#[allow(unknown_lints)]
-#[allow(cyclomatic_complexity)]
-fn place_player(game_board: GameBoard, current_player: Players) -> Option<GameBoard> {
-    if is_cursor(game_board.row_one[0]) {
+fn place_player_on_cursor(game_board: GameBoard, current_player: Players) -> Option<GameBoard> {
+    if game_board.row_one[0].is_cursor() {
         match game_board.row_one[0] {
-            TileStatus::Cursor => match current_player {
-                Players::Cross => Option::Some(GameBoard {
-                    row_one: [
-                        TileStatus::Cross(Cursor::True),
-                        game_board.row_one[1],
-                        game_board.row_one[2],
-                    ],
-                    ..game_board
-                }),
-                Players::Nought => Option::Some(GameBoard {
-                    row_one: [
-                        TileStatus::Nought(Cursor::True),
-                        game_board.row_one[1],
-                        game_board.row_one[2],
-                    ],
-                    ..game_board
-                }),
-            },
+            TileStatus::Cursor => Option::Some(GameBoard {
+                row_one: [
+                    game_board.row_one[0].place_player(current_player),
+                    game_board.row_one[1],
+                    game_board.row_one[2],
+                ],
+                ..game_board
+            }),
             _ => Option::None,
         }
-    } else if is_cursor(game_board.row_one[1]) {
+    } else if game_board.row_one[1].is_cursor() {
         match game_board.row_one[1] {
-            TileStatus::Cursor => match current_player {
-                Players::Cross => Option::Some(GameBoard {
-                    row_one: [
-                        game_board.row_one[0],
-                        TileStatus::Cross(Cursor::True),
-                        game_board.row_one[2],
-                    ],
-                    ..game_board
-                }),
-                Players::Nought => Option::Some(GameBoard {
-                    row_one: [
-                        game_board.row_one[0],
-                        TileStatus::Nought(Cursor::True),
-                        game_board.row_one[2],
-                    ],
-                    ..game_board
-                }),
-            },
+            TileStatus::Cursor => Option::Some(GameBoard {
+                row_one: [
+                    game_board.row_one[0],
+                    game_board.row_one[1].place_player(current_player),
+                    game_board.row_one[2],
+                ],
+                ..game_board
+            }),
             _ => Option::None,
         }
-    } else if is_cursor(game_board.row_one[2]) {
+    } else if game_board.row_one[2].is_cursor() {
         match game_board.row_one[2] {
-            TileStatus::Cursor => match current_player {
-                Players::Cross => Option::Some(GameBoard {
-                    row_one: [
-                        game_board.row_one[0],
-                        game_board.row_one[1],
-                        TileStatus::Cross(Cursor::True),
-                    ],
-                    ..game_board
-                }),
-                Players::Nought => Option::Some(GameBoard {
-                    row_one: [
-                        game_board.row_one[0],
-                        game_board.row_one[1],
-                        TileStatus::Nought(Cursor::True),
-                    ],
-                    ..game_board
-                }),
-            },
+            TileStatus::Cursor => Option::Some(GameBoard {
+                row_one: [
+                    game_board.row_one[0],
+                    game_board.row_one[1],
+                    game_board.row_one[2].place_player(current_player),
+                ],
+                ..game_board
+            }),
             _ => Option::None,
         }
-    } else if is_cursor(game_board.row_two[0]) {
+    } else if game_board.row_two[0].is_cursor() {
         match game_board.row_two[0] {
-            TileStatus::Cursor => match current_player {
-                Players::Cross => Option::Some(GameBoard {
-                    row_two: [
-                        TileStatus::Cross(Cursor::True),
-                        game_board.row_two[1],
-                        game_board.row_two[2],
-                    ],
-                    ..game_board
-                }),
-                Players::Nought => Option::Some(GameBoard {
-                    row_two: [
-                        TileStatus::Nought(Cursor::True),
-                        game_board.row_two[1],
-                        game_board.row_two[2],
-                    ],
-                    ..game_board
-                }),
-            },
+            TileStatus::Cursor => Option::Some(GameBoard {
+                row_two: [
+                    game_board.row_two[0].place_player(current_player),
+                    game_board.row_two[1],
+                    game_board.row_two[2],
+                ],
+                ..game_board
+            }),
             _ => Option::None,
         }
-    } else if is_cursor(game_board.row_two[1]) {
+    } else if game_board.row_two[1].is_cursor() {
         match game_board.row_two[1] {
-            TileStatus::Cursor => match current_player {
-                Players::Cross => Option::Some(GameBoard {
-                    row_two: [
-                        game_board.row_two[0],
-                        TileStatus::Cross(Cursor::True),
-                        game_board.row_two[2],
-                    ],
-                    ..game_board
-                }),
-                Players::Nought => Option::Some(GameBoard {
-                    row_two: [
-                        game_board.row_two[0],
-                        TileStatus::Nought(Cursor::True),
-                        game_board.row_two[2],
-                    ],
-                    ..game_board
-                }),
-            },
+            TileStatus::Cursor => Option::Some(GameBoard {
+                row_two: [
+                    game_board.row_two[0],
+                    game_board.row_two[1].place_player(current_player),
+                    game_board.row_two[2],
+                ],
+                ..game_board
+            }),
             _ => Option::None,
         }
-    } else if is_cursor(game_board.row_two[2]) {
+    } else if game_board.row_two[2].is_cursor() {
         match game_board.row_two[2] {
-            TileStatus::Cursor => match current_player {
-                Players::Cross => Option::Some(GameBoard {
-                    row_two: [
-                        game_board.row_two[0],
-                        game_board.row_two[1],
-                        TileStatus::Cross(Cursor::True),
-                    ],
-                    ..game_board
-                }),
-                Players::Nought => Option::Some(GameBoard {
-                    row_two: [
-                        game_board.row_two[0],
-                        game_board.row_two[1],
-                        TileStatus::Nought(Cursor::True),
-                    ],
-                    ..game_board
-                }),
-            },
+            TileStatus::Cursor => Option::Some(GameBoard {
+                row_two: [
+                    game_board.row_two[0],
+                    game_board.row_two[1],
+                    game_board.row_two[2].place_player(current_player),
+                ],
+                ..game_board
+            }),
             _ => Option::None,
         }
-    } else if is_cursor(game_board.row_three[0]) {
+    } else if game_board.row_three[0].is_cursor() {
         match game_board.row_three[0] {
-            TileStatus::Cursor => match current_player {
-                Players::Cross => Option::Some(GameBoard {
-                    row_three: [
-                        TileStatus::Cross(Cursor::True),
-                        game_board.row_three[1],
-                        game_board.row_three[2],
-                    ],
-                    ..game_board
-                }),
-                Players::Nought => Option::Some(GameBoard {
-                    row_three: [
-                        TileStatus::Nought(Cursor::True),
-                        game_board.row_three[1],
-                        game_board.row_three[2],
-                    ],
-                    ..game_board
-                }),
-            },
+            TileStatus::Cursor => Option::Some(GameBoard {
+                row_three: [
+                    game_board.row_three[0].place_player(current_player),
+                    game_board.row_three[1],
+                    game_board.row_three[2],
+                ],
+                ..game_board
+            }),
             _ => Option::None,
         }
-    } else if is_cursor(game_board.row_three[1]) {
+    } else if game_board.row_three[1].is_cursor() {
         match game_board.row_three[1] {
-            TileStatus::Cursor => match current_player {
-                Players::Cross => Option::Some(GameBoard {
-                    row_three: [
-                        game_board.row_three[0],
-                        TileStatus::Cross(Cursor::True),
-                        game_board.row_three[2],
-                    ],
-                    ..game_board
-                }),
-                Players::Nought => Option::Some(GameBoard {
-                    row_three: [
-                        game_board.row_three[0],
-                        TileStatus::Nought(Cursor::True),
-                        game_board.row_three[2],
-                    ],
-                    ..game_board
-                }),
-            },
+            TileStatus::Cursor => Option::Some(GameBoard {
+                row_three: [
+                    game_board.row_three[0],
+                    game_board.row_three[1].place_player(current_player),
+                    game_board.row_three[2],
+                ],
+                ..game_board
+            }),
             _ => Option::None,
         }
-    } else if is_cursor(game_board.row_three[2]) {
+    } else if game_board.row_three[2].is_cursor() {
         match game_board.row_three[2] {
-            TileStatus::Cursor => match current_player {
-                Players::Cross => Option::Some(GameBoard {
-                    row_three: [
-                        game_board.row_three[0],
-                        game_board.row_three[1],
-                        TileStatus::Cross(Cursor::True),
-                    ],
-                    ..game_board
-                }),
-                Players::Nought => Option::Some(GameBoard {
-                    row_three: [
-                        game_board.row_three[0],
-                        game_board.row_three[1],
-                        TileStatus::Nought(Cursor::True),
-                    ],
-                    ..game_board
-                }),
-            },
+            TileStatus::Cursor => Option::Some(GameBoard {
+                row_three: [
+                    game_board.row_three[0],
+                    game_board.row_three[1],
+                    game_board.row_three[2].place_player(current_player),
+                ],
+                ..game_board
+            }),
             _ => Option::None,
         }
     } else {
@@ -277,17 +184,19 @@ fn place_player(game_board: GameBoard, current_player: Players) -> Option<GameBo
     }
 }
 
-fn is_cursor(tile: TileStatus) -> bool {
-    match tile {
-        TileStatus::Cursor => true,
-        TileStatus::Nought(cursor) => match cursor {
-            Cursor::True => true,
-            Cursor::None => false,
-        },
-        TileStatus::Cross(cursor) => match cursor {
-            Cursor::True => true,
-            Cursor::None => false,
-        },
-        TileStatus::None => false,
+impl TileStatus {
+    fn is_cursor(self) -> bool {
+        match self {
+            TileStatus::Cursor => true,
+            TileStatus::Nought(cursor) => match cursor {
+                Cursor::True => true,
+                Cursor::None => false,
+            },
+            TileStatus::Cross(cursor) => match cursor {
+                Cursor::True => true,
+                Cursor::None => false,
+            },
+            TileStatus::None => false,
+        }
     }
 }
