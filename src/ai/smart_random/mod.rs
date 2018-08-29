@@ -1,6 +1,6 @@
 mod process_rating_board;
 pub mod random;
-use self::process_rating_board::process_rating_board;
+
 use ai::no_player;
 use ai::place_player;
 use has_someone_won;
@@ -22,7 +22,7 @@ pub fn smart_random_placement(game_board: GameBoard, player_to_place: Players) -
     if IS_DEBUG {
         println!("This is the rating baord{:#?}", rating_board);
     };
-    process_rating_board(game_board, rating_board, player_to_place)
+    game_board.process_rating_board(rating_board, player_to_place)
 }
 
 fn full_mean_rating(game_board: GameBoard, player_to_place: Players) -> RatingBoard {
