@@ -1,6 +1,5 @@
 use ai::no_player;
 use ai::process_ai;
-use draw::draw_game_board;
 use movement::process_movement;
 use won::has_someone_won;
 mod ai;
@@ -79,8 +78,7 @@ fn main() {
 
     println!("Crosses goes first.");
     println!("The board looks like this.");
-    draw_game_board(game_board, &game_mode);
-
+    game_board.draw_game_board(&game_mode);
     loop {
         let movement_return = match game_mode {
             GameMode::Spectate => MovementReturn {
@@ -115,12 +113,12 @@ fn main() {
                             println!("Crosses won");
                         }
                     }
-                    draw_game_board(game_board, &game_mode);
+                    game_board.draw_game_board(&game_mode);
                     break;
                 }
                 Winner::Nought => {
                     println!("Noughts won");
-                    draw_game_board(game_board, &game_mode);
+                    game_board.draw_game_board(&game_mode);
                     break;
                 }
                 Winner::None => {
@@ -129,7 +127,7 @@ fn main() {
                     };
                     if is_board_full(game_board) {
                         println!("It is a tie!");
-                        draw_game_board(game_board, &game_mode);
+                        game_board.draw_game_board(&game_mode);
                         break;
                     };
                 }
@@ -149,12 +147,12 @@ fn main() {
                     match has_someone_won(game_board) {
                         Winner::Cross => {
                             println!("Crosses won");
-                            draw_game_board(game_board, &game_mode);
+                            game_board.draw_game_board(&game_mode);
                             break;
                         }
                         Winner::Nought => {
                             println!("Noughts won");
-                            draw_game_board(game_board, &game_mode);
+                            game_board.draw_game_board(&game_mode);
                             break;
                         }
                         Winner::None => {
@@ -163,7 +161,7 @@ fn main() {
                             };
                             if is_board_full(game_board) {
                                 println!("It is a tie!");
-                                draw_game_board(game_board, &game_mode);
+                                game_board.draw_game_board(&game_mode);
                                 break;
                             };
                         }
@@ -171,7 +169,7 @@ fn main() {
                 }
             };
         };
-        draw_game_board(game_board, &game_mode);
+        game_board.draw_game_board(&game_mode);
         continue;
     }
 }
