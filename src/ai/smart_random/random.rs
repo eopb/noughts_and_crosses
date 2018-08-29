@@ -2,7 +2,6 @@ use GameBoard;
 use Players;
 extern crate rand;
 use self::rand::Rng;
-use ai::place_player;
 
 use IS_DEBUG;
 
@@ -16,7 +15,7 @@ impl GameBoard {
             if self.row_one[0].no_player() && (random_tile == 1) {
                 return Option::Some(GameBoard {
                     row_one: [
-                        place_player(self.row_one[0], player_to_place),
+                        self.row_one[0].place_player(player_to_place),
                         self.row_one[1],
                         self.row_one[2],
                     ],
@@ -27,7 +26,7 @@ impl GameBoard {
                 return Option::Some(GameBoard {
                     row_one: [
                         self.row_one[0],
-                        place_player(self.row_one[1], player_to_place),
+                        self.row_one[1].place_player(player_to_place),
                         self.row_one[2],
                     ],
                     ..self
@@ -38,7 +37,7 @@ impl GameBoard {
                     row_one: [
                         self.row_one[0],
                         self.row_one[1],
-                        place_player(self.row_one[2], player_to_place),
+                        self.row_one[2].place_player(player_to_place),
                     ],
                     ..self
                 });
@@ -46,7 +45,7 @@ impl GameBoard {
             if self.row_two[0].no_player() && (random_tile == 4) {
                 return Option::Some(GameBoard {
                     row_two: [
-                        place_player(self.row_two[0], player_to_place),
+                        self.row_two[0].place_player(player_to_place),
                         self.row_two[1],
                         self.row_two[2],
                     ],
@@ -57,7 +56,7 @@ impl GameBoard {
                 return Option::Some(GameBoard {
                     row_two: [
                         self.row_two[0],
-                        place_player(self.row_two[1], player_to_place),
+                        self.row_two[1].place_player(player_to_place),
                         self.row_two[2],
                     ],
                     ..self
@@ -68,7 +67,7 @@ impl GameBoard {
                     row_two: [
                         self.row_two[0],
                         self.row_two[1],
-                        place_player(self.row_two[2], player_to_place),
+                        self.row_two[2].place_player(player_to_place),
                     ],
                     ..self
                 });
@@ -76,7 +75,7 @@ impl GameBoard {
             if self.row_three[0].no_player() && (random_tile == 7) {
                 return Option::Some(GameBoard {
                     row_three: [
-                        place_player(self.row_three[0], player_to_place),
+                        self.row_three[0].place_player(player_to_place),
                         self.row_three[1],
                         self.row_three[2],
                     ],
@@ -87,7 +86,7 @@ impl GameBoard {
                 return Option::Some(GameBoard {
                     row_three: [
                         self.row_three[0],
-                        place_player(self.row_three[1], player_to_place),
+                        self.row_three[1].place_player(player_to_place),
                         self.row_three[2],
                     ],
                     ..self
@@ -98,7 +97,7 @@ impl GameBoard {
                     row_three: [
                         self.row_three[0],
                         self.row_three[1],
-                        place_player(self.row_three[2], player_to_place),
+                        self.row_three[2].place_player(player_to_place),
                     ],
                     ..self
                 });

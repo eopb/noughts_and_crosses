@@ -1,4 +1,3 @@
-use ai::place_player;
 use ai::smart_random::RatingBoard;
 use switch_player;
 use GameBoard;
@@ -13,7 +12,7 @@ pub fn full_mean_rating(game_board: GameBoard, player_to_place: Players) -> Rati
                 Option::Some(
                     GameBoard {
                         row_one: [
-                            place_player(game_board.row_one[0], player_to_place),
+                            game_board.row_one[0].place_player(player_to_place),
                             game_board.row_one[1],
                             game_board.row_one[2],
                         ],
@@ -28,7 +27,7 @@ pub fn full_mean_rating(game_board: GameBoard, player_to_place: Players) -> Rati
                     GameBoard {
                         row_one: [
                             game_board.row_one[0],
-                            place_player(game_board.row_one[1], player_to_place),
+                            game_board.row_one[1].place_player(player_to_place),
                             game_board.row_one[2],
                         ],
                         ..game_board
@@ -43,7 +42,7 @@ pub fn full_mean_rating(game_board: GameBoard, player_to_place: Players) -> Rati
                         row_one: [
                             game_board.row_one[0],
                             game_board.row_one[1],
-                            place_player(game_board.row_one[2], player_to_place),
+                            game_board.row_one[2].place_player(player_to_place),
                         ],
                         ..game_board
                     }.rate_tile(player_to_place),
@@ -57,7 +56,7 @@ pub fn full_mean_rating(game_board: GameBoard, player_to_place: Players) -> Rati
                 Option::Some(
                     GameBoard {
                         row_two: [
-                            place_player(game_board.row_two[0], player_to_place),
+                            game_board.row_two[0].place_player(player_to_place),
                             game_board.row_two[1],
                             game_board.row_two[2],
                         ],
@@ -72,7 +71,7 @@ pub fn full_mean_rating(game_board: GameBoard, player_to_place: Players) -> Rati
                     GameBoard {
                         row_two: [
                             game_board.row_two[0],
-                            place_player(game_board.row_two[1], player_to_place),
+                            game_board.row_two[1].place_player(player_to_place),
                             game_board.row_two[2],
                         ],
                         ..game_board
@@ -87,7 +86,7 @@ pub fn full_mean_rating(game_board: GameBoard, player_to_place: Players) -> Rati
                         row_two: [
                             game_board.row_two[0],
                             game_board.row_two[1],
-                            place_player(game_board.row_two[2], player_to_place),
+                            game_board.row_two[2].place_player(player_to_place),
                         ],
                         ..game_board
                     }.rate_tile(player_to_place),
@@ -101,7 +100,7 @@ pub fn full_mean_rating(game_board: GameBoard, player_to_place: Players) -> Rati
                 Option::Some(
                     GameBoard {
                         row_three: [
-                            place_player(game_board.row_three[0], player_to_place),
+                            game_board.row_three[0].place_player(player_to_place),
                             game_board.row_three[1],
                             game_board.row_three[2],
                         ],
@@ -116,7 +115,7 @@ pub fn full_mean_rating(game_board: GameBoard, player_to_place: Players) -> Rati
                     GameBoard {
                         row_three: [
                             game_board.row_three[0],
-                            place_player(game_board.row_three[1], player_to_place),
+                            game_board.row_three[1].place_player(player_to_place),
                             game_board.row_three[2],
                         ],
                         ..game_board
@@ -131,7 +130,7 @@ pub fn full_mean_rating(game_board: GameBoard, player_to_place: Players) -> Rati
                         row_three: [
                             game_board.row_three[0],
                             game_board.row_three[1],
-                            place_player(game_board.row_three[2], player_to_place),
+                            game_board.row_three[2].place_player(player_to_place),
                         ],
                         ..game_board
                     }.rate_tile(player_to_place),

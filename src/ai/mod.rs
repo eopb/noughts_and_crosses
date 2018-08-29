@@ -1,9 +1,8 @@
 mod smart_random;
 use AiMode;
-use Cursor;
+
 use GameBoard;
 use Players;
-use TileStatus;
 
 pub fn process_ai(game_board: GameBoard, ai_mode: AiMode, player_to_place: Players) -> GameBoard {
     println!("Thinking");
@@ -20,22 +19,5 @@ pub fn process_ai(game_board: GameBoard, ai_mode: AiMode, player_to_place: Playe
             println!("This really should not be happening");
             panic!();
         }
-    }
-}
-
-pub fn place_player(tile: TileStatus, player_to_place: Players) -> TileStatus {
-    match tile {
-        TileStatus::Nought(_cursor) | TileStatus::Cross(_cursor) => {
-            println!("Error can't place player. Going to painc");
-            panic!();
-        }
-        TileStatus::Cursor => match player_to_place {
-            Players::Cross => TileStatus::Cross(Cursor::True),
-            Players::Nought => TileStatus::Nought(Cursor::True),
-        },
-        TileStatus::None => match player_to_place {
-            Players::Cross => TileStatus::Cross(Cursor::None),
-            Players::Nought => TileStatus::Nought(Cursor::None),
-        },
     }
 }

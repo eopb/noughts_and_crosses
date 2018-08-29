@@ -4,6 +4,7 @@ mod ai;
 mod draw;
 mod movement;
 pub mod tests;
+mod tools;
 use std::io;
 const IS_DEBUG: bool = false;
 #[derive(Copy, Clone, Debug)]
