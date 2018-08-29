@@ -1,5 +1,4 @@
 mod move_cursor;
-use self::move_cursor::move_cursor;
 use std::io;
 use Cursor;
 use GameBoard;
@@ -29,7 +28,7 @@ pub fn process_movement(game_board: GameBoard, current_player: Players) -> Movem
             placed: false,
         },
         _ => MovementReturn {
-            game_board: move_cursor(game_board, input),
+            game_board: game_board.move_cursor(input),
             placed: false,
         },
     }
