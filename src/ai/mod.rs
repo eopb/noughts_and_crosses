@@ -37,7 +37,7 @@ pub fn no_player(tile: TileStatus) -> bool {
 pub fn place_player(tile: TileStatus, player_to_place: Players) -> TileStatus {
     match tile {
         TileStatus::Nought(_cursor) | TileStatus::Cross(_cursor) => {
-            println!("Error going to painc");
+            println!("Error can't place player. Going to painc");
             panic!();
         }
         TileStatus::Cursor => match player_to_place {
