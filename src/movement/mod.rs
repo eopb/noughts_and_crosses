@@ -70,10 +70,6 @@ fn fetch_input() -> Movement {
     }
 }
 
-// TODO use palce player to add payers. (soloves (cyclomatic_complexity))
-
-#[allow(unknown_lints)]
-#[allow(cyclomatic_complexity)]
 fn place_player(game_board: GameBoard, current_player: Players) -> Option<GameBoard> {
     if game_board.row_one[0].is_cursor() {
         match game_board.row_one[0] {
