@@ -7,106 +7,108 @@ use ai::place_player;
 use is_board_full;
 use IS_DEBUG;
 
-pub fn random_placement(game_board: GameBoard, player_to_place: Players) -> Option<GameBoard> {
-    loop {
-        let random_tile = rand::thread_rng().gen_range(1, 10);
-        if IS_DEBUG {
-            println!("Trying {}", random_tile);
-        };
-        if no_player(game_board.row_one[0]) && (random_tile == 1) {
-            return Option::Some(GameBoard {
-                row_one: [
-                    place_player(game_board.row_one[0], player_to_place),
-                    game_board.row_one[1],
-                    game_board.row_one[2],
-                ],
-                ..game_board
-            });
+impl GameBoard {
+    pub fn random_placement(self, player_to_place: Players) -> Option<GameBoard> {
+        loop {
+            let random_tile = rand::thread_rng().gen_range(1, 10);
+            if IS_DEBUG {
+                println!("Trying {}", random_tile);
+            };
+            if no_player(self.row_one[0]) && (random_tile == 1) {
+                return Option::Some(GameBoard {
+                    row_one: [
+                        place_player(self.row_one[0], player_to_place),
+                        self.row_one[1],
+                        self.row_one[2],
+                    ],
+                    ..self
+                });
+            }
+            if no_player(self.row_one[1]) && (random_tile == 2) {
+                return Option::Some(GameBoard {
+                    row_one: [
+                        self.row_one[0],
+                        place_player(self.row_one[1], player_to_place),
+                        self.row_one[2],
+                    ],
+                    ..self
+                });
+            }
+            if no_player(self.row_one[2]) && (random_tile == 3) {
+                return Option::Some(GameBoard {
+                    row_one: [
+                        self.row_one[0],
+                        self.row_one[1],
+                        place_player(self.row_one[2], player_to_place),
+                    ],
+                    ..self
+                });
+            }
+            if no_player(self.row_two[0]) && (random_tile == 4) {
+                return Option::Some(GameBoard {
+                    row_two: [
+                        place_player(self.row_two[0], player_to_place),
+                        self.row_two[1],
+                        self.row_two[2],
+                    ],
+                    ..self
+                });
+            }
+            if no_player(self.row_two[1]) && (random_tile == 5) {
+                return Option::Some(GameBoard {
+                    row_two: [
+                        self.row_two[0],
+                        place_player(self.row_two[1], player_to_place),
+                        self.row_two[2],
+                    ],
+                    ..self
+                });
+            }
+            if no_player(self.row_two[2]) && (random_tile == 6) {
+                return Option::Some(GameBoard {
+                    row_two: [
+                        self.row_two[0],
+                        self.row_two[1],
+                        place_player(self.row_two[2], player_to_place),
+                    ],
+                    ..self
+                });
+            }
+            if no_player(self.row_three[0]) && (random_tile == 7) {
+                return Option::Some(GameBoard {
+                    row_three: [
+                        place_player(self.row_three[0], player_to_place),
+                        self.row_three[1],
+                        self.row_three[2],
+                    ],
+                    ..self
+                });
+            }
+            if no_player(self.row_three[1]) && (random_tile == 8) {
+                return Option::Some(GameBoard {
+                    row_three: [
+                        self.row_three[0],
+                        place_player(self.row_three[1], player_to_place),
+                        self.row_three[2],
+                    ],
+                    ..self
+                });
+            }
+            if no_player(self.row_three[2]) && (random_tile == 9) {
+                return Option::Some(GameBoard {
+                    row_three: [
+                        self.row_three[0],
+                        self.row_three[1],
+                        place_player(self.row_three[2], player_to_place),
+                    ],
+                    ..self
+                });
+            }
+            if is_board_full(self) {
+                return Option::None;
+            } else {
+                continue;
+            };
         }
-        if no_player(game_board.row_one[1]) && (random_tile == 2) {
-            return Option::Some(GameBoard {
-                row_one: [
-                    game_board.row_one[0],
-                    place_player(game_board.row_one[1], player_to_place),
-                    game_board.row_one[2],
-                ],
-                ..game_board
-            });
-        }
-        if no_player(game_board.row_one[2]) && (random_tile == 3) {
-            return Option::Some(GameBoard {
-                row_one: [
-                    game_board.row_one[0],
-                    game_board.row_one[1],
-                    place_player(game_board.row_one[2], player_to_place),
-                ],
-                ..game_board
-            });
-        }
-        if no_player(game_board.row_two[0]) && (random_tile == 4) {
-            return Option::Some(GameBoard {
-                row_two: [
-                    place_player(game_board.row_two[0], player_to_place),
-                    game_board.row_two[1],
-                    game_board.row_two[2],
-                ],
-                ..game_board
-            });
-        }
-        if no_player(game_board.row_two[1]) && (random_tile == 5) {
-            return Option::Some(GameBoard {
-                row_two: [
-                    game_board.row_two[0],
-                    place_player(game_board.row_two[1], player_to_place),
-                    game_board.row_two[2],
-                ],
-                ..game_board
-            });
-        }
-        if no_player(game_board.row_two[2]) && (random_tile == 6) {
-            return Option::Some(GameBoard {
-                row_two: [
-                    game_board.row_two[0],
-                    game_board.row_two[1],
-                    place_player(game_board.row_two[2], player_to_place),
-                ],
-                ..game_board
-            });
-        }
-        if no_player(game_board.row_three[0]) && (random_tile == 7) {
-            return Option::Some(GameBoard {
-                row_three: [
-                    place_player(game_board.row_three[0], player_to_place),
-                    game_board.row_three[1],
-                    game_board.row_three[2],
-                ],
-                ..game_board
-            });
-        }
-        if no_player(game_board.row_three[1]) && (random_tile == 8) {
-            return Option::Some(GameBoard {
-                row_three: [
-                    game_board.row_three[0],
-                    place_player(game_board.row_three[1], player_to_place),
-                    game_board.row_three[2],
-                ],
-                ..game_board
-            });
-        }
-        if no_player(game_board.row_three[2]) && (random_tile == 9) {
-            return Option::Some(GameBoard {
-                row_three: [
-                    game_board.row_three[0],
-                    game_board.row_three[1],
-                    place_player(game_board.row_three[2], player_to_place),
-                ],
-                ..game_board
-            });
-        }
-        if is_board_full(game_board) {
-            return Option::None;
-        } else {
-            continue;
-        };
     }
 }

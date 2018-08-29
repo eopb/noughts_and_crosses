@@ -1,5 +1,4 @@
 pub mod random;
-use self::random::random_placement;
 use ai::no_player;
 use ai::place_player;
 use has_someone_won;
@@ -235,7 +234,7 @@ fn rate_board(game_board: GameBoard, player_to_place: Players) -> f64 {
                 },
             };
 
-            testing_game_board = match random_placement(testing_game_board, next_player_to_place) {
+            testing_game_board = match testing_game_board.random_placement(next_player_to_place) {
                 Option::Some(testing_game_board) => testing_game_board,
                 Option::None => {
                     if IS_DEBUG {
