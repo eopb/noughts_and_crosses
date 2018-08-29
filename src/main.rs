@@ -1,12 +1,10 @@
-use ai::no_player;
 use ai::process_ai;
-use draw::draw_game_board;
 use movement::process_movement;
-use won::has_someone_won;
 mod ai;
 mod draw;
 mod movement;
-mod won;
+pub mod tests;
+mod tools;
 use std::io;
 const IS_DEBUG: bool = false;
 #[derive(Copy, Clone, Debug)]
@@ -79,8 +77,7 @@ fn main() {
 
     println!("Crosses goes first.");
     println!("The board looks like this.");
-    draw_game_board(game_board, &game_mode);
-
+    game_board.draw_game_board(&game_mode);
     loop {
         let movement_return = match game_mode {
             GameMode::Spectate => MovementReturn {
@@ -105,7 +102,7 @@ fn main() {
         };
 
         if movement_return.placed {
-            match has_someone_won(game_board) {
+            match game_board.has_someone_won() {
                 Winner::Cross => {
                     match game_mode {
                         GameMode::SinglePlayer => {
@@ -115,21 +112,21 @@ fn main() {
                             println!("Crosses won");
                         }
                     }
-                    draw_game_board(game_board, &game_mode);
+                    game_board.draw_game_board(&game_mode);
                     break;
                 }
                 Winner::Nought => {
                     println!("Noughts won");
-                    draw_game_board(game_board, &game_mode);
+                    game_board.draw_game_board(&game_mode);
                     break;
                 }
                 Winner::None => {
                     if IS_DEBUG {
                         println!("No one has won");
                     };
-                    if is_board_full(game_board) {
+                    if game_board.is_board_full() {
                         println!("It is a tie!");
-                        draw_game_board(game_board, &game_mode);
+                        game_board.draw_game_board(&game_mode);
                         break;
                     };
                 }
@@ -146,24 +143,24 @@ fn main() {
                     };
                     game_board = process_ai(game_board, ai_mode, current_player);
                     current_player = switch_player(current_player);
-                    match has_someone_won(game_board) {
+                    match game_board.has_someone_won() {
                         Winner::Cross => {
                             println!("Crosses won");
-                            draw_game_board(game_board, &game_mode);
+                            game_board.draw_game_board(&game_mode);
                             break;
                         }
                         Winner::Nought => {
                             println!("Noughts won");
-                            draw_game_board(game_board, &game_mode);
+                            game_board.draw_game_board(&game_mode);
                             break;
                         }
                         Winner::None => {
                             if IS_DEBUG {
                                 println!("No one has won");
                             };
-                            if is_board_full(game_board) {
+                            if game_board.is_board_full() {
                                 println!("It is a tie!");
-                                draw_game_board(game_board, &game_mode);
+                                game_board.draw_game_board(&game_mode);
                                 break;
                             };
                         }
@@ -171,7 +168,7 @@ fn main() {
                 }
             };
         };
-        draw_game_board(game_board, &game_mode);
+        game_board.draw_game_board(&game_mode);
         continue;
     }
 }
@@ -265,16 +262,4 @@ fn print_instructions() {
     println!("To move the star up type 8 and hit enter");
     println!("To move the star down type 2 and hit enter");
     println!("To place your cross type 5 and hit enter");
-}
-
-fn is_board_full(game_board: GameBoard) -> bool {
-    !(no_player(game_board.row_one[0]))
-        && !(no_player(game_board.row_one[1]))
-        && !(no_player(game_board.row_one[2]))
-        && !(no_player(game_board.row_two[0]))
-        && !(no_player(game_board.row_two[1]))
-        && !(no_player(game_board.row_two[2]))
-        && !(no_player(game_board.row_three[0]))
-        && !(no_player(game_board.row_three[1]))
-        && !(no_player(game_board.row_three[2]))
 }
