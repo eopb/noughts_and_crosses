@@ -17,12 +17,14 @@ pub struct RatingBoard {
     row_three: [Option<f64>; 3],
 }
 
-pub fn smart_random_placement(game_board: GameBoard, player_to_place: Players) -> GameBoard {
-    let rating_board = full_mean_rating(game_board, player_to_place);
-    if IS_DEBUG {
-        println!("This is the rating baord{:#?}", rating_board);
-    };
-    game_board.process_rating_board(rating_board, player_to_place)
+impl GameBoard {
+    pub fn smart_random_placement(self, player_to_place: Players) -> GameBoard {
+        let rating_board = full_mean_rating(self, player_to_place);
+        if IS_DEBUG {
+            println!("This is the rating baord{:#?}", rating_board);
+        };
+        self.process_rating_board(rating_board, player_to_place)
+    }
 }
 
 fn full_mean_rating(game_board: GameBoard, player_to_place: Players) -> RatingBoard {

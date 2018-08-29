@@ -1,5 +1,4 @@
 mod smart_random;
-use self::smart_random::smart_random_placement;
 use AiMode;
 use Cursor;
 use GameBoard;
@@ -16,7 +15,7 @@ pub fn process_ai(game_board: GameBoard, ai_mode: AiMode, player_to_place: Playe
                 panic!();
             }
         },
-        AiMode::SmartRandom => smart_random_placement(game_board, player_to_place),
+        AiMode::SmartRandom => game_board.smart_random_placement(player_to_place),
         AiMode::None => {
             println!("This really should not be happening");
             panic!();
