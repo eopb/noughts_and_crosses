@@ -1,4 +1,3 @@
-use movement::is_cursor;
 use movement::Movement;
 use Cursor;
 use GameBoard;
@@ -6,7 +5,7 @@ use TileStatus;
 
 impl GameBoard {
     pub fn move_cursor(self, inputed_movement: Movement) -> Option<GameBoard> {
-        if is_cursor(self.row_one[0]) {
+        if self.row_one[0].is_cursor() {
             match inputed_movement {
                 Movement::Right => Option::Some(GameBoard {
                     row_one: [
@@ -34,7 +33,7 @@ impl GameBoard {
                     Option::None
                 }
             }
-        } else if is_cursor(self.row_one[1]) {
+        } else if self.row_one[1].is_cursor() {
             match inputed_movement {
                 Movement::Right => Option::Some(GameBoard {
                     row_one: [
@@ -70,7 +69,7 @@ impl GameBoard {
                     Option::None
                 }
             }
-        } else if is_cursor(self.row_one[2]) {
+        } else if self.row_one[2].is_cursor() {
             match inputed_movement {
                 Movement::Left => Option::Some(GameBoard {
                     row_one: [
@@ -98,7 +97,7 @@ impl GameBoard {
                     Option::None
                 }
             }
-        } else if is_cursor(self.row_two[0]) {
+        } else if self.row_two[0].is_cursor() {
             match inputed_movement {
                 Movement::Right => Option::Some(GameBoard {
                     row_two: [
@@ -139,7 +138,7 @@ impl GameBoard {
                     Option::None
                 }
             }
-        } else if is_cursor(self.row_two[1]) {
+        } else if self.row_two[1].is_cursor() {
             match inputed_movement {
                 Movement::Right => Option::Some(GameBoard {
                     row_two: [
@@ -188,7 +187,7 @@ impl GameBoard {
                     Option::None
                 }
             }
-        } else if is_cursor(self.row_two[2]) {
+        } else if self.row_two[2].is_cursor() {
             match inputed_movement {
                 Movement::Left => Option::Some(GameBoard {
                     row_two: [
@@ -229,7 +228,7 @@ impl GameBoard {
                     Option::None
                 }
             }
-        } else if is_cursor(self.row_three[0]) {
+        } else if self.row_three[0].is_cursor() {
             match inputed_movement {
                 Movement::Right => Option::Some(GameBoard {
                     row_three: [
@@ -257,7 +256,7 @@ impl GameBoard {
                     Option::None
                 }
             }
-        } else if is_cursor(self.row_three[1]) {
+        } else if self.row_three[1].is_cursor() {
             match inputed_movement {
                 Movement::Right => Option::Some(GameBoard {
                     row_three: [
@@ -293,7 +292,7 @@ impl GameBoard {
                     Option::None
                 }
             }
-        } else if is_cursor(self.row_three[2]) {
+        } else if self.row_three[2].is_cursor() {
             match inputed_movement {
                 Movement::Left => Option::Some(GameBoard {
                     row_three: [
