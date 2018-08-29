@@ -20,7 +20,7 @@ pub fn process_movement(game_board: GameBoard, current_player: Players) -> Movem
     let input = fetch_input();
     match input {
         Movement::Place => MovementReturn {
-            game_board: place_player(game_board, current_player),
+            game_board: place_player_on_cursor(game_board, current_player),
             placed: true,
         },
         Movement::None => MovementReturn {
@@ -70,7 +70,7 @@ fn fetch_input() -> Movement {
     }
 }
 
-fn place_player(game_board: GameBoard, current_player: Players) -> Option<GameBoard> {
+fn place_player_on_cursor(game_board: GameBoard, current_player: Players) -> Option<GameBoard> {
     if game_board.row_one[0].is_cursor() {
         match game_board.row_one[0] {
             TileStatus::Cursor => Option::Some(GameBoard {
