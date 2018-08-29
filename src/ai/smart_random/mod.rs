@@ -1,12 +1,11 @@
 pub mod random;
 mod rating_board;
 use self::rating_board::full_mean_rating;
-
 use GameBoard;
 use Players;
-
 extern crate rand;
 use IS_DEBUG;
+
 #[derive(Copy, Clone, Debug)]
 pub struct RatingBoard {
     row_one: [Option<f64>; 3],
