@@ -171,6 +171,7 @@ fn main() {
         game_board.draw_game_board(&game_mode);
         continue;
     }
+    game_finished();
 }
 
 fn switch_player(current_player: Players) -> Players {
@@ -262,4 +263,12 @@ fn print_instructions() {
     println!("To move the star up type 8 and hit enter");
     println!("To move the star down type 2 and hit enter");
     println!("To place your cross type 5 and hit enter");
+}
+
+fn game_finished() {
+    let mut input = String::new();
+    println!("Press enter to close.");
+    io::stdin()
+        .read_line(&mut input)
+        .expect("Failed to read line");
 }
