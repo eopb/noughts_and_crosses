@@ -169,7 +169,7 @@ impl GameBoard {
                                 if IS_DEBUG {
                                     println!("f2");
                                 };
-                                scores.push((loop_count + 1) * 1_000_000);
+                                scores.push(loop_count + 1);
                             }
                             break;
                         }
@@ -177,7 +177,7 @@ impl GameBoard {
                             if IS_DEBUG {
                                 println!("f3");
                             };
-                            scores.push((4 * (100 / (loop_count + 1))) * 1_000_000);
+                            scores.push((10 * (10 / (loop_count + 1))) * 1_000_000);
                             break;
                         }
                     },
@@ -186,7 +186,7 @@ impl GameBoard {
                             if IS_DEBUG {
                                 println!("f4");
                             };
-                            scores.push((4 * (100 / (loop_count + 1))) * 1_000_000);
+                            scores.push((10 * (10 / (loop_count + 1))) * 1_000_000);
                             break;
                         }
                         Players::Nought => {
@@ -199,7 +199,7 @@ impl GameBoard {
                                 if IS_DEBUG {
                                     println!("f6");
                                 };
-                                scores.push((loop_count + 1) * 1_000_000);
+                                scores.push(loop_count + 1);
                             }
                             break;
                         }
