@@ -10,3 +10,4 @@ RustGame.
 [dependencies]
 
 rand = "0.5"
+ai-graph = { path = "../ai-graph" }

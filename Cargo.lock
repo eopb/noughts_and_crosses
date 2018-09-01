@@ -1,4 +1,8 @@
 [[package]]
+name = "ai-graph"
+version = "0.1.0"
+
+[[package]]
 name = "bitflags"
 version = "1.0.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -51,6 +55,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 name = "rust_game"
 version = "0.1.0"
 dependencies = [
+ "ai-graph 0.1.0",
  "rand 0.5.5 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
