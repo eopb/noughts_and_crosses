@@ -14,7 +14,6 @@ pub use noughtsAndCrossesLib::Players;
 pub use noughtsAndCrossesLib::TileStatus;
 pub use noughtsAndCrossesLib::Winner;
 pub use noughtsAndCrossesLib::IS_DEBUG;
-
 fn main() {
     println!("Welcome to my noughts and crosses game made in rust.");
     let mut ai_mode = AiMode::None;
@@ -27,11 +26,7 @@ fn main() {
     };
     print_instructions();
     let mut current_player = Players::Cross;
-    let mut game_board = GameBoard {
-        row_one: [TileStatus::Cursor, TileStatus::None, TileStatus::None],
-        row_two: [TileStatus::None, TileStatus::None, TileStatus::None],
-        row_three: [TileStatus::None, TileStatus::None, TileStatus::None],
-    };
+    let mut game_board = GameBoard::empty_board();
 
     println!("Crosses goes first.");
     println!("The board looks like this.");
