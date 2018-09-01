@@ -35,6 +35,13 @@ version = "0.2.43"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
+name = "noughtsAndCrossesLib"
+version = "0.1.0"
+dependencies = [
+ "rand 0.5.5 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[[package]]
 name = "rand"
 version = "0.5.5"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -56,7 +63,7 @@ name = "rust_game"
 version = "0.1.0"
 dependencies = [
  "ai-graph 0.1.0",
- "rand 0.5.5 (registry+https://github.com/rust-lang/crates.io-index)",
+ "noughtsAndCrossesLib 0.1.0",
 ]
 
 [[package]]

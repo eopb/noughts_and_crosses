@@ -1,62 +1,20 @@
-use ai::process_ai;
-use movement::process_movement;
-mod ai;
-mod draw;
-mod movement;
-pub mod tests;
-mod tools;
+use noughtsAndCrossesLib::ai::process_ai;
+use noughtsAndCrossesLib::movement::process_movement;
+
 use std::io;
-const IS_DEBUG: bool = false;
-#[derive(Copy, Clone, Debug)]
-pub struct GameBoard {
-    row_one: [TileStatus; 3],
-    row_two: [TileStatus; 3],
-    row_three: [TileStatus; 3],
-}
 
-#[derive(Copy, Clone, Debug)]
-pub enum TileStatus {
-    Nought(Cursor),
-    Cross(Cursor),
-    Cursor,
-    None,
-}
+extern crate noughtsAndCrossesLib;
+pub use noughtsAndCrossesLib::switch_player;
+pub use noughtsAndCrossesLib::AiMode;
+pub use noughtsAndCrossesLib::Cursor;
+pub use noughtsAndCrossesLib::GameBoard;
+pub use noughtsAndCrossesLib::GameMode;
+pub use noughtsAndCrossesLib::MovementReturn;
+pub use noughtsAndCrossesLib::Players;
+pub use noughtsAndCrossesLib::TileStatus;
+pub use noughtsAndCrossesLib::Winner;
+pub use noughtsAndCrossesLib::IS_DEBUG;
 
-#[derive(Copy, Clone, Debug)]
-pub enum Cursor {
-    True,
-    None,
-}
-
-#[derive(Copy, Clone)]
-pub enum Players {
-    Nought,
-    Cross,
-}
-
-pub enum Winner {
-    Nought,
-    Cross,
-    None,
-}
-
-pub enum GameMode {
-    TwoPlayer,
-    SinglePlayer,
-    Spectate,
-}
-
-#[derive(Copy, Clone)]
-pub enum AiMode {
-    Random,
-    SmartRandom,
-    None,
-}
-
-pub struct MovementReturn {
-    game_board: Option<GameBoard>,
-    placed: bool,
-}
 fn main() {
     println!("Welcome to my noughts and crosses game made in rust.");
     let mut ai_mode = AiMode::None;
@@ -172,23 +130,6 @@ fn main() {
         continue;
     }
     game_finished();
-}
-
-fn switch_player(current_player: Players) -> Players {
-    match current_player {
-        Players::Cross => {
-            if IS_DEBUG {
-                println!("Current player was switched to Nought");
-            };
-            Players::Nought
-        }
-        Players::Nought => {
-            if IS_DEBUG {
-                println!("Current player was switched to Cross");
-            };
-            Players::Cross
-        }
-    }
 }
 
 fn game_mode_choice() -> GameMode {

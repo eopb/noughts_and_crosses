@@ -9,6 +9,6 @@ RustGame.
 """
 [dependencies]
 
-rand = "0.5"
+
 ai-graph = { path = "../ai-graph" }
-noughts-and-crosses-lib = { path = "../noughts-and-crosses-lib" }
+noughtsAndCrossesLib = { path = "../noughts-and-crosses-lib" }
