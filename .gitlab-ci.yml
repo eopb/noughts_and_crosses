@@ -231,15 +231,15 @@ benchmarktests:
 #     refs:
 #       - master
 
-coverage:
-  stage: post-run
-  script:
-    - if cargo install --list | grep -i "cargo-tarpaulin"; then
-        echo "tarpaulin already installed";
-      else
-        RUSTFLAGS="--cfg procmacro2_semver_exempt" cargo install cargo-tarpaulin;
-      fi
-    - cargo tarpaulin --skip-clean --exclude headless
+# coverage:
+#   stage: post-run
+#   script:
+#     - if cargo install --list | grep -i "cargo-tarpaulin"; then
+#         echo "tarpaulin already installed";
+#       else
+#         RUSTFLAGS="--cfg procmacro2_semver_exempt" cargo install cargo-tarpaulin;
+#       fi
+#     - cargo tarpaulin --skip-clean --exclude headless
 
 clippy:
   stage: post-run
