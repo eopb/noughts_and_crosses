@@ -244,6 +244,6 @@ coverage:
 clippy:
   stage: post-run
   script:
-    - rustup component add clippy-preview --toolchain=nightly
+    - rustup component add clippy-preview
     - cargo clippy --all -- -D clippy
   allow_failure: true
