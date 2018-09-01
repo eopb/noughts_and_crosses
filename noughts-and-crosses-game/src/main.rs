@@ -14,6 +14,7 @@ pub use noughtsAndCrossesLib::Players;
 pub use noughtsAndCrossesLib::TileStatus;
 pub use noughtsAndCrossesLib::Winner;
 pub use noughtsAndCrossesLib::IS_DEBUG;
+
 fn main() {
     println!("Welcome to my noughts and crosses game made in rust.");
     let mut ai_mode = AiMode::None;
