@@ -152,6 +152,7 @@ nightly-windows-optimized:
     - wget https://www.libsdl.org/release/SDL2-devel-2.0.4-mingw.tar.gz -P /tmp
     - tar xf /tmp/SDL2-devel-2.0.4-mingw.tar.gz -C /tmp
     - rustup component add rust-std --target=x86_64-pc-windows-gnu
+    - mkdir .cargo
     - touch /.cargo/config
     - echo "[target.x86_64-pc-windows-gnu]" >> /.cargo/config
     - echo "    linker = "i686-w64-mingw32-gcc"" >> /.cargo/config
