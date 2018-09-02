@@ -158,6 +158,7 @@ nightly-windows-optimized:
     - echo "[target.x86_64-pc-windows-gnu]" >> .cargo/config
     - echo "    linker = "i686-w64-mingw32-gcc"" >> .cargo/config
     - echo "    ar = "i686-w64-mingw32-gcc-ar"" >> .cargo/config
+    - cat .cargo/config
     # - cargo install rust-mingw
     - (cd noughts-and-crosses-game && cargo build --release --target=x86_64-pc-windows-gnu)
     - (cd ai-graph && cargo build --release --target=x86_64-pc-windows-gnu)
