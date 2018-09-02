@@ -10,7 +10,7 @@ RustGame.
 [dependencies]
 
 ai-graph = { path = "../ai-graph" }
-noughtsAndCrossesLib = { path = "../noughts-and-crosses-lib" }
+noughts_and_crosses_lib = { path = "../noughts-and-crosses-lib" }
 
 
 
