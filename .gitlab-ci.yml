@@ -146,9 +146,9 @@ nightly-windows-optimized:
     - (cd noughts-and-crosses-lib && cargo build --release --target=x86_64-pc-windows-gnu)
     - rm -r -f nightly
     - mkdir nightly
-    - cp target/x86_64-pc-windows-gnu/release/ai-graph.exe nightly
+    # - cp target/x86_64-pc-windows-gnu/release/ai-graph.exe nightly
     - cp target/x86_64-pc-windows-gnu/release/noughts-and-crosses-game.exe nightly
-    - cp target/x86_64-pc-windows-gnu/release/noughts-and-crosses-lib.exe nightly
+    # - cp target/x86_64-pc-windows-gnu/release/noughts-and-crosses-lib.exe nightly
     - rm -f nightly-windows-optimized.zip
     - zip -r nightly-windows-optimized.zip nightly
   when: always
