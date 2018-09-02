@@ -128,7 +128,7 @@ nightly-linux-optimized:
     - cp target/release/noughts-and-crosses-lib nightly
     - rm -f nightly-linux-optimized.tar.bz2
     - tar -cvjSf nightly-linux-optimized.tar.bz2 nightly
-  when: manual
+  when: always
   artifacts:
     paths:
       - nightly-linux-optimized.tar.bz2
@@ -140,6 +140,7 @@ nightly-linux-optimized:
 nightly-windows-optimized:
   stage: deploy
   script:
+    - rustup component add rust-std-x86_64-pc-windows-gnu
     - (cd noughts-and-crosses-game && cargo build --release --target=x86_64-pc-windows-gnu)
     - (cd ai-graph && cargo build --release --target=x86_64-pc-windows-gnu)
     - (cd noughts-and-crosses-lib && cargo build --release --target=x86_64-pc-windows-gnu)
@@ -150,7 +151,7 @@ nightly-windows-optimized:
     - cp target/x86_64-pc-windows-gnu/release/noughts-and-crosses-lib.exe nightly
     - rm -f nightly-windows-optimized.zip
     - zip -r nightly-windows-optimized.zip nightly
-  when: manual
+  when: always
   artifacts:
     paths:
       - nightly-windows-optimized.zip
