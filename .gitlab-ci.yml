@@ -140,7 +140,7 @@ nightly-linux-optimized:
 nightly-windows-optimized:
   stage: deploy
   script:
-    - rustup component add rust-std-x86_64-pc-windows-gnu
+    - rustup component add rust-std --target=x86_64-pc-windows-gnu
     - (cd noughts-and-crosses-game && cargo build --release --target=x86_64-pc-windows-gnu)
     - (cd ai-graph && cargo build --release --target=x86_64-pc-windows-gnu)
     - (cd noughts-and-crosses-lib && cargo build --release --target=x86_64-pc-windows-gnu)
