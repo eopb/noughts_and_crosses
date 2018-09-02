@@ -119,15 +119,12 @@ nightly-linux-optimized:
   stage: deploy
   script:
     - apt-get update
-    - apt-cache search tree
-    - apt-get install tree -y
     - (cd noughts-and-crosses-game && cargo build --release)
     - (cd ai-graph && cargo build --release)
     - (cd noughts-and-crosses-lib && cargo build --release)
     - rm -r -f nightly
     - mkdir nightly
     # - cp target/release/ai-graph nightly
-    - tree
     - cp target/release/rust_game nightly
     # - cp target/release/noughts-and-crosses-lib nightly
     - rm -f nightly-linux-optimized.tar.bz2
@@ -144,14 +141,9 @@ nightly-linux-optimized:
 nightly-windows-optimized:
   stage: deploy
   script:
-    # - echo $PWD
     - apt-get update
     - rustup update
-    - apt-cache search gcc-mingw
-    - apt-cache search tree
     - apt-get install gcc -y
-    - apt-get install locate -y
-    - apt-get install tree -y
     - apt-get install zip -y
     - apt-get install gcc-mingw-w64-x86-64 -y
     - apt-get install libsdl2-dev -y
@@ -164,13 +156,11 @@ nightly-windows-optimized:
     - echo     linker = \"x86_64-w64-mingw32-gcc\" >> .cargo/config
     - echo     ar = \"x86_64-w64-mingw32-gcc-ar\" >> .cargo/config
     - cat .cargo/config
-    # - cargo install rust-mingw
     - (cd noughts-and-crosses-game && cargo build --release --target=x86_64-pc-windows-gnu)
     - (cd ai-graph && cargo build --release --target=x86_64-pc-windows-gnu)
     - (cd noughts-and-crosses-lib && cargo build --release --target=x86_64-pc-windows-gnu)
     - rm -r -f nightly
     - mkdir nightly
-    - tree
     # - cp target/x86_64-pc-windows-gnu/release/ai-graph.exe nightly
     - cp target/x86_64-pc-windows-gnu/release/rust_game.exe nightly
     # - cp target/x86_64-pc-windows-gnu/release/noughts-and-crosses-lib.exe nightly
