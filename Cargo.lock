@@ -35,6 +35,14 @@ version = "0.2.43"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 
 [[package]]
+name = "noughts-and-crosses-game"
+version = "0.1.0"
+dependencies = [
+ "ai-graph 0.1.0",
+ "noughtsAndCrossesLib 0.1.0",
+]
+
+[[package]]
 name = "noughtsAndCrossesLib"
 version = "0.1.0"
 dependencies = [
@@ -57,14 +65,6 @@ dependencies = [
 name = "rand_core"
 version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-
-[[package]]
-name = "rust_game"
-version = "0.1.0"
-dependencies = [
- "ai-graph 0.1.0",
- "noughtsAndCrossesLib 0.1.0",
-]
 
 [[package]]
 name = "winapi"
