@@ -146,6 +146,7 @@ nightly-windows-optimized:
     - rustup update
     - apt-cache search gcc-mingw
     - apt-get install gcc -y
+    - apt-get install locate -y
     - apt-get install gcc-mingw-w64-x86-64 -y
     - apt-get install libsdl2-dev -y
     - wget https://www.libsdl.org/release/SDL2-devel-2.0.4-mingw.tar.gz -P /tmp
