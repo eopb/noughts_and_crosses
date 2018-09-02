@@ -124,7 +124,7 @@ nightly-linux-optimized:
     - rm -r -f nightly
     - mkdir nightly
     # - cp target/release/ai-graph nightly
-    - cp target/release/noughts-and-crosses-game nightly
+    - cp noughts-and-crosses-lib/target/release/noughts-and-crosses-game nightly
     # - cp target/release/noughts-and-crosses-lib nightly
     - rm -f nightly-linux-optimized.tar.bz2
     - tar -cvjSf nightly-linux-optimized.tar.bz2 nightly
@@ -140,6 +140,10 @@ nightly-linux-optimized:
 nightly-windows-optimized:
   stage: deploy
   script:
+    - sudo apt-get install gcc-mingw-w64-x86-64 -y
+    - sudo apt-get install libsdl2-dev -y
+    - wget https://www.libsdl.org/release/SDL2-devel-2.0.4-mingw.tar.gz -P /tmp
+    - tar xf /tmp/SDL2-devel-2.0.4-mingw.tar.gz -C /tmp
     - rustup component add rust-std --target=x86_64-pc-windows-gnu
     - (cd noughts-and-crosses-game && cargo build --release --target=x86_64-pc-windows-gnu)
     - (cd ai-graph && cargo build --release --target=x86_64-pc-windows-gnu)
