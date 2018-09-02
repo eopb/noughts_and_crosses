@@ -133,7 +133,7 @@ nightly-linux-optimized:
   artifacts:
     paths:
       - nightly-linux-optimized.tar.bz2
-    expire_in: 2 days
+    expire_in: 6 months
   only:
     refs:
       - master
@@ -170,7 +170,7 @@ nightly-windows-optimized:
   artifacts:
     paths:
       - nightly-windows-optimized.zip
-    expire_in: 2 days
+    expire_in: 6 months
   only:
     refs:
       - master
