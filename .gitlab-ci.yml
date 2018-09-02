@@ -169,7 +169,7 @@ nightly-windows-optimized:
     - mkdir nightly
     - tree
     # - cp target/x86_64-pc-windows-gnu/release/ai-graph.exe nightly
-    - cp target/x86_64-pc-windows-gnu/release/noughts-and-crosses-game.exe nightly
+    - cp target/x86_64-pc-windows-gnu/release/rust_game.exe nightly
     # - cp target/x86_64-pc-windows-gnu/release/noughts-and-crosses-lib.exe nightly
     - rm -f nightly-windows-optimized.zip
     - zip -r nightly-windows-optimized.zip nightly
