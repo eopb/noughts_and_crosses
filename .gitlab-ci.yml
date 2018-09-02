@@ -123,9 +123,9 @@ nightly-linux-optimized:
     - (cd noughts-and-crosses-lib && cargo build --release)
     - rm -r -f nightly
     - mkdir nightly
-    - cp target/release/ai-graph nightly
+    # - cp target/release/ai-graph nightly
     - cp target/release/noughts-and-crosses-game nightly
-    - cp target/release/noughts-and-crosses-lib nightly
+    # - cp target/release/noughts-and-crosses-lib nightly
     - rm -f nightly-linux-optimized.tar.bz2
     - tar -cvjSf nightly-linux-optimized.tar.bz2 nightly
   when: always
