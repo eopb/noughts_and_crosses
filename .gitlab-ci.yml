@@ -118,6 +118,7 @@ benchmarktests:
 nightly-linux-optimized:
   stage: deploy
   script:
+    - apt-get install tree -y
     - (cd noughts-and-crosses-game && cargo build --release)
     - (cd ai-graph && cargo build --release)
     - (cd noughts-and-crosses-lib && cargo build --release)
@@ -143,7 +144,7 @@ nightly-windows-optimized:
   script:
     - apt-get update
     - apt-cache search gcc-mingw
-    - apt-get install gcc-mingw -y
+    - apt-get install gcc-mingw-w64-x86-64 -y
     - apt-get install libsdl2-dev -y
     - wget https://www.libsdl.org/release/SDL2-devel-2.0.4-mingw.tar.gz -P /tmp
     - tar xf /tmp/SDL2-devel-2.0.4-mingw.tar.gz -C /tmp
