@@ -141,7 +141,7 @@ nightly-windows-optimized:
   stage: deploy
   script:
     - apt-get update
-    - apt-get search gcc-mingw
+    - apt-cache search gcc-mingw
     - apt-get install gcc-mingw -y
     - apt-get install libsdl2-dev -y
     - wget https://www.libsdl.org/release/SDL2-devel-2.0.4-mingw.tar.gz -P /tmp
