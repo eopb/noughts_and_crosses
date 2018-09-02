@@ -6,7 +6,7 @@ image: "rust:latest"
 stages:
   - build
   - test
-  # - deploy
+  - deploy
   - post-run
 
 # our own git fetch command like https://gitlab.com/gitlab-org/gitlab-runner/blob/master/shells/abstract.go
@@ -115,53 +115,49 @@ benchmarktests:
 #     refs:
 #       - master
 
-# nightly-linux-optimized:
-#   stage: deploy
-#   script:
-#     - (cd voxygen && cargo build --release)
-#     - (cd server-cli && cargo build --release)
-#     - (cd headless && cargo build --release)
-#     - rm -r -f nightly
-#     - mkdir nightly
-#     - cp target/release/server-cli nightly
-#     - cp target/release/voxygen nightly
-#     - cp target/release/headless nightly
-#     - cp -r voxygen/assets nightly/
-#     - cp -r voxygen/shaders nightly/
-#     - rm -f nightly-linux-optimized.tar.bz2
-#     - tar -cvjSf nightly-linux-optimized.tar.bz2 nightly
-#   when: manual
-#   artifacts:
-#     paths:
-#       - nightly-linux-optimized.tar.bz2
-#     expire_in: 2 days
-#   only:
-#     refs:
-#       - master
+nightly-linux-optimized:
+  stage: deploy
+  script:
+    - (cd noughts-and-crosses-game && cargo build --release)
+    - (cd ai-graph && cargo build --release)
+    - (cd noughts-and-crosses-lib && cargo build --release)
+    - rm -r -f nightly
+    - mkdir nightly
+    - cp target/release/ai-graph nightly
+    - cp target/release/noughts-and-crosses-game nightly
+    - cp target/release/noughts-and-crosses-lib nightly
+    - rm -f nightly-linux-optimized.tar.bz2
+    - tar -cvjSf nightly-linux-optimized.tar.bz2 nightly
+  when: manual
+  artifacts:
+    paths:
+      - nightly-linux-optimized.tar.bz2
+    expire_in: 2 days
+  only:
+    refs:
+      - master
 
-# nightly-windows-optimized:
-#   stage: deploy
-#   script:
-#     - (cd voxygen && cargo build --release --target=x86_64-pc-windows-gnu)
-#     - (cd server-cli && cargo build --release --target=x86_64-pc-windows-gnu)
-#     - (cd headless && cargo build --release --target=x86_64-pc-windows-gnu)
-#     - rm -r -f nightly
-#     - mkdir nightly
-#     - cp target/x86_64-pc-windows-gnu/release/server-cli.exe nightly
-#     - cp target/x86_64-pc-windows-gnu/release/voxygen.exe nightly
-#     - cp target/x86_64-pc-windows-gnu/release/headless.exe nightly
-#     - cp -r voxygen/assets nightly/
-#     - cp -r voxygen/shaders nightly/
-#     - rm -f nightly-windows-optimized.zip
-#     - zip -r nightly-windows-optimized.zip nightly
-#   when: manual
-#   artifacts:
-#     paths:
-#       - nightly-windows-optimized.zip
-#     expire_in: 2 days
-#   only:
-#     refs:
-#       - master
+nightly-windows-optimized:
+  stage: deploy
+  script:
+    - (cd noughts-and-crosses-game && cargo build --release --target=x86_64-pc-windows-gnu)
+    - (cd ai-graph && cargo build --release --target=x86_64-pc-windows-gnu)
+    - (cd noughts-and-crosses-lib && cargo build --release --target=x86_64-pc-windows-gnu)
+    - rm -r -f nightly
+    - mkdir nightly
+    - cp target/x86_64-pc-windows-gnu/release/ai-graph.exe nightly
+    - cp target/x86_64-pc-windows-gnu/release/noughts-and-crosses-game.exe nightly
+    - cp target/x86_64-pc-windows-gnu/release/noughts-and-crosses-lib.exe nightly
+    - rm -f nightly-windows-optimized.zip
+    - zip -r nightly-windows-optimized.zip nightly
+  when: manual
+  artifacts:
+    paths:
+      - nightly-windows-optimized.zip
+    expire_in: 2 days
+  only:
+    refs:
+      - master
 
 # stable-linux-optimized:
 #   stage: deploy
