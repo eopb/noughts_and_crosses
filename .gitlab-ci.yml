@@ -118,7 +118,6 @@ benchmarktests:
 nightly-linux-optimized:
   stage: deploy
   script:
-    - apt-get install tree -y
     - (cd noughts-and-crosses-game && cargo build --release)
     - (cd ai-graph && cargo build --release)
     - (cd noughts-and-crosses-lib && cargo build --release)
