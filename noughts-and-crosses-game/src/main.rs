@@ -4,16 +4,9 @@ use noughts_and_crosses_lib::movement::process_movement;
 use std::io;
 
 extern crate noughts_and_crosses_lib;
-pub use noughts_and_crosses_lib::switch_player;
-pub use noughts_and_crosses_lib::AiMode;
-pub use noughts_and_crosses_lib::Cursor;
-pub use noughts_and_crosses_lib::GameBoard;
-pub use noughts_and_crosses_lib::GameMode;
-pub use noughts_and_crosses_lib::MovementReturn;
-pub use noughts_and_crosses_lib::Players;
-pub use noughts_and_crosses_lib::TileStatus;
-pub use noughts_and_crosses_lib::Winner;
-pub use noughts_and_crosses_lib::IS_DEBUG;
+pub use noughts_and_crosses_lib::{
+    switch_player, AiMode, GameBoard, GameMode, MovementReturn, Players, Winner, IS_DEBUG,
+};
 
 fn main() {
     println!("Welcome to my noughts and crosses game made in rust.");
