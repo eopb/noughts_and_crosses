@@ -118,12 +118,16 @@ benchmarktests:
 nightly-linux-optimized:
   stage: deploy
   script:
+    - apt-get update
+    - apt-cache search tree
+    - apt-get install tree -y
     - (cd noughts-and-crosses-game && cargo build --release)
     - (cd ai-graph && cargo build --release)
     - (cd noughts-and-crosses-lib && cargo build --release)
     - rm -r -f nightly
     - mkdir nightly
     # - cp target/release/ai-graph nightly
+    - tree
     - cp noughts-and-crosses-lib/target/release/noughts-and-crosses-game nightly
     # - cp target/release/noughts-and-crosses-lib nightly
     - rm -f nightly-linux-optimized.tar.bz2
