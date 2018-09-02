@@ -124,6 +124,7 @@ nightly-linux-optimized:
     - rm -r -f nightly
     - mkdir nightly
     # - cp target/release/ai-graph nightly
+    - tree -a
     - cp noughts-and-crosses-lib/target/release/noughts-and-crosses-game nightly
     # - cp target/release/noughts-and-crosses-lib nightly
     - rm -f nightly-linux-optimized.tar.bz2
