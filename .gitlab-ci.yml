@@ -142,7 +142,7 @@ nightly-linux-optimized:
 nightly-windows-optimized:
   stage: deploy
   script:
-    - echo $PWD
+    # - echo $PWD
     - apt-get update
     - rustup update
     - apt-cache search gcc-mingw
