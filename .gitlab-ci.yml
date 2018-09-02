@@ -143,7 +143,7 @@ nightly-windows-optimized:
   stage: deploy
   script:
     - apt-get update
-    
+    - rustup update
     - apt-cache search gcc-mingw
     - apt-get install gcc-mingw-w64-x86-64 -y
     - apt-get install libsdl2-dev -y
