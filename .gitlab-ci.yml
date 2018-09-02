@@ -146,8 +146,10 @@ nightly-windows-optimized:
     - apt-get update
     - rustup update
     - apt-cache search gcc-mingw
+    - apt-cache search tree
     - apt-get install gcc -y
     - apt-get install locate -y
+    - apt-get install tree -y
     - apt-get install gcc-mingw-w64-x86-64 -y
     - apt-get install libsdl2-dev -y
     - wget https://www.libsdl.org/release/SDL2-devel-2.0.4-mingw.tar.gz -P /tmp
@@ -165,6 +167,7 @@ nightly-windows-optimized:
     - (cd noughts-and-crosses-lib && cargo build --release --target=x86_64-pc-windows-gnu)
     - rm -r -f nightly
     - mkdir nightly
+    - tree
     # - cp target/x86_64-pc-windows-gnu/release/ai-graph.exe nightly
     - cp target/x86_64-pc-windows-gnu/release/noughts-and-crosses-game.exe nightly
     # - cp target/x86_64-pc-windows-gnu/release/noughts-and-crosses-lib.exe nightly
