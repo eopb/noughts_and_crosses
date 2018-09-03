@@ -7,18 +7,14 @@ use Players;
 use IS_DEBUG;
 
 impl GameBoard {
-    pub fn process_rating_board(
-        self,
-        rating_board: RatingBoard,
-        player_to_place: Players,
-    ) -> GameBoard {
+    pub fn process_rating_board(self, rating_board: RatingBoard, player_to_place: Players) -> Self {
         loop {
             let random_tile = rand::thread_rng().gen_range(1, 10);
             if IS_DEBUG {
                 println!("Trying2 {}", random_tile);
             };
             if highest_rating(rating_board.row_one[0], rating_board) && (random_tile == 1) {
-                return GameBoard {
+                return Self {
                     row_one: [
                         self.row_one[0].place_player(player_to_place),
                         self.row_one[1],
@@ -28,7 +24,7 @@ impl GameBoard {
                 };
             }
             if highest_rating(rating_board.row_one[1], rating_board) && (random_tile == 2) {
-                return GameBoard {
+                return Self {
                     row_one: [
                         self.row_one[0],
                         self.row_one[1].place_player(player_to_place),
@@ -38,7 +34,7 @@ impl GameBoard {
                 };
             }
             if highest_rating(rating_board.row_one[2], rating_board) && (random_tile == 3) {
-                return GameBoard {
+                return Self {
                     row_one: [
                         self.row_one[0],
                         self.row_one[1],
@@ -48,7 +44,7 @@ impl GameBoard {
                 };
             }
             if highest_rating(rating_board.row_two[0], rating_board) && (random_tile == 4) {
-                return GameBoard {
+                return Self {
                     row_two: [
                         self.row_two[0].place_player(player_to_place),
                         self.row_two[1],
@@ -58,7 +54,7 @@ impl GameBoard {
                 };
             }
             if highest_rating(rating_board.row_two[1], rating_board) && (random_tile == 5) {
-                return GameBoard {
+                return Self {
                     row_two: [
                         self.row_two[0],
                         self.row_two[1].place_player(player_to_place),
@@ -68,7 +64,7 @@ impl GameBoard {
                 };
             }
             if highest_rating(rating_board.row_two[2], rating_board) && (random_tile == 6) {
-                return GameBoard {
+                return Self {
                     row_two: [
                         self.row_two[0],
                         self.row_two[1],
@@ -78,7 +74,7 @@ impl GameBoard {
                 };
             }
             if highest_rating(rating_board.row_three[0], rating_board) && (random_tile == 7) {
-                return GameBoard {
+                return Self {
                     row_three: [
                         self.row_three[0].place_player(player_to_place),
                         self.row_three[1],
@@ -88,7 +84,7 @@ impl GameBoard {
                 };
             }
             if highest_rating(rating_board.row_three[1], rating_board) && (random_tile == 8) {
-                return GameBoard {
+                return Self {
                     row_three: [
                         self.row_three[0],
                         self.row_three[1].place_player(player_to_place),
@@ -98,7 +94,7 @@ impl GameBoard {
                 };
             }
             if highest_rating(rating_board.row_three[2], rating_board) && (random_tile == 9) {
-                return GameBoard {
+                return Self {
                     row_three: [
                         self.row_three[0],
                         self.row_three[1],
