@@ -31,7 +31,9 @@ mod ai_graph {
         }
         output
     }
-    fn output(input: Vec<i32>, gene: Gene) -> Vec<f64> {
+}
+impl Gene {
+    pub fn output(self, input: Vec<i32>) -> Vec<f64> {
         vec![0.0; 9]
     }
 }
