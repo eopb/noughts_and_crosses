@@ -1,5 +1,5 @@
 #![cfg_attr(feature = "cargo-clippy", warn(clippy_pedantic))]
-mod new_gene;
+mod new_genes;
 enum MutationLine {
     None,
     Multiply(i64),
