@@ -18,7 +18,11 @@ impl Gene {
     }
 }
 
-impl MutationLine {
+trait RandVec
+where
+    Self: Sized,
+{
+    fn rand_mut() -> Self;
     fn rand_vec3(num: u32, num2: u32, num3: u32) -> Vec<Vec<Vec<Self>>> {
         let mut rand_vec = Vec::new();
         for _x in 0..num {
@@ -40,6 +44,22 @@ impl MutationLine {
         }
         rand_vec
     }
+}
+
+impl RandVec for MutationNode {
+    fn rand_mut() -> Self {
+        let mut rng = rand::thread_rng();
+        let node_types = [
+            MutationNode::Multiply,
+            MutationNode::Add,
+            MutationNode::Divide,
+            MutationNode::Subtract,
+        ];
+        *rng.choose(&node_types).unwrap()
+    }
+}
+
+impl RandVec for MutationLine {
     fn rand_mut() -> Self {
         let mut rng = rand::thread_rng();
         let line_types = [
@@ -52,33 +72,6 @@ impl MutationLine {
             MutationLine::Root(rand_i64()),
         ];
         *rng.choose(&line_types).unwrap()
-    }
-}
-
-impl MutationNode {
-    fn rand_vec2(num: u32, num2: u32) -> Vec<Vec<Self>> {
-        let mut rand_vec = Vec::new();
-        for _x in 0..num {
-            rand_vec.push(Self::rand_vec(num2));
-        }
-        rand_vec
-    }
-    fn rand_vec(num: u32) -> Vec<Self> {
-        let mut rand_vec = Vec::new();
-        for _x in 0..num {
-            rand_vec.push(Self::rand_mut());
-        }
-        rand_vec
-    }
-    fn rand_mut() -> Self {
-        let mut rng = rand::thread_rng();
-        let node_types = [
-            MutationNode::Multiply,
-            MutationNode::Add,
-            MutationNode::Divide,
-            MutationNode::Subtract,
-        ];
-        *rng.choose(&node_types).unwrap()
     }
 }
 
