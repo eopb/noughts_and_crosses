@@ -259,5 +259,5 @@ clippy:
     - rustup default nightly
     - rustup update
     - rustup component add clippy-preview
-    - cargo clippy --all
+    - cargo clippy --all -- -Dwarnings
   allow_failure: true
