@@ -58,10 +58,10 @@ build-ai-graph:
   script:
     - (cd ai-graph && cargo build)
 
-build-ai-graph:
+build-noughts-and-crosses-ai-test:
   stage: build
   script:
-    - (cd ai-graph && cargo build)
+    - (cd noughts-and-crosses-ai-test && cargo build)
 
 unittests:
   stage: test
