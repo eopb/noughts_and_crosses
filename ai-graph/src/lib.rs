@@ -19,8 +19,8 @@ enum MutationNode {
 }
 #[derive(Clone, Debug)]
 pub struct Gene {
-    LineDna: Vec<Vec<Vec<MutationLine>>>,
-    NodeDna: Vec<Vec<MutationNode>>,
+    line_dna: Vec<Vec<Vec<MutationLine>>>,
+    node_dna: Vec<Vec<MutationNode>>,
 }
 mod ai_graph {
     use Gene;

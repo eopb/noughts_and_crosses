@@ -4,16 +4,16 @@ use Gene;
 use MutationLine;
 use MutationNode;
 impl Gene {
-    pub fn new_gene() -> Gene {
-        Gene {
-            LineDna: vec![vec![vec![MutationLine::None; 9]; 9]; 2],
-            NodeDna: vec![vec![MutationNode::Add; 9]; 2],
+    pub fn new_gene() -> Self {
+        Self {
+            line_dna: vec![vec![vec![MutationLine::None; 9]; 9]; 2],
+            node_dna: vec![vec![MutationNode::Add; 9]; 2],
         }
     }
     pub fn new_random_gene() -> Gene {
-        Gene {
-            LineDna: MutationLine::rand_vec3(2, 9, 9),
-            NodeDna: MutationNode::rand_vec2(2, 9),
+        Self {
+            line_dna: MutationLine::rand_vec3(2, 9, 9),
+            node_dna: MutationNode::rand_vec2(2, 9),
         }
     }
 }
