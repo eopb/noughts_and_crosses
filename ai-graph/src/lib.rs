@@ -1,6 +1,6 @@
 #![cfg_attr(feature = "cargo-clippy", warn(clippy_pedantic))]
 mod new_genes;
-#[derive(Clone)]
+#[derive(Clone, Copy)]
 enum MutationLine {
     None,
     Multiply(i64),
@@ -10,7 +10,7 @@ enum MutationLine {
     Power(i64),
     Root(i64),
 }
-#[derive(Clone)]
+#[derive(Clone, Copy)]
 enum MutationNode {
     Multiply,
     Add,
