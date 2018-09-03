@@ -16,7 +16,7 @@ pub enum Movement {
     None,
 }
 
-pub fn process_movement(game_board: GameBoard, current_player: Players) -> MovementReturn {
+pub fn process(game_board: GameBoard, current_player: Players) -> MovementReturn {
     let input = fetch_input();
     match input {
         Movement::Place => MovementReturn {

@@ -1,6 +1,6 @@
 #![cfg_attr(feature = "cargo-clippy", warn(clippy_pedantic))]
-use noughts_and_crosses_lib::ai::process_ai;
-use noughts_and_crosses_lib::movement::process_movement;
+use noughts_and_crosses_lib::ai;
+use noughts_and_crosses_lib::movement;
 
 use std::io;
 
@@ -33,13 +33,13 @@ fn main() {
                 placed: true,
             },
             _ => {
-                let mut movement_return = process_movement(game_board, current_player);
+                let mut movement_return = movement::process(game_board, current_player);
                 loop {
                     game_board = match movement_return.game_board {
                         Some(game_board) => game_board,
                         None => {
                             println!("That did not work");
-                            movement_return = process_movement(game_board, current_player);
+                            movement_return = movement::process(game_board, current_player);
                             continue;
                         }
                     };
@@ -89,7 +89,7 @@ fn main() {
                         GameMode::SinglePlayer => switch_player(current_player),
                         _ => current_player,
                     };
-                    game_board = process_ai(game_board, ai_mode, current_player);
+                    game_board = ai::process(game_board, ai_mode, current_player);
                     current_player = switch_player(current_player);
                     match game_board.has_someone_won() {
                         Winner::Cross => {
