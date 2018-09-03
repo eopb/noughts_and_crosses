@@ -40,14 +40,21 @@ mod ai_graph {
 impl Gene {
     pub fn output(self, input: Vec<i32>) -> Vec<f64> {
         let mut output = vec![0.0; 9];
-        let node_values = node_value_calc(&self.node_dna);
+        let mut node_values = node_value_calc(&self.node_dna);
         print!("node values {:#?}", node_values);
         if !self.validate(input.to_vec()) {
             panic!("Gene is not valid")
+        };
+        for (node_index, node_tree) in self.line_dna[1].iter().enumerate() {
+            for (line_index, line) in node_tree.iter().enumerate() {
+                node_values[0][line_index].stored_data =
+                    match node_values[0][line_index].stored_data {
+                        Some(_x) => Some(12.2),
+                        None => Some(12.2),
+                    };
+            }
         }
-        for node_tree in &self.line_dna[1] {
-            for line in node_tree {}
-        }
+        print!("node values updated {:#?}", node_values);
         output[2] = 2.34;
         output[7] = 3.52;
         output
