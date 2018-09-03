@@ -1,3 +1,4 @@
+#![cfg_attr(feature = "cargo-clippy", warn(clippy_pedantic))]
 mod ai_graph {
     enum MutationLine {
         None,
