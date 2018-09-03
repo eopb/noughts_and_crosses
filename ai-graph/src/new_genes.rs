@@ -12,239 +12,34 @@ impl Gene {
     }
     pub fn new_random_gene() -> Gene {
         Gene {
-            LineDna: vec![
-                vec![
-                    vec![
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                    ],
-                    vec![
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                    ],
-                    vec![
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                    ],
-                    vec![
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                    ],
-                    vec![
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                    ],
-                    vec![
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                    ],
-                    vec![
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                    ],
-                    vec![
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                    ],
-                    vec![
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                    ],
-                ],
-                vec![
-                    vec![
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                    ],
-                    vec![
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                    ],
-                    vec![
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                    ],
-                    vec![
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                    ],
-                    vec![
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                    ],
-                    vec![
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                    ],
-                    vec![
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                    ],
-                    vec![
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                    ],
-                    vec![
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                        MutationLine::rand_mut(),
-                    ],
-                ],
-            ],
-            NodeDna: vec![
-                vec![
-                    MutationNode::rand_mut(),
-                    MutationNode::rand_mut(),
-                    MutationNode::rand_mut(),
-                    MutationNode::rand_mut(),
-                    MutationNode::rand_mut(),
-                    MutationNode::rand_mut(),
-                    MutationNode::rand_mut(),
-                    MutationNode::rand_mut(),
-                    MutationNode::rand_mut(),
-                ],
-                vec![
-                    MutationNode::rand_mut(),
-                    MutationNode::rand_mut(),
-                    MutationNode::rand_mut(),
-                    MutationNode::rand_mut(),
-                    MutationNode::rand_mut(),
-                    MutationNode::rand_mut(),
-                    MutationNode::rand_mut(),
-                    MutationNode::rand_mut(),
-                    MutationNode::rand_mut(),
-                ],
-            ],
+            LineDna: MutationLine::rand_vec3(2, 9, 9),
+            NodeDna: MutationNode::rand_vec2(2, 9),
         }
     }
 }
 
 impl MutationLine {
+    fn rand_vec3(num: u32, num2: u32, num3: u32) -> Vec<Vec<Vec<Self>>> {
+        let mut rand_vec = Vec::new();
+        for _x in 0..num {
+            rand_vec.push(Self::rand_vec2(num2, num3));
+        }
+        rand_vec
+    }
+    fn rand_vec2(num: u32, num2: u32) -> Vec<Vec<Self>> {
+        let mut rand_vec = Vec::new();
+        for _x in 0..num {
+            rand_vec.push(Self::rand_vec(num2));
+        }
+        rand_vec
+    }
+    fn rand_vec(num: u32) -> Vec<Self> {
+        let mut rand_vec = Vec::new();
+        for _x in 0..num {
+            rand_vec.push(Self::rand_mut());
+        }
+        rand_vec
+    }
     fn rand_mut() -> Self {
         let mut rng = rand::thread_rng();
         let line_types = [
@@ -261,6 +56,20 @@ impl MutationLine {
 }
 
 impl MutationNode {
+    fn rand_vec2(num: u32, num2: u32) -> Vec<Vec<Self>> {
+        let mut rand_vec = Vec::new();
+        for _x in 0..num {
+            rand_vec.push(Self::rand_vec(num2));
+        }
+        rand_vec
+    }
+    fn rand_vec(num: u32) -> Vec<Self> {
+        let mut rand_vec = Vec::new();
+        for _x in 0..num {
+            rand_vec.push(Self::rand_mut());
+        }
+        rand_vec
+    }
     fn rand_mut() -> Self {
         let mut rng = rand::thread_rng();
         let node_types = [
