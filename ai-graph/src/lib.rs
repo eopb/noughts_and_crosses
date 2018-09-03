@@ -1,5 +1,6 @@
 mod ai_graph {
     enum MutationLine {
+        None,
         Multiply(i64),
         Add(i64),
         Subtract(i64),
