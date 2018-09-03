@@ -14,7 +14,7 @@ pub struct RatingBoard {
 }
 
 impl GameBoard {
-    pub fn smart_random_placement(self, player_to_place: Players) -> GameBoard {
+    pub fn smart_random_placement(self, player_to_place: Players) -> Self {
         let rating_board = full_mean_rating(self, player_to_place);
         if IS_DEBUG {
             println!("This is the rating baord{:#?}", rating_board);
