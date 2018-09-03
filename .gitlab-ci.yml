@@ -58,6 +58,11 @@ build-ai-graph:
   script:
     - (cd ai-graph && cargo build)
 
+build-ai-graph:
+  stage: build
+  script:
+    - (cd ai-graph && cargo build)
+
 unittests:
   stage: test
   script:
