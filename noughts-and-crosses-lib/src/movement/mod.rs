@@ -188,11 +188,7 @@ impl TileStatus {
     fn is_cursor(self) -> bool {
         match self {
             TileStatus::Cursor => true,
-            TileStatus::Nought(cursor) => match cursor {
-                Cursor::True => true,
-                Cursor::None => false,
-            },
-            TileStatus::Cross(cursor) => match cursor {
+            TileStatus::Nought(cursor) | TileStatus::Cross(cursor) => match cursor {
                 Cursor::True => true,
                 Cursor::None => false,
             },

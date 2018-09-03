@@ -331,30 +331,24 @@ impl TileStatus {
     fn remove_cursor(self) -> Self {
         match self {
             TileStatus::Cross(cursor) => match cursor {
-                Cursor::True => TileStatus::Cross(Cursor::None),
-                Cursor::None => TileStatus::Cross(Cursor::None),
+                Cursor::True | Cursor::None => TileStatus::Cross(Cursor::None),
             },
             TileStatus::Nought(cursor) => match cursor {
-                Cursor::True => TileStatus::Nought(Cursor::None),
-                Cursor::None => TileStatus::Nought(Cursor::None),
+                Cursor::True | Cursor::None => TileStatus::Nought(Cursor::None),
             },
-            TileStatus::Cursor => TileStatus::None,
-            TileStatus::None => TileStatus::None,
+            TileStatus::Cursor | TileStatus::None => TileStatus::None,
         }
     }
 
     fn add_cursor(self) -> Self {
         match self {
             TileStatus::Cross(cursor) => match cursor {
-                Cursor::True => TileStatus::Cross(Cursor::True),
-                Cursor::None => TileStatus::Cross(Cursor::True),
+                Cursor::True | Cursor::None => TileStatus::Cross(Cursor::True),
             },
             TileStatus::Nought(cursor) => match cursor {
-                Cursor::True => TileStatus::Nought(Cursor::True),
-                Cursor::None => TileStatus::Nought(Cursor::True),
+                Cursor::True | Cursor::None => TileStatus::Nought(Cursor::True),
             },
-            TileStatus::Cursor => TileStatus::Cursor,
-            TileStatus::None => TileStatus::Cursor,
+            TileStatus::Cursor | TileStatus::None => TileStatus::Cursor,
         }
     }
 }
