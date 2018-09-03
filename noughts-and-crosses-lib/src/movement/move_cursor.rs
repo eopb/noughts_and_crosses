@@ -148,7 +148,7 @@ impl GameBoard {
                     ],
                     ..self
                 }),
-                Movement::Left => Option::Some(GameBoard {
+                Movement::Left => Option::Some(Self {
                     row_two: [
                         self.row_two[0].add_cursor(),
                         self.row_two[1].remove_cursor(),
@@ -328,7 +328,7 @@ impl GameBoard {
 }
 
 impl TileStatus {
-    fn remove_cursor(self) -> TileStatus {
+    fn remove_cursor(self) -> Self {
         match self {
             TileStatus::Cross(cursor) => match cursor {
                 Cursor::True => TileStatus::Cross(Cursor::None),
@@ -343,7 +343,7 @@ impl TileStatus {
         }
     }
 
-    fn add_cursor(self) -> TileStatus {
+    fn add_cursor(self) -> Self {
         match self {
             TileStatus::Cross(cursor) => match cursor {
                 Cursor::True => TileStatus::Cross(Cursor::True),
