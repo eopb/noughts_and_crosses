@@ -1,5 +1,5 @@
 mod ai_graph {
-    enum Mutation_line {
+    enum MutationLine {
         Multiply(i64),
         Add(i64),
         Subtract(i64),
@@ -8,7 +8,7 @@ mod ai_graph {
         Root(i64),
     }
 
-    enum Mutation_Node {
+    enum MutationNode {
         Multiply,
         Add,
         Divide,
