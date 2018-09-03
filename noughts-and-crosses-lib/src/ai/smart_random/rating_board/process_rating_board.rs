@@ -110,9 +110,7 @@ impl GameBoard {
             if self.is_board_full() {
                 println!("This should not be happening :(");
                 panic!();
-            } else {
-                continue;
-            };
+            }
         }
     }
 }

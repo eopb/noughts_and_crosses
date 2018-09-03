@@ -104,9 +104,7 @@ impl GameBoard {
             }
             if self.is_board_full() {
                 return Option::None;
-            } else {
-                continue;
-            };
+            }
         }
     }
 }
