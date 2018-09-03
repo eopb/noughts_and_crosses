@@ -1,3 +1,5 @@
+#![cfg_attr(feature = "cargo-clippy", warn(clippy))]
+#![cfg_attr(feature = "cargo-clippy", warn(clippy_pedantic))]
 pub mod ai;
 mod draw;
 pub mod movement;
