@@ -1,3 +1,5 @@
+#![cfg_attr(feature = "cargo-clippy", warn(clippy))]
+#![cfg_attr(feature = "cargo-clippy", warn(clippy_pedantic))]
 use noughts_and_crosses_lib::ai::process_ai;
 use noughts_and_crosses_lib::movement::process_movement;
 
