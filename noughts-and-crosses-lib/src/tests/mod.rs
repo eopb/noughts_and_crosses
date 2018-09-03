@@ -19,10 +19,8 @@ impl GameBoard {
 impl TileStatus {
     pub fn no_player(self) -> bool {
         match self {
-            TileStatus::Cursor => true,
-            TileStatus::Nought(_cursor) => false,
-            TileStatus::Cross(_cursor) => false,
-            TileStatus::None => true,
+            TileStatus::Cursor | TileStatus::None => true,
+            TileStatus::Nought(_cursor) | TileStatus::Cross(_cursor) => false,
         }
     }
 }

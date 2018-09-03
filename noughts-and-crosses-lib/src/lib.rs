@@ -68,8 +68,8 @@ pub fn switch_player(current_player: Players) -> Players {
 }
 
 impl GameBoard {
-    pub fn empty_board() -> GameBoard {
-        GameBoard {
+    pub fn empty_board() -> Self {
+        Self {
             row_one: [TileStatus::Cursor, TileStatus::None, TileStatus::None],
             row_two: [TileStatus::None, TileStatus::None, TileStatus::None],
             row_three: [TileStatus::None, TileStatus::None, TileStatus::None],

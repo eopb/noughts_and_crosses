@@ -3,7 +3,7 @@ use Players;
 use TileStatus;
 
 impl TileStatus {
-    pub fn place_player(self, player_to_place: Players) -> TileStatus {
+    pub fn place_player(self, player_to_place: Players) -> Self {
         match self {
             TileStatus::Nought(_cursor) | TileStatus::Cross(_cursor) => {
                 println!("Error can't place player. Going to painc");
