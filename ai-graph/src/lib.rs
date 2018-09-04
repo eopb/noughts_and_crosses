@@ -5,17 +5,11 @@ enum MutationLine {
     None,
     Multiply(i64),
     Add(i64),
-    Subtract(i64),
-    Divide(i64),
-    Power(i64),
-    Root(i64),
 }
 #[derive(Clone, Copy, Debug)]
 enum MutationNode {
     Multiply,
     Add,
-    Divide,
-    Subtract,
 }
 #[derive(Debug)]
 struct MutationNodeStorage {
@@ -49,8 +43,14 @@ impl Gene {
             for (line_index, line) in node_tree.iter().enumerate() {
                 node_values[0][line_index].stored_data =
                     match node_values[0][line_index].stored_data {
-                        Some(_x) => Some(12.2),
-                        None => Some(12.2),
+                        Some(_x) => Some(
+                            node_values[0][line_index]
+                                .calc_pass_value(line.calc_pass_value(input[node_index].into())),
+                        ),
+                        None => Some(
+                            node_values[0][line_index]
+                                .calc_pass_value(line.calc_pass_value(input[node_index].into())),
+                        ),
                     };
             }
         }
@@ -89,5 +89,27 @@ fn convert_mut_node_to_mut_node_store(node: &MutationNode) -> MutationNodeStorag
     MutationNodeStorage {
         node_type: *node,
         stored_data: None,
+    }
+}
+
+impl MutationLine {
+    fn calc_pass_value(&self, input_value: f64) -> f64 {
+        match self {
+            MutationLine::Multiply(x) => input_value * *x as f64,
+            MutationLine::Add(x) => input_value + *x as f64,
+            MutationLine::None => input_value,
+        }
+    }
+}
+
+impl MutationNodeStorage {
+    fn calc_pass_value(&self, input_value: f64) -> f64 {
+        match self.stored_data {
+            Some(data) => match self.node_type {
+                MutationNode::Add => data + input_value,
+                MutationNode::Multiply => data * input_value,
+            },
+            None => input_value,
+        }
     }
 }
