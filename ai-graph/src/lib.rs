@@ -3,8 +3,8 @@ mod new_genes;
 #[derive(Clone, Copy, Debug)]
 enum MutationLine {
     None,
-    Multiply(i64),
-    Add(i64),
+    Multiply(i8),
+    Add(i8),
 }
 #[derive(Clone, Copy, Debug)]
 enum MutationNode {
@@ -107,7 +107,10 @@ impl MutationNodeStorage {
         match self.stored_data {
             Some(data) => match self.node_type {
                 MutationNode::Add => data + input_value,
-                MutationNode::Multiply => data * input_value,
+                MutationNode::Multiply => {
+                    println!("data {}, inputvalue {}", data, input_value);
+                    data * input_value
+                }
             },
             None => input_value,
         }

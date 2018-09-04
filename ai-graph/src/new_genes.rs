@@ -59,13 +59,13 @@ impl RandVec for MutationLine {
         let mut rng = rand::thread_rng();
         let line_types = [
             MutationLine::None,
-            MutationLine::Multiply(rand_i64()),
-            MutationLine::Add(rand_i64()),
+            MutationLine::Multiply(rand_i8()),
+            MutationLine::Add(rand_i8()),
         ];
         *rng.choose(&line_types).unwrap()
     }
 }
 
-fn rand_i64() -> i64 {
-    rand::thread_rng().gen_range(i64::min_value(), i64::max_value())
+fn rand_i8() -> i8 {
+    rand::thread_rng().gen_range(i8::min_value(), i8::max_value())
 }
