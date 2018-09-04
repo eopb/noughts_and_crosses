@@ -36,7 +36,7 @@ impl Gene {
         let mut output = vec![0.0; 9];
         let mut node_values = node_value_calc(&self.node_dna);
         print!("node values {:#?}", node_values);
-        if !self.validate(input.to_vec()) {
+        if !self.validate(&input) {
             panic!("Gene is not valid")
         };
         for (node_index, node_tree) in self.line_dna[1].iter().enumerate() {
@@ -59,7 +59,7 @@ impl Gene {
         output[7] = 3.52;
         output
     }
-    fn validate(&self, input: Vec<i32>) -> bool {
+    fn validate(&self, input: &[i32]) -> bool {
         for value in &self.line_dna[0] {
             if value.len() == self.node_dna[0].len() {
                 continue;
@@ -70,33 +70,33 @@ impl Gene {
     }
 }
 
-fn node_value_calc(node_dna: &Vec<Vec<MutationNode>>) -> Vec<Vec<MutationNodeStorage>> {
+fn node_value_calc(node_dna: &[Vec<MutationNode>]) -> Vec<Vec<MutationNodeStorage>> {
     let mut output = Vec::new();
     for row in node_dna {
         output.push(node_value_calc_row(&row));
     }
     output
 }
-fn node_value_calc_row(row: &Vec<MutationNode>) -> Vec<MutationNodeStorage> {
+fn node_value_calc_row(row: &[MutationNode]) -> Vec<MutationNodeStorage> {
     let mut output = Vec::new();
     for node in row {
-        output.push(convert_mut_node_to_mut_node_store(&node));
+        output.push(convert_mut_node_to_mut_node_store(*node));
     }
     output
 }
 
-fn convert_mut_node_to_mut_node_store(node: &MutationNode) -> MutationNodeStorage {
+fn convert_mut_node_to_mut_node_store(node: MutationNode) -> MutationNodeStorage {
     MutationNodeStorage {
-        node_type: *node,
+        node_type: node,
         stored_data: None,
     }
 }
 
 impl MutationLine {
-    fn calc_pass_value(&self, input_value: f64) -> f64 {
+    fn calc_pass_value(self, input_value: f64) -> f64 {
         match self {
-            MutationLine::Multiply(x) => input_value * f64::from(*x),
-            MutationLine::Add(x) => input_value + f64::from(*x),
+            MutationLine::Multiply(x) => input_value * f64::from(x),
+            MutationLine::Add(x) => input_value + f64::from(x),
             MutationLine::None => input_value,
         }
     }
