@@ -10,7 +10,7 @@ impl Gene {
             node_dna: vec![vec![MutationNode::Add; 9]; 2],
         }
     }
-    pub fn new_random_gene() -> Gene {
+    pub fn new_random_gene() -> Self {
         Self {
             line_dna: MutationLine::rand_vec3(2, 9, 9),
             node_dna: MutationNode::rand_vec2(2, 9),

@@ -32,7 +32,7 @@ mod ai_graph {
     }
 }
 impl Gene {
-    pub fn output(self, input: Vec<i32>) -> Vec<f64> {
+    pub fn output(self, input: &[i32]) -> Vec<f64> {
         let mut output = vec![0.0; 9];
         let mut node_values = node_value_calc(&self.node_dna);
         print!("node values {:#?}", node_values);
@@ -95,8 +95,8 @@ fn convert_mut_node_to_mut_node_store(node: &MutationNode) -> MutationNodeStorag
 impl MutationLine {
     fn calc_pass_value(&self, input_value: f64) -> f64 {
         match self {
-            MutationLine::Multiply(x) => input_value * *x as f64,
-            MutationLine::Add(x) => input_value + *x as f64,
+            MutationLine::Multiply(x) => input_value * f64::from(*x),
+            MutationLine::Add(x) => input_value + f64::from(*x),
             MutationLine::None => input_value,
         }
     }
