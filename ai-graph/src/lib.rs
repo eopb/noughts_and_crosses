@@ -109,7 +109,11 @@ impl MutationNodeStorage {
                 MutationNode::Add => data + input_value,
                 MutationNode::Multiply => {
                     println!("data {}, inputvalue {}", data, input_value);
-                    data * input_value
+                    if data == 0.0 {
+                        input_value
+                    } else {
+                        data * input_value
+                    }
                 }
             },
             None => input_value,
