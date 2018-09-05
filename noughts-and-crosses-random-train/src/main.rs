@@ -1,21 +1,40 @@
 #![cfg_attr(feature = "cargo-clippy", warn(clippy_pedantic))]
+#![allow(single_match_else)]
+#![feature(type_ascription)]
 extern crate ai_graph;
-use ai_graph::Gene;
+extern crate noughts_and_crosses_lib;
 
-#[derive(Debug)]
+use ai_graph::Gene;
+use noughts_and_crosses_lib::{GameBoard, Players};
+
+#[derive(Debug, Clone)]
 struct GeneStorage {
     gene: Gene,
-    score: u8,
+    score: u32,
 }
 
 fn main() {
     let mut scores = Vec::new();
     for _x in 0..10 {
         let gene_tested = Gene::new_random_gene();
-        scores.push(GeneStorage {
-            gene: gene_tested,
-            score: 0,
-        });
+        for _x in 0..10 {
+            let mut game_board = GameBoard::empty_board();
+            let mut score_values = Vec::new();
+            loop {
+                game_board = match game_board.random_placement(Players::Cross) {
+                    Some(game_board) => game_board,
+                    None => {
+                        score_values.push(0);
+                        break;
+                    }
+                };
+                // match game_board {}
+            }
+            scores.push(GeneStorage {
+                gene: gene_tested.clone(),
+                score: score_values.iter().sum(): u32 / score_values.len() as u32,
+            });
+        }
     }
     println!("{:#?}", scores);
     println!("Hello, world!");
