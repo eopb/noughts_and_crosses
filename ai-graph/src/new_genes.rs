@@ -6,7 +6,7 @@ use MutationNode;
 impl Gene {
     pub fn new_gene() -> Self {
         Self {
-            line_dna: vec![vec![vec![MutationLine::None; 9]; 9]; 2],
+            line_dna: vec![vec![vec![MutationLine::Reset; 9]; 9]; 2],
             node_dna: vec![vec![MutationNode::Add; 9]; 2],
         }
     }
@@ -58,7 +58,8 @@ impl RandVec for MutationLine {
     fn rand_mut() -> Self {
         let mut rng = rand::thread_rng();
         let line_types = [
-            MutationLine::None,
+            MutationLine::Pass,
+            MutationLine::Reset,
             MutationLine::Multiply(rand_i8()),
             MutationLine::Add(rand_i8()),
         ];

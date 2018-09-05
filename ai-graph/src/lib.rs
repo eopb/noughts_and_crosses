@@ -2,7 +2,8 @@
 mod new_genes;
 #[derive(Clone, Copy, Debug)]
 enum MutationLine {
-    None,
+    Pass,
+    Reset,
     Multiply(i8),
     Add(i8),
 }
@@ -97,7 +98,8 @@ impl MutationLine {
         match self {
             MutationLine::Multiply(x) => input_value * f64::from(x),
             MutationLine::Add(x) => input_value + f64::from(x),
-            MutationLine::None => input_value,
+            MutationLine::Pass => input_value,
+            MutationLine::Reset => 0.0,
         }
     }
 }
