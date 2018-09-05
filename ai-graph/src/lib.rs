@@ -1,6 +1,7 @@
 #![cfg_attr(feature = "cargo-clippy", warn(clippy_pedantic))]
 mod new_genes;
 #[derive(Clone, Copy, Debug)]
+//TODO Add divide option. Multiply(i8) can't do this because i8 values are never floating point.
 enum MutationLine {
     Pass,
     Reset,
