@@ -2,14 +2,22 @@
 extern crate ai_graph;
 use ai_graph::Gene;
 
+#[derive(Debug)]
 struct GeneStorage {
     gene: Gene,
     score: u8,
 }
 
 fn main() {
+    let mut scores = Vec::new();
+    for _x in 0..10 {
+        let gene_tested = Gene::new_random_gene();
+        scores.push(GeneStorage {
+            gene: gene_tested,
+            score: 0,
+        });
+    }
     let test_gene = Gene::new_random_gene();
-    println!("{:#?}", test_gene);
-    println!("{:#?}", test_gene.output(&[1, 0, 1, 1, 1, 0, 0, 1, 1]));
+    println!("{:#?}", scores);
     println!("Hello, world!");
 }
