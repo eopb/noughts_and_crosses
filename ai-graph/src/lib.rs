@@ -24,17 +24,10 @@ pub struct Gene {
 }
 mod ai_graph {
     use Gene;
-    pub fn run(inputs: &[f64], output_num: u32) -> Vec<&f64> {
-        let mut output = Vec::new();
-        for input in inputs {
-            output.push(input);
-        }
-        output
-    }
 }
 impl Gene {
     pub fn output(self, input: &[i32]) -> Vec<f64> {
-        let mut output = vec![0.0; 9];
+        let mut output = Vec::new();
         let mut node_values = node_value_calc(&self.node_dna);
         print!("node values {:#?}", node_values);
         if !self.validate(&input) {
@@ -90,8 +83,12 @@ impl Gene {
             }
         }
         print!("node values updated {:#?}", node_values);
-        output[2] = 2.34;
-        output[7] = 3.52;
+        for ref node_values in &node_values[node_values.len() - 1] {
+            output.push(match node_values.stored_data {
+                Some(x) => x,
+                None => panic!("Error 2"),
+            })
+        }
         output
     }
     fn validate(&self, input: &[i32]) -> bool {
