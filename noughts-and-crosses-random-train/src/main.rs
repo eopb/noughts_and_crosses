@@ -38,6 +38,10 @@ fn main() {
                     }
                     Winner::None => (),
                 };
+                game_board = game_board.place_largest_empty(
+                    &gene_tested.clone().output(&[1, 0, 1, 1, 1, 0, 0, 1, 1]),
+                    Players::Nought,
+                )
             }
             scores.push(GeneStorage {
                 gene: gene_tested.clone(),

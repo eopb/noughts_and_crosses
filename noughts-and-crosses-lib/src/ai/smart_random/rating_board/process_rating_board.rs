@@ -7,6 +7,109 @@ use Players;
 use IS_DEBUG;
 
 impl GameBoard {
+    //TODO Check if there is no player in the tile before placing
+    pub fn place_largest_empty(self, inputs: &[f64], player_to_place: Players) -> Self {
+        loop {
+            let random_tile = rand::thread_rng().gen_range(1, 10);
+            if IS_DEBUG {
+                println!("Trying2 {}", random_tile);
+            };
+            if highest_rating_ai(inputs[0], &inputs) && (random_tile == 1) {
+                return Self {
+                    row_one: [
+                        self.row_one[0].place_player(player_to_place),
+                        self.row_one[1],
+                        self.row_one[2],
+                    ],
+                    ..self
+                };
+            }
+            if highest_rating_ai(inputs[1], &inputs) && (random_tile == 2) {
+                return Self {
+                    row_one: [
+                        self.row_one[0],
+                        self.row_one[1].place_player(player_to_place),
+                        self.row_one[2],
+                    ],
+                    ..self
+                };
+            }
+            if highest_rating_ai(inputs[2], &inputs) && (random_tile == 3) {
+                return Self {
+                    row_one: [
+                        self.row_one[0],
+                        self.row_one[1],
+                        self.row_one[2].place_player(player_to_place),
+                    ],
+                    ..self
+                };
+            }
+            if highest_rating_ai(inputs[3], &inputs) && (random_tile == 4) {
+                return Self {
+                    row_two: [
+                        self.row_two[0].place_player(player_to_place),
+                        self.row_two[1],
+                        self.row_two[2],
+                    ],
+                    ..self
+                };
+            }
+            if highest_rating_ai(inputs[4], &inputs) && (random_tile == 5) {
+                return Self {
+                    row_two: [
+                        self.row_two[0],
+                        self.row_two[1].place_player(player_to_place),
+                        self.row_two[2],
+                    ],
+                    ..self
+                };
+            }
+            if highest_rating_ai(inputs[5], &inputs) && (random_tile == 6) {
+                return Self {
+                    row_two: [
+                        self.row_two[0],
+                        self.row_two[1],
+                        self.row_two[2].place_player(player_to_place),
+                    ],
+                    ..self
+                };
+            }
+            if highest_rating_ai(inputs[6], &inputs) && (random_tile == 7) {
+                return Self {
+                    row_three: [
+                        self.row_three[0].place_player(player_to_place),
+                        self.row_three[1],
+                        self.row_three[2],
+                    ],
+                    ..self
+                };
+            }
+            if highest_rating_ai(inputs[7], &inputs) && (random_tile == 8) {
+                return Self {
+                    row_three: [
+                        self.row_three[0],
+                        self.row_three[1].place_player(player_to_place),
+                        self.row_three[2],
+                    ],
+                    ..self
+                };
+            }
+            if highest_rating_ai(inputs[8], &inputs) && (random_tile == 9) {
+                return Self {
+                    row_three: [
+                        self.row_three[0],
+                        self.row_three[1],
+                        self.row_three[2].place_player(player_to_place),
+                    ],
+                    ..self
+                };
+            }
+            if self.is_board_full() {
+                println!("This should not be happening :(");
+                panic!();
+            }
+        }
+    }
     pub fn process_rating_board(self, rating_board: RatingBoard, player_to_place: Players) -> Self {
         loop {
             let random_tile = rand::thread_rng().gen_range(1, 10);
@@ -152,4 +255,14 @@ fn highest_rating(rating_being_tested: Option<f64>, rating_board: RatingBoard) -
             })
         }
     }
+}
+fn highest_rating_ai(rating_being_tested: f64, ratings: &[f64]) -> bool {
+    for rating in ratings {
+        if &rating_being_tested > rating {
+            continue;
+        } else {
+            return false;
+        }
+    }
+    true
 }
