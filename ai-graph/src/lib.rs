@@ -23,9 +23,9 @@ pub struct Gene {
     line_dna: Vec<Vec<Vec<MutationLine>>>,
     node_dna: Vec<Vec<MutationNode>>,
 }
-mod ai_graph {
-    use Gene;
-}
+// mod ai_graph {
+//     use Gene;
+// }
 impl Gene {
     pub fn output(self, input: &[i32]) -> Vec<f64> {
         let mut output = Vec::new();
