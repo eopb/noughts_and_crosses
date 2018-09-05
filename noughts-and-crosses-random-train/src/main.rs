@@ -5,7 +5,7 @@ extern crate ai_graph;
 extern crate noughts_and_crosses_lib;
 
 use ai_graph::Gene;
-use noughts_and_crosses_lib::{GameBoard, Players};
+use noughts_and_crosses_lib::{GameBoard, Players, Winner};
 
 #[derive(Debug, Clone)]
 struct GeneStorage {
@@ -24,11 +24,20 @@ fn main() {
                 game_board = match game_board.random_placement(Players::Cross) {
                     Some(game_board) => game_board,
                     None => {
-                        score_values.push(0);
+                        score_values.push(1);
                         break;
                     }
                 };
-                // match game_board {}
+                match game_board.has_someone_won() {
+                    Winner::Nought => {
+                        panic!("error 1");
+                    }
+                    Winner::Cross => {
+                        score_values.push(0);
+                        break;
+                    }
+                    Winner::None => (),
+                }
             }
             scores.push(GeneStorage {
                 gene: gene_tested.clone(),
