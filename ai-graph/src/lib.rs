@@ -40,7 +40,7 @@ impl Gene {
         if !self.validate(&input) {
             panic!("Gene is not valid")
         };
-        for (node_index, node_tree) in self.line_dna[1].iter().enumerate() {
+        for (node_index, node_tree) in self.line_dna[0].iter().enumerate() {
             for (line_index, line) in node_tree.iter().enumerate() {
                 node_values[0][line_index].stored_data =
                     match node_values[0][line_index].stored_data {
@@ -53,6 +53,40 @@ impl Gene {
                                 .calc_pass_value(line.calc_pass_value(input[node_index].into())),
                         ),
                     };
+            }
+        }
+        for (block_index, block) in self.line_dna.iter().enumerate() {
+            if block_index == 0 {
+                continue;
+            }
+            for (node_index, node_tree) in block.iter().enumerate() {
+                for (line_index, line) in node_tree.iter().enumerate() {
+                    node_values[block_index][line_index].stored_data = match node_values
+                        [block_index][line_index]
+                        .stored_data
+                    {
+                        Some(_x) => Some(
+                            node_values[block_index][line_index].calc_pass_value(
+                                line.calc_pass_value(
+                                    match node_values[block_index - 1][node_index].stored_data {
+                                        Some(x) => x,
+                                        None => panic!("Error 1"),
+                                    }.into(),
+                                ),
+                            ),
+                        ),
+                        None => Some(
+                            node_values[block_index][line_index].calc_pass_value(
+                                line.calc_pass_value(
+                                    match node_values[block_index - 1][node_index].stored_data {
+                                        Some(x) => x,
+                                        None => panic!("Error 1"),
+                                    }.into(),
+                                ),
+                            ),
+                        ),
+                    };
+                }
             }
         }
         print!("node values updated {:#?}", node_values);
