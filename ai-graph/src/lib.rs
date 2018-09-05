@@ -1,16 +1,17 @@
 #![cfg_attr(feature = "cargo-clippy", warn(clippy_pedantic))]
 mod new_genes;
 #[derive(Clone, Copy, Debug)]
-//TODO Add divide option. Multiply(i8) can't do this because i8 values are never floating point.
 enum MutationLine {
     Pass,
     Reset,
     Multiply(i8),
+    Divide(i8),
     Add(i8),
 }
 #[derive(Clone, Copy, Debug)]
 enum MutationNode {
     Multiply,
+    Divide,
     Add,
 }
 #[derive(Debug)]
@@ -130,6 +131,7 @@ impl MutationLine {
         match self {
             MutationLine::Multiply(x) => input_value * f64::from(x),
             MutationLine::Add(x) => input_value + f64::from(x),
+            MutationLine::Divide(x) => input_value / if x == 0 { 1.0 } else { f64::from(x) },
             MutationLine::Pass => input_value,
             MutationLine::Reset => 0.0,
         }
@@ -141,6 +143,13 @@ impl MutationNodeStorage {
         match self.stored_data {
             Some(data) => match self.node_type {
                 MutationNode::Add => data + input_value,
+                MutationNode::Divide => if data == 0.0 {
+                    input_value
+                } else if input_value == 0.0 {
+                    data
+                } else {
+                    data / input_value
+                },
                 MutationNode::Multiply => {
                     println!("data {}, inputvalue {}", data, input_value);
                     if data == 0.0 {

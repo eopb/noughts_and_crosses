@@ -49,7 +49,11 @@ where
 impl RandVec for MutationNode {
     fn rand_mut() -> Self {
         let mut rng = rand::thread_rng();
-        let node_types = [MutationNode::Multiply, MutationNode::Add];
+        let node_types = [
+            MutationNode::Multiply,
+            MutationNode::Divide,
+            MutationNode::Add,
+        ];
         *rng.choose(&node_types).unwrap()
     }
 }
@@ -61,6 +65,7 @@ impl RandVec for MutationLine {
             MutationLine::Pass,
             MutationLine::Reset,
             MutationLine::Multiply(rand_i8()),
+            MutationLine::Divide(rand_i8()),
             MutationLine::Add(rand_i8()),
         ];
         *rng.choose(&line_types).unwrap()
