@@ -17,7 +17,6 @@ fn main() {
             score: 0,
         });
     }
-    let test_gene = Gene::new_random_gene();
     println!("{:#?}", scores);
     println!("Hello, world!");
 }
