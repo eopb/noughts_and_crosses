@@ -37,7 +37,7 @@ fn main() {
                         break;
                     }
                     Winner::None => (),
-                }
+                };
             }
             scores.push(GeneStorage {
                 gene: gene_tested.clone(),
