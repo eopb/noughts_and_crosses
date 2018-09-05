@@ -1,8 +1,8 @@
-[package]
-name = "rust_game"
-version = "0.1.0"
-authors = ["Ethan Brierley <ethanboxx@gmail.com>"]
-
-[dependencies]
-
-rand = "0.3.14"
+[workspace]
+members = [
+    "noughts-and-crosses-game",
+    "noughts-and-crosses-lib",
+    "noughts-and-crosses-ai-test",
+    "ai-graph",
+    "noughts-and-crosses-random-train",
+]
