@@ -42,6 +42,7 @@ clean-code:
   script:
     - rustup component add rustfmt-preview
     - cargo fmt --all -- --check
+  allow_failure: true
 
 build-noughts-and-crosses-game:
   stage: build
