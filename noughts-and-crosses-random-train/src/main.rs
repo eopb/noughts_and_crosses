@@ -15,7 +15,7 @@ struct GeneStorage {
 
 fn main() {
     let mut scores = Vec::new();
-    for _x in 0..700 {
+    for _x in 0..1000 {
         let gene_tested = Gene::new_random_gene();
         let mut score_values = Vec::new();
         for _x in 0..10000 {
@@ -79,9 +79,9 @@ fn main() {
     for score in &scores {
         score_val_temp.push(score.score)
     }
-    println!("{:#?}", score_val_temp);
+    // println!("{:#?}", score_val_temp);
     score_val_temp.sort_by(|a, b| a.partial_cmp(b).unwrap_or(Equal));
-    println!("{:#?}", score_val_temp);
+    // println!("{:#?}", score_val_temp);
     println!("Big value{:#?}", score_val_temp[score_val_temp.len() - 1]);
     println!("Hello, world!");
 }
