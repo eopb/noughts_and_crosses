@@ -27,6 +27,6 @@ This is the library I made for the game and other experiments that use noughts a
 This project uses rand 0.5 for generating the random numbers used in the artificial intelligence.
 
 
-## Warning
+## **Warning**
 
-If you are viewing this from GitHub then this is a read only copy. Please contribute to the GitLab copy [here](https://gitlab.com/efunb/noughts-and-crosses-ai-collection).
+**If you are viewing this from GitHub then this is a read only copy. Please contribute to the GitLab copy [here](https://gitlab.com/efunb/noughts-and-crosses-ai-collection).**
