@@ -81,9 +81,9 @@ nightly-linux-optimized:
     - (cd noughts-and-crosses-ai-test && cargo build --release)
     - rm -r -f files
     - mkdir files
-    - cp target/release/noughts-and-crosses-game files/noughts-and-crosses-game
-    - cp target/release/noughts-and-crosses-random-train files/noughts-and-crosses-random-train
-    - cp target/release/noughts-and-crosses-ai-test files/noughts-and-crosses-ai-test
+    - cp target/release/noughts-and-crosses-game files
+    - cp target/release/noughts-and-crosses-random-train files
+    - cp target/release/noughts-and-crosses-ai-test files
   when: always
   artifacts:
     paths:
@@ -96,6 +96,7 @@ nightly-linux-optimized:
 
 nightly-windows-optimized:
   stage: deploy
+  cache: {}
   script:
     - apt-get update
     - rustup default nightly
@@ -109,19 +110,17 @@ nightly-windows-optimized:
     - echo     linker = \"x86_64-w64-mingw32-gcc\" >> .cargo/config
     - echo     ar = \"x86_64-w64-mingw32-gcc-ar\" >> .cargo/config
     - (cd noughts-and-crosses-game && cargo build --release --target=x86_64-pc-windows-gnu)
-    - (cd ai-graph && cargo build --release --target=x86_64-pc-windows-gnu)
-    - (cd noughts-and-crosses-lib && cargo build --release --target=x86_64-pc-windows-gnu)
-    - rm -r -f nightly
-    - mkdir nightly
-    # - cp target/x86_64-pc-windows-gnu/release/ai-graph.exe nightly
-    - cp target/x86_64-pc-windows-gnu/release/noughts-and-crosses-game.exe nightly
-    # - cp target/x86_64-pc-windows-gnu/release/noughts-and-crosses-lib.exe nightly
-    - rm -f nightly-windows-optimized.zip
-    - zip -r nightly-windows-optimized.zip nightly
+    - (cd noughts-and-crosses-random-train && cargo build --release --target=x86_64-pc-windows-gnu)
+    - (cd noughts-and-crosses-ai-test && cargo build --release --target=x86_64-pc-windows-gnu)
+    - rm -r -f files
+    - mkdir files
+    - cp target/release/noughts-and-crosses-game.exe files
+    - cp target/release/noughts-and-crosses-random-train.exe files
+    - cp target/release/noughts-and-crosses-ai-test.exe files
   when: always
   artifacts:
     paths:
-      - nightly-windows-optimized.zip
+      - files
     expire_in: 6 months
   only:
     refs:
