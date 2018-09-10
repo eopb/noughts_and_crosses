@@ -1,5 +1,5 @@
 
-image: "rust:nightly"
+image: "rust:latest"
 
 stages:
   - build
