@@ -45,10 +45,7 @@ cache:
   paths:
     - ${CI_PROJECT_DIR}/target/
 
-.releaseable_branches:             # list of git refs for building GitLab artifacts (think "pre-release binaries")
-  only: &releaseable_branches
-    - master
-    - dev
+
 
 
 
@@ -177,6 +174,7 @@ nightly-linux-optimized:
   only:
     refs:
       - master
+      - dev
 
 nightly-windows-optimized:
   stage: deploy
@@ -214,6 +212,7 @@ nightly-windows-optimized:
   only:
     refs:
       - master
+      - dev
 
 # stable-linux-optimized:
 #   stage: deploy
