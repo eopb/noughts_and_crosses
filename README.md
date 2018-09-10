@@ -4,9 +4,17 @@
 
 ## Downloads
 
+### Stable
+
 [Windows](https://gitlab.com/efunb/noughts-and-crosses-ai-collection/-/jobs/artifacts/master/download?job=nightly-windows-optimized)
 
 [Linux](https://gitlab.com/efunb/noughts-and-crosses-ai-collection/-/jobs/artifacts/master/download?job=nightly-linux-optimized)
+
+### Unstable
+
+[Windows](https://gitlab.com/efunb/noughts-and-crosses-ai-collection/-/jobs/artifacts/dev/download?job=nightly-windows-optimized)
+
+[Linux](https://gitlab.com/efunb/noughts-and-crosses-ai-collection/-/jobs/artifacts/dev/download?job=nightly-linux-optimized)
 
 ## Projects
 
