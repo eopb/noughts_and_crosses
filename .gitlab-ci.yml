@@ -71,6 +71,7 @@ benchmarktests:
 
 nightly-linux-optimized:
   stage: deploy
+  cache: {}
   script:
     - apt-get update
     - rustup default nightly
@@ -78,10 +79,11 @@ nightly-linux-optimized:
     - (cd noughts-and-crosses-game && cargo build --release)
     - (cd ai-graph && cargo build --release)
     - (cd noughts-and-crosses-lib && cargo build --release)
+    - cp target/release/noughts-and-crosses-game noughts-and-crosses-game
   when: always
   artifacts:
     paths:
-      - target/release/noughts-and-crosses-game
+      - noughts-and-crosses-game
     expire_in: 6 months
   only:
     refs:
