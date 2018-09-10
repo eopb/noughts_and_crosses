@@ -114,9 +114,9 @@ nightly-windows-optimized:
     - (cd noughts-and-crosses-ai-test && cargo build --release --target=x86_64-pc-windows-gnu)
     - rm -r -f files
     - mkdir files
-    - cp target/release/noughts-and-crosses-game.exe files
-    - cp target/release/noughts-and-crosses-random-train.exe files
-    - cp target/release/noughts-and-crosses-ai-test.exe files
+    - cp target/x86_64-pc-windows-gnu/release/noughts-and-crosses-game.exe files
+    - cp target/x86_64-pc-windows-gnu/release/noughts-and-crosses-random-train.exe files
+    - cp target/x86_64-pc-windows-gnu/release/noughts-and-crosses-ai-test.exe files
   when: always
   artifacts:
     paths:
