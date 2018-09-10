@@ -35,15 +35,11 @@ stages:
 #     fi;
 # #  - git submodule update --init --recursive
 
-cache:
- paths:
-   - target/
 
 # variables:
 #   GIT_STRATEGY: none
 # before_script:
-#   - rustup default nightly
-#   - rustup update
+
 
 
 clean-code:
@@ -56,27 +52,37 @@ clean-code:
 build-noughts-and-crosses-game:
   stage: build
   script:
-    - (cd noughts-and-crosses-game && cargo +nightly build)
+    - rustup default nightly
+    - rustup update
+    - (cd noughts-and-crosses-game && cargo build)
 
 build-noughts-and-crosses-lib:
   stage: build
   script:
-    - (cd noughts-and-crosses-lib && cargo +nightly build)
+    - rustup default nightly
+    - rustup update
+    - (cd noughts-and-crosses-lib && cargo build)
 
 build-ai-graph:
   stage: build
   script:
-    - (cd ai-graph && cargo +nightly build)
+    - rustup default nightly
+    - rustup update
+    - (cd ai-graph && cargo build)
 
 build-noughts-and-crosses-ai-test:
   stage: build
   script:
-    - (cd noughts-and-crosses-ai-test && cargo +nightly build)
+    - rustup default nightly
+    - rustup update
+    - (cd noughts-and-crosses-ai-test && cargo build)
 
 build-noughts-and-crosses-random-train:
   stage: build
   script:
-    - (cd noughts-and-crosses-random-train && cargo +nightly build)
+    - rustup default nightly
+    - rustup update
+    - (cd noughts-and-crosses-random-train && cargo build)
 
 unittests:
   stage: test
