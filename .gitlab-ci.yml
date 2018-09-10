@@ -91,11 +91,15 @@ build-noughts-and-crosses-random-train:
 unittests:
   stage: test
   script:
+    - rustup default nightly
+    - rustup update
     - cargo test
 
 benchmarktests:
   stage: test
   script:
+    - rustup default nightly
+    - rustup update
     - cargo bench
 
 # nightly-linux-debug:
