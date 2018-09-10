@@ -1,6 +1,4 @@
-#cache:
-#  paths:
-#    - target/
+
 image: "rust:latest"
 
 stages:
@@ -36,6 +34,17 @@ stages:
 #        ls -la target;
 #     fi;
 # #  - git submodule update --init --recursive
+
+cache:
+ paths:
+   - target/
+
+variables:
+  GIT_STRATEGY: none
+before_script:
+  - rustup default nightly
+  - rustup update
+
 
 clean-code:
   stage: build
