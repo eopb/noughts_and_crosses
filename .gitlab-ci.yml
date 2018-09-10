@@ -77,13 +77,17 @@ nightly-linux-optimized:
     - rustup default nightly
     - rustup update
     - (cd noughts-and-crosses-game && cargo build --release)
-    - (cd ai-graph && cargo build --release)
-    - (cd noughts-and-crosses-lib && cargo build --release)
+    - (cd noughts-and-crosses-random-train && cargo build --release)
+    - (cd noughts-and-crosses-ai-test && cargo build --release)
     - cp target/release/noughts-and-crosses-game noughts-and-crosses-game
+    - cp target/release/noughts-and-crosses-random-train noughts-and-crosses-random-train
+    - cp target/release/noughts-and-crosses-ai-test noughts-and-crosses-ai-test
   when: always
   artifacts:
     paths:
       - noughts-and-crosses-game
+      - noughts-and-crosses-random-train
+      - noughts-and-crosses-ai-test
     expire_in: 6 months
   only:
     refs:
