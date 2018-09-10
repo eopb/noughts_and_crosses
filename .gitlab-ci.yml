@@ -45,7 +45,13 @@ cache:
   paths:
     - ${CI_PROJECT_DIR}/target/
 
- 
+.releaseable_branches:             # list of git refs for building GitLab artifacts (think "pre-release binaries")
+  only: &releaseable_branches
+    - master
+    - dev
+
+
+
 clean-code:
   stage: build
   script:
