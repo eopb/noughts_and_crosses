@@ -45,7 +45,7 @@ cache:
   paths:
     - ${CI_PROJECT_DIR}/target/
     # - ${CI_PROJECT_DIR}/cargo/
-
+ 
 clean-code:
   stage: build
   script:
