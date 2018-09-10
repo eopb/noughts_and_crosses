@@ -73,6 +73,8 @@ nightly-linux-optimized:
   stage: deploy
   script:
     - apt-get update
+    - rustup default nightly
+    - rustup update
     - (cd noughts-and-crosses-game && cargo build --release)
     - (cd ai-graph && cargo build --release)
     - (cd noughts-and-crosses-lib && cargo build --release)
@@ -97,6 +99,7 @@ nightly-windows-optimized:
   stage: deploy
   script:
     - apt-get update
+    - rustup default nightly
     - rustup update
     - apt-get install gcc -y
     - apt-get install zip -y
