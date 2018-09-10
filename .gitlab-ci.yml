@@ -56,27 +56,27 @@ clean-code:
 build-noughts-and-crosses-game:
   stage: build
   script:
-    - (cd noughts-and-crosses-game && cargo build)
+    - (cd noughts-and-crosses-game && cargo +nightly build)
 
 build-noughts-and-crosses-lib:
   stage: build
   script:
-    - (cd noughts-and-crosses-lib && cargo build)
+    - (cd noughts-and-crosses-lib && cargo +nightly build)
 
 build-ai-graph:
   stage: build
   script:
-    - (cd ai-graph && cargo build)
+    - (cd ai-graph && cargo +nightly build)
 
 build-noughts-and-crosses-ai-test:
   stage: build
   script:
-    - (cd noughts-and-crosses-ai-test && cargo build)
+    - (cd noughts-and-crosses-ai-test && cargo +nightly build)
 
 build-noughts-and-crosses-random-train:
   stage: build
   script:
-    - (cd noughts-and-crosses-random-train && cargo build)
+    - (cd noughts-and-crosses-random-train && cargo +nightly build)
 
 unittests:
   stage: test
