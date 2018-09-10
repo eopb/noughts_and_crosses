@@ -3,7 +3,7 @@ use crate::MutationNode;
 use rand::Rng;
 impl Gene {
     // TODO breed lines
-    fn breed(&self, second_gene: &Self) -> Self {
+    pub fn breed(&self, second_gene: &Self) -> Self {
         let mut new_values = self.clone();
         // Merge nodes.
         for (node_line_index, node_line) in self.node_dna.iter().enumerate() {
