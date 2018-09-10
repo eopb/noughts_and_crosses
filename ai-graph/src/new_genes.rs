@@ -1,6 +1,5 @@
 extern crate rand;
 use self::rand::Rng;
-use Gene;
 use MutationLine;
 use MutationNode;
 impl Gene {

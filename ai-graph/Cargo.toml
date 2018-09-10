@@ -1,7 +1,10 @@
+cargo-features = ["edition"]
+
 [package]
 name = "ai-graph"
 version = "0.1.0"
 authors = ["Ethan Brierley <ethanboxx@gmail.com>"]
+edition = '2018'
 
 [dependencies]
 rand = "0.5"
