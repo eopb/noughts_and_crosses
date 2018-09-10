@@ -81,7 +81,7 @@ nightly-linux-optimized:
   when: always
   artifacts:
     paths:
-      - target/release/nightly-linux-optimized
+      - target/release/noughts-and-crosses-game
     expire_in: 6 months
   only:
     refs:
