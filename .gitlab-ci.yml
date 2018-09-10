@@ -1,6 +1,4 @@
-#cache:
-#  paths:
-#    - target/
+
 image: "rust:latest"
 
 stages:
@@ -37,35 +35,71 @@ stages:
 #     fi;
 # #  - git submodule update --init --recursive
 
+
+# variables:
+#   GIT_STRATEGY: none
+# before_script:
+
+cache:
+  key: "${CI_JOB_NAME}"
+  paths:
+    - ${CI_PROJECT_DIR}/target/
+
+ 
 clean-code:
   stage: build
   script:
     - rustup component add rustfmt-preview
     - cargo fmt --all -- --check
+  allow_failure: true
 
 build-noughts-and-crosses-game:
   stage: build
   script:
+    - rustup default nightly
+    - rustup update
     - (cd noughts-and-crosses-game && cargo build)
 
 build-noughts-and-crosses-lib:
   stage: build
   script:
+    - rustup default nightly
+    - rustup update
     - (cd noughts-and-crosses-lib && cargo build)
 
 build-ai-graph:
   stage: build
   script:
+    - rustup default nightly
+    - rustup update
     - (cd ai-graph && cargo build)
+
+build-noughts-and-crosses-ai-test:
+  stage: build
+  script:
+    - rustup default nightly
+    - rustup update
+    - (cd noughts-and-crosses-ai-test && cargo build)
+
+build-noughts-and-crosses-random-train:
+  stage: build
+  script:
+    - rustup default nightly
+    - rustup update
+    - (cd noughts-and-crosses-random-train && cargo build)
 
 unittests:
   stage: test
   script:
+    - rustup default nightly
+    - rustup update
     - cargo test
 
 benchmarktests:
   stage: test
   script:
+    - rustup default nightly
+    - rustup update
     - cargo bench
 
 # nightly-linux-debug:
@@ -197,6 +231,7 @@ nightly-windows-optimized:
 #   only:
 #     refs:
 #       - /^v[0-9]+\.[0-9]+\.[0-9]+/
+
 
 # stable-windows-optimized:
 #   stage: deploy
