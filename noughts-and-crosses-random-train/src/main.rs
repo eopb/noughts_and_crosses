@@ -1,6 +1,5 @@
 #![cfg_attr(feature = "cargo-clippy", warn(clippy_pedantic))]
 #![allow(single_match_else)]
-#![feature(type_ascription)]
 extern crate ai_graph;
 extern crate noughts_and_crosses_lib;
 use ai_graph::Gene;
