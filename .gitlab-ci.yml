@@ -35,9 +35,9 @@ stages:
 #     fi;
 # #  - git submodule update --init --recursive
 
-cache:
- paths:
-   - target/
+# cache:
+#  paths:
+#    - target/
 
 variables:
   GIT_STRATEGY: none
