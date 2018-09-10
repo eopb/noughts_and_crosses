@@ -1,0 +1,7 @@
+[package]
+name = "noughts_and_crosses_lib"
+version = "0.1.0"
+authors = ["Ethan Brierley <ethanboxx@gmail.com>"]
+
+[dependencies]
+rand = "0.5"

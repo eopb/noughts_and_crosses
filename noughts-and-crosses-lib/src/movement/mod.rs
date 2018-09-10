@@ -16,7 +16,7 @@ pub enum Movement {
     None,
 }
 
-pub fn process_movement(game_board: GameBoard, current_player: Players) -> MovementReturn {
+pub fn process(game_board: GameBoard, current_player: Players) -> MovementReturn {
     let input = fetch_input();
     match input {
         Movement::Place => MovementReturn {
@@ -37,12 +37,12 @@ pub fn process_movement(game_board: GameBoard, current_player: Players) -> Movem
 fn fetch_input() -> Movement {
     let mut movement = String::new();
     #[allow(unused_assignments)]
-    let mut umovement = 0;
+    let mut movement_num = 0;
 
     io::stdin()
         .read_line(&mut movement)
         .expect("Failed to read line");
-    umovement = match movement.trim().parse() {
+    movement_num = match movement.trim().parse() {
         Ok(num) => num,
         Err(_) => {
             println!("Plese Try again");
@@ -50,19 +50,19 @@ fn fetch_input() -> Movement {
         }
     };
 
-    if umovement == 4 {
+    if movement_num == 4 {
         println!("You have pressed 4 to go Left");
         Movement::Left
-    } else if umovement == 6 {
+    } else if movement_num == 6 {
         println!("You have pressed 6 to go Right");
         Movement::Right
-    } else if umovement == 8 {
+    } else if movement_num == 8 {
         println!("You have pressed 8 to go UP");
         Movement::Up
-    } else if umovement == 2 {
+    } else if movement_num == 2 {
         println!("You have pressed 2 to go Down");
         Movement::Down
-    } else if umovement == 5 {
+    } else if movement_num == 5 {
         println!("You have pressed 5 to place you peace");
         Movement::Place
     } else {
@@ -188,11 +188,7 @@ impl TileStatus {
     fn is_cursor(self) -> bool {
         match self {
             TileStatus::Cursor => true,
-            TileStatus::Nought(cursor) => match cursor {
-                Cursor::True => true,
-                Cursor::None => false,
-            },
-            TileStatus::Cross(cursor) => match cursor {
+            TileStatus::Nought(cursor) | TileStatus::Cross(cursor) => match cursor {
                 Cursor::True => true,
                 Cursor::None => false,
             },

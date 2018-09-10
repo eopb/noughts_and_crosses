@@ -1,62 +1,13 @@
-use ai::process_ai;
-use movement::process_movement;
-mod ai;
-mod draw;
-mod movement;
-pub mod tests;
-mod tools;
+use noughts_and_crosses_lib::ai;
+use noughts_and_crosses_lib::movement;
+
 use std::io;
-const IS_DEBUG: bool = false;
-#[derive(Copy, Clone, Debug)]
-pub struct GameBoard {
-    row_one: [TileStatus; 3],
-    row_two: [TileStatus; 3],
-    row_three: [TileStatus; 3],
-}
 
-#[derive(Copy, Clone, Debug)]
-pub enum TileStatus {
-    Nought(Cursor),
-    Cross(Cursor),
-    Cursor,
-    None,
-}
+extern crate noughts_and_crosses_lib;
+pub use noughts_and_crosses_lib::{
+    switch_player, AiMode, GameBoard, GameMode, MovementReturn, Players, Winner, IS_DEBUG,
+};
 
-#[derive(Copy, Clone, Debug)]
-pub enum Cursor {
-    True,
-    None,
-}
-
-#[derive(Copy, Clone)]
-pub enum Players {
-    Nought,
-    Cross,
-}
-
-pub enum Winner {
-    Nought,
-    Cross,
-    None,
-}
-
-pub enum GameMode {
-    TwoPlayer,
-    SinglePlayer,
-    Spectate,
-}
-
-#[derive(Copy, Clone)]
-pub enum AiMode {
-    Random,
-    SmartRandom,
-    None,
-}
-
-pub struct MovementReturn {
-    game_board: Option<GameBoard>,
-    placed: bool,
-}
 fn main() {
     println!("Welcome to my noughts and crosses game made in rust.");
     let mut ai_mode = AiMode::None;
@@ -69,11 +20,7 @@ fn main() {
     };
     print_instructions();
     let mut current_player = Players::Cross;
-    let mut game_board = GameBoard {
-        row_one: [TileStatus::Cursor, TileStatus::None, TileStatus::None],
-        row_two: [TileStatus::None, TileStatus::None, TileStatus::None],
-        row_three: [TileStatus::None, TileStatus::None, TileStatus::None],
-    };
+    let mut game_board = GameBoard::empty_board();
 
     println!("Crosses goes first.");
     println!("The board looks like this.");
@@ -85,13 +32,13 @@ fn main() {
                 placed: true,
             },
             _ => {
-                let mut movement_return = process_movement(game_board, current_player);
+                let mut movement_return = movement::process(game_board, current_player);
                 loop {
                     game_board = match movement_return.game_board {
                         Some(game_board) => game_board,
                         None => {
                             println!("That did not work");
-                            movement_return = process_movement(game_board, current_player);
+                            movement_return = movement::process(game_board, current_player);
                             continue;
                         }
                     };
@@ -141,7 +88,7 @@ fn main() {
                         GameMode::SinglePlayer => switch_player(current_player),
                         _ => current_player,
                     };
-                    game_board = process_ai(game_board, ai_mode, current_player);
+                    game_board = ai::process(game_board, ai_mode, current_player);
                     current_player = switch_player(current_player);
                     match game_board.has_someone_won() {
                         Winner::Cross => {
@@ -172,23 +119,6 @@ fn main() {
         continue;
     }
     game_finished();
-}
-
-fn switch_player(current_player: Players) -> Players {
-    match current_player {
-        Players::Cross => {
-            if IS_DEBUG {
-                println!("Current player was switched to Nought");
-            };
-            Players::Nought
-        }
-        Players::Nought => {
-            if IS_DEBUG {
-                println!("Current player was switched to Cross");
-            };
-            Players::Cross
-        }
-    }
 }
 
 fn game_mode_choice() -> GameMode {
