@@ -64,6 +64,11 @@ build-noughts-and-crosses-ai-test:
   script:
     - (cd noughts-and-crosses-ai-test && cargo build)
 
+build-noughts-and-crosses-random-train:
+  stage: build
+  script:
+    - (cd noughts-and-crosses-random-train && cargo build)
+
 unittests:
   stage: test
   script:

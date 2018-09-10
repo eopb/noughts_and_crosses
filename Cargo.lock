@@ -54,6 +54,14 @@ dependencies = [
 ]
 
 [[package]]
+name = "noughts-and-crosses-random-train"
+version = "0.1.0"
+dependencies = [
+ "ai-graph 0.1.0",
+ "noughts_and_crosses_lib 0.1.0",
+]
+
+[[package]]
 name = "noughts_and_crosses_lib"
 version = "0.1.0"
 dependencies = [

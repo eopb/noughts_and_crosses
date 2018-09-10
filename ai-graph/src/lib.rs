@@ -31,7 +31,7 @@ impl Gene {
     pub fn output(self, input: &[i32]) -> Vec<f64> {
         let mut output = Vec::new();
         let mut node_values = node_value_calc(&self.node_dna);
-        print!("node values {:#?}", node_values);
+        // print!("node values {:#?}", node_values);
         if !self.validate(&input) {
             panic!("Gene is not valid")
         };
@@ -84,7 +84,7 @@ impl Gene {
                 }
             }
         }
-        print!("node values updated {:#?}", node_values);
+        // print!("node values updated {:#?}", node_values);
         for ref node_values in &node_values[node_values.len() - 1] {
             output.push(match node_values.stored_data {
                 Some(x) => x,
@@ -151,7 +151,7 @@ impl MutationNodeStorage {
                     data / input_value
                 },
                 MutationNode::Multiply => {
-                    println!("data {}, inputvalue {}", data, input_value);
+                    // println!("data {}, inputvalue {}", data, input_value);
                     if data == 0.0 {
                         input_value
                     } else if input_value == 0.0 {
