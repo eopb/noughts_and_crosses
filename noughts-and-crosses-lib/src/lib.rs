@@ -1,3 +1,5 @@
+use std::ops::Index;
+
 pub mod ai;
 mod draw;
 pub mod movement;
@@ -11,6 +13,20 @@ pub struct GameBoard {
     row_two: [TileStatus; 3],
     row_three: [TileStatus; 3],
 }
+
+impl Index<usize> for GameBoard {
+    type Output = [TileStatus; 3];
+
+    fn index(&self, index: usize) -> &[TileStatus; 3] {
+        match index {
+            0 => &self.row_one,
+            1 => &self.row_two,
+            2 => &self.row_three,
+            _ => panic!("Gameboard can not be indexed for this value."),
+        }
+    }
+}
+
 pub struct MovementReturn {
     pub game_board: Option<GameBoard>,
     pub placed: bool,
