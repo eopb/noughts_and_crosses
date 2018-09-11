@@ -1,7 +1,7 @@
 use crate::Gene;
 use crate::MutationLine;
 use crate::MutationNode;
-#[derive(Debug)]
+#[derive(Debug, Clone, Copy)]
 struct MutationNodeStorage {
     node_type: MutationNode,
     stored_data: Option<f64>,
@@ -35,36 +35,30 @@ impl Gene {
             }
             for (node_index, node_tree) in block.iter().enumerate() {
                 for (line_index, line) in node_tree.iter().enumerate() {
-                    node_values[block_index][line_index].stored_data = match node_values
-                        [block_index][line_index]
-                        .stored_data
-                    {
-                        Some(_x) => Some(
-                            node_values[block_index][line_index].calc_pass_value(
+                    node_values[block_index][line_index].stored_data =
+                        match node_values[block_index][line_index].stored_data {
+                            Some(_x) => Some(node_values[block_index][line_index].calc_pass_value(
                                 line.calc_pass_value(
                                     match node_values[block_index - 1][node_index].stored_data {
                                         Some(x) => x,
                                         None => panic!("Error 1"),
-                                    }.into(),
+                                    },
                                 ),
-                            ),
-                        ),
-                        None => Some(
-                            node_values[block_index][line_index].calc_pass_value(
+                            )),
+                            None => Some(node_values[block_index][line_index].calc_pass_value(
                                 line.calc_pass_value(
                                     match node_values[block_index - 1][node_index].stored_data {
                                         Some(x) => x,
                                         None => panic!("Error 1"),
-                                    }.into(),
+                                    },
                                 ),
-                            ),
-                        ),
-                    };
+                            )),
+                        };
                 }
             }
         }
         // print!("node values updated {:#?}", node_values);
-        for ref node_values in &node_values[node_values.len() - 1] {
+        for node_values in node_values[node_values.len() - 1].clone() {
             output.push(match node_values.stored_data {
                 Some(x) => x,
                 None => panic!("Error 2"),
@@ -72,7 +66,7 @@ impl Gene {
         }
         output
     }
-    fn validate(&self, input: &[i32]) -> bool {
+    fn validate(&self, _input: &[i32]) -> bool {
         for value in &self.line_dna[0] {
             if value.len() == self.node_dna[0].len() {
                 continue;
