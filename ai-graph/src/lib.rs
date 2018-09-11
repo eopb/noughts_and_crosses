@@ -1,4 +1,5 @@
-#![cfg_attr(feature = "cargo-clippy", warn(clippy_pedantic))]
+#![feature(tool_lints)]
+#![warn(clippy::pedantic)]
 mod breed;
 mod new_genes;
 mod output;
