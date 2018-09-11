@@ -63,15 +63,10 @@ fn main() {
                 };
             }
         }
-        #[allow(clippy::redundant_closure)]
         #[allow(clippy::cast_precision_loss)]
         scores.push(GeneStorage {
             gene: gene_tested.clone(),
-            score: score_values
-                .iter()
-                .cloned()
-                .map(|val| f64::from(val))
-                .sum::<f64>() as f64
+            score: score_values.iter().cloned().map(f64::from).sum::<f64>() as f64
                 / score_values.len() as f64,
         });
     }
