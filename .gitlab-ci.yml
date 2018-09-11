@@ -16,6 +16,7 @@ clean-code:
   stage: build
   script:
     - rustup component add rustfmt-preview
+    - cargo metadata
     - cargo fmt --all -- --check
   allow_failure: true
 
