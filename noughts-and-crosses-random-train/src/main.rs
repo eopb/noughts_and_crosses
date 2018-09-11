@@ -4,8 +4,8 @@
 extern crate ai_graph;
 extern crate noughts_and_crosses_lib;
 use ai_graph::Gene;
-use noughts_and_crosses_lib::{GameBoard, GameMode, Players, Winner};
-use std::cmp::Ordering::*;
+use noughts_and_crosses_lib::{GameBoard, Players, Winner};
+use std::cmp::Ordering::Equal;
 
 #[derive(Debug, Clone)]
 struct GeneStorage {
@@ -63,13 +63,14 @@ fn main() {
                 };
             }
         }
-
+        #[allow(clippy::redundant_closure)]
+        #[allow(clippy::cast_precision_loss)]
         scores.push(GeneStorage {
             gene: gene_tested.clone(),
             score: score_values
                 .iter()
                 .cloned()
-                .map(|val| val as f64)
+                .map(|val| f64::from(val))
                 .sum::<f64>() as f64
                 / score_values.len() as f64,
         });
