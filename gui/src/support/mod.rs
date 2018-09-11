@@ -11,7 +11,7 @@
 //! and drawing backends behave in the same manner.
 #![allow(dead_code)]
 
-extern crate rand;
+use rand;
 
 use conrod;
 use std;

@@ -2,15 +2,18 @@
 //!
 //! Note that the `glium` crate is re-exported via the `conrod::backend::glium` module.
 
+#[cfg(all(feature = "winit", feature = "glium"))]
 #[macro_use]
 extern crate conrod;
 
+#[cfg(all(feature = "winit", feature = "glium"))]
 mod support;
 
 fn main() {
     feature::main();
 }
 
+#[cfg(all(feature = "winit", feature = "glium"))]
 mod feature {
     extern crate find_folder;
     extern crate image;
@@ -131,4 +134,14 @@ mod feature {
         }
     }
 
+}
+
+#[cfg(not(all(feature = "winit", feature = "glium")))]
+mod feature {
+    pub fn main() {
+        println!(
+            "This example requires the `winit` and `glium` features. \
+             Try running `cargo run --release --features=\"winit glium\" --example <example_name>`"
+        );
+    }
 }

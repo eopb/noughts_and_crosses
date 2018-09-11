@@ -123,7 +123,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 [[package]]
 name = "conrod"
 version = "0.61.1"
-source = "registry+https://github.com/rust-lang/crates.io-index"
+source = "git+https://github.com/pistondevelopers/conrod.git#50a2059adc398afeac8f1a11157b917ef3b31f00"
 dependencies = [
  "conrod_derive 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "daggy 0.5.0 (registry+https://github.com/rust-lang/crates.io-index)",
@@ -131,6 +131,31 @@ dependencies = [
  "num 0.1.42 (registry+https://github.com/rust-lang/crates.io-index)",
  "pistoncore-input 0.21.0 (registry+https://github.com/rust-lang/crates.io-index)",
  "rusttype 0.5.2 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[[package]]
+name = "conrod"
+version = "0.61.1"
+dependencies = [
+ "conrod 0.61.1 (git+https://github.com/pistondevelopers/conrod.git)",
+ "conrod_derive 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)",
+ "daggy 0.5.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "find_folder 0.3.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "fnv 1.0.6 (registry+https://github.com/rust-lang/crates.io-index)",
+ "gfx 0.17.1 (registry+https://github.com/rust-lang/crates.io-index)",
+ "gfx_core 0.8.2 (registry+https://github.com/rust-lang/crates.io-index)",
+ "gfx_window_glutin 0.25.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "glium 0.22.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "glutin 0.17.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "image 0.19.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "num 0.1.42 (registry+https://github.com/rust-lang/crates.io-index)",
+ "petgraph 0.4.13 (registry+https://github.com/rust-lang/crates.io-index)",
+ "piston2d-graphics 0.26.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "piston_window 0.80.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "pistoncore-input 0.21.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "rand 0.5.5 (registry+https://github.com/rust-lang/crates.io-index)",
+ "rusttype 0.5.2 (registry+https://github.com/rust-lang/crates.io-index)",
+ "winit 0.16.2 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
@@ -461,31 +486,6 @@ dependencies = [
  "winapi 0.3.5 (registry+https://github.com/rust-lang/crates.io-index)",
  "winit 0.16.2 (registry+https://github.com/rust-lang/crates.io-index)",
  "x11-dl 2.18.3 (registry+https://github.com/rust-lang/crates.io-index)",
-]
-
-[[package]]
-name = "gui"
-version = "0.1.0"
-dependencies = [
- "conrod 0.61.1 (registry+https://github.com/rust-lang/crates.io-index)",
- "conrod_derive 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)",
- "daggy 0.5.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "find_folder 0.3.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "fnv 1.0.6 (registry+https://github.com/rust-lang/crates.io-index)",
- "gfx 0.17.1 (registry+https://github.com/rust-lang/crates.io-index)",
- "gfx_core 0.8.2 (registry+https://github.com/rust-lang/crates.io-index)",
- "gfx_window_glutin 0.25.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "glium 0.22.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "glutin 0.17.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "image 0.19.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "num 0.1.42 (registry+https://github.com/rust-lang/crates.io-index)",
- "petgraph 0.4.13 (registry+https://github.com/rust-lang/crates.io-index)",
- "piston2d-graphics 0.26.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "piston_window 0.80.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "pistoncore-input 0.21.0 (registry+https://github.com/rust-lang/crates.io-index)",
- "rand 0.5.5 (registry+https://github.com/rust-lang/crates.io-index)",
- "rusttype 0.5.2 (registry+https://github.com/rust-lang/crates.io-index)",
- "winit 0.16.2 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
@@ -1503,7 +1503,7 @@ dependencies = [
 "checksum cocoa 0.14.0 (registry+https://github.com/rust-lang/crates.io-index)" = "b0c23085dde1ef4429df6e5896b89356d35cdd321fb43afe3e378d010bb5adc6"
 "checksum cocoa 0.15.0 (registry+https://github.com/rust-lang/crates.io-index)" = "7b44bd25bd275e9d74a5dff8ca55f2fb66c9ad5e12170d58697701df21a56e0e"
 "checksum color_quant 1.0.1 (registry+https://github.com/rust-lang/crates.io-index)" = "0dbbb57365263e881e805dc77d94697c9118fd94d8da011240555aa7b23445bd"
-"checksum conrod 0.61.1 (registry+https://github.com/rust-lang/crates.io-index)" = "d4cd54996c99c3dac7e1f4ad1781979509639a43cdeca107036f3de526a534cd"
+"checksum conrod 0.61.1 (git+https://github.com/pistondevelopers/conrod.git)" = "<none>"
 "checksum conrod_derive 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)" = "53b7c11bc6fb4e9ef60cb6caf5dd304ca451946e0f951d82deaabd5b7460ce87"
 "checksum core-foundation 0.5.1 (registry+https://github.com/rust-lang/crates.io-index)" = "286e0b41c3a20da26536c6000a280585d519fd07b3956b43aed8a79e9edce980"
 "checksum core-foundation 0.6.1 (registry+https://github.com/rust-lang/crates.io-index)" = "cc3532ec724375c7cb7ff0a097b714fde180bb1f6ed2ab27cfcd99ffca873cd2"
