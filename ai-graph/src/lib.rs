@@ -3,8 +3,8 @@ mod breed;
 mod new_genes;
 mod output;
 #[derive(Clone, Copy, Debug)]
-enum MutationLine {
-    Pass,
+enum MutationLine { 
+    Pass, 
     Reset,
     Multiply(i8),
     Divide(i8),
