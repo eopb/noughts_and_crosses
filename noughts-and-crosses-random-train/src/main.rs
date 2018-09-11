@@ -1,5 +1,6 @@
-#![cfg_attr(feature = "cargo-clippy", warn(clippy_pedantic))]
-#![allow(single_match_else)]
+#![feature(tool_lints)]
+#![warn(clippy::pedantic)]
+#![allow(clippy::single_match_else)]
 extern crate ai_graph;
 extern crate noughts_and_crosses_lib;
 use ai_graph::Gene;
