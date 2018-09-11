@@ -299,7 +299,7 @@ fn highest_rating_ai(rating_being_tested: Option<&f64>, ratings: &[Option<&f64>]
             Option::Some(rating_being_tested) => {
                 match rating {
                     Option::Some(rating) => {
-                        if rating_being_tested > rating || rating_being_tested == rating {
+                        if rating_being_tested >= rating {
                             // println!("somewhat here5");
                             continue;
                         } else {
