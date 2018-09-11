@@ -5,5 +5,6 @@ members = [
     "noughts-and-crosses-ai-test",
     "ai-graph",
     "noughts-and-crosses-random-train",
+    "gui",
 ]
 
