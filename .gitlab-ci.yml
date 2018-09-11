@@ -18,7 +18,6 @@ clean-code:
     - rustup default nightly
     - rustup update
     - rustup component add rustfmt-preview
-    - cargo metadata
     - cargo fmt --all -- --check
   allow_failure: true
 
