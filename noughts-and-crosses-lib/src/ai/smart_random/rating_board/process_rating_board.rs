@@ -293,17 +293,14 @@ fn highest_rating(rating_being_tested: Option<f64>, rating_board: RatingBoard) -
         }
     }
 }
-fn highest_rating_ai(rating_being_tested: Option<&f64>, ratings: &Vec<Option<&f64>>) -> bool {
+fn highest_rating_ai(rating_being_tested: Option<&f64>, ratings: &[Option<&f64>]) -> bool {
     for rating in ratings {
         match &rating_being_tested {
             Option::Some(rating_being_tested) => {
                 match rating {
                     Option::Some(rating) => {
-                        if &rating_being_tested > &rating {
+                        if rating_being_tested > rating || rating_being_tested == rating {
                             // println!("somewhat here5");
-                            continue;
-                        } else if &rating_being_tested == &rating {
-                            // println!("somewhat here3");
                             continue;
                         } else {
                             // println!("somewhat here2");
