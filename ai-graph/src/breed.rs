@@ -64,7 +64,13 @@ impl MutationLine {
         }
     }
 }
-
+#[allow(clippy::cast_possible_truncation)]
 fn mean_avg_of_two(one: i8, two: i8) -> i8 {
-    (one + two) / 2
+    ((i16::from(one) + i16::from(two)) / 2) as i8
 }
+
+// fn _mean_avg_of_two(one: i8, two: i8) -> i8 {
+//     let max = std::cmp::max(one, two);
+//     let min = std::cmp::min(one, two);
+//     min + (max - min) / 2
+// }
