@@ -8,6 +8,7 @@ fn random_gene_is_valid() {
     };
 }
 
+// To get output run cargo test tests::random_breed_is_valid -- --nocapture
 #[test]
 fn random_breed_is_valid() {
     let mut test_gene = Gene::new_random_gene();
