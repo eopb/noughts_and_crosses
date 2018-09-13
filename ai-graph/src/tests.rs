@@ -16,7 +16,7 @@ fn random_breed_is_valid() {
     println!("test_gene2{:#?}", test_gene2);
     test_gene = test_gene.breed(&test_gene2);
     println!("test_gene2 mut{:#?}", test_gene);
-    if test_gene.validate() {
+    if !test_gene.validate() {
         panic!("Gene is not valid")
     };
 }
