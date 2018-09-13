@@ -1,3 +1,6 @@
+//TODO use costom ai graphs rather than the one that is going to be used with noughts and crosses
+//TODO More tests that check if the graph is vaild
+
 #![feature(tool_lints)]
 #![warn(clippy::pedantic)]
 mod breed;
