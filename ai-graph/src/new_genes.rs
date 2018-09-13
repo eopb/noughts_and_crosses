@@ -16,12 +16,6 @@ impl Gene {
             node_dna: MutationNode::rand_vec2(2, 9),
         }
     }
-    pub fn _new_random_gene() -> Self {
-        Self {
-            line_dna: MutationLine::rand_vec_x(&[2, 9, 9]),
-            node_dna: MutationNode::rand_vec_x(&[2, 9]),
-        }
-    }
 }
 
 trait RandVec
@@ -49,15 +43,6 @@ where
             rand_vec.push(Self::rand_mut());
         }
         rand_vec
-    }
-    fn rand_vec_x(graph: &[u32]) -> Vec<Self> {
-        if graph.len() == 1 {
-            Self::rand_vec(graph[0])
-        } else if graph.len() == 2 {
-            Self::rand_vec2(graph[1], graph[0])
-        } else {
-            panic!("Unable to handle graph of this size")
-        }
     }
 }
 
