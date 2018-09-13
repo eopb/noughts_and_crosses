@@ -86,7 +86,7 @@ nightly-linux-optimized:
     - cp target/release/noughts-and-crosses-game files
     - cp target/release/noughts-and-crosses-random-train files
     - cp target/release/noughts-and-crosses-ai-test files
-  when: always
+  when: on_success
   artifacts:
     paths:
       - files
@@ -119,7 +119,7 @@ nightly-windows-optimized:
     - cp target/x86_64-pc-windows-gnu/release/noughts-and-crosses-game.exe files
     - cp target/x86_64-pc-windows-gnu/release/noughts-and-crosses-random-train.exe files
     - cp target/x86_64-pc-windows-gnu/release/noughts-and-crosses-ai-test.exe files
-  when: always
+  when: on_success
   artifacts:
     paths:
       - files
