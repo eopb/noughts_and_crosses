@@ -3,6 +3,8 @@
 mod breed;
 mod new_genes;
 mod output;
+mod tests;
+mod validate;
 #[derive(Clone, Copy, Debug)]
 enum MutationLine {
     Pass,

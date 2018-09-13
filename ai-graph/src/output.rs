@@ -11,7 +11,7 @@ impl Gene {
         let mut output = Vec::new();
         let mut node_values = node_value_calc(&self.node_dna);
         // print!("node values {:#?}", node_values);
-        if !self.validate(&input) {
+        if !self.validate() {
             panic!("Gene is not valid")
         };
         for (node_index, node_tree) in self.line_dna[0].iter().enumerate() {
@@ -65,15 +65,6 @@ impl Gene {
             })
         }
         output
-    }
-    fn validate(&self, _input: &[i32]) -> bool {
-        for value in &self.line_dna[0] {
-            if value.len() == self.node_dna[0].len() {
-                continue;
-            }
-            return false;
-        }
-        true
     }
 }
 
