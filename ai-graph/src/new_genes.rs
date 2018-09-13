@@ -1,8 +1,8 @@
-extern crate rand;
-use self::rand::Rng;
-use Gene;
-use MutationLine;
-use MutationNode;
+use crate::Gene;
+use crate::MutationLine;
+use crate::MutationNode;
+use rand::Rng;
+
 impl Gene {
     pub fn new_gene() -> Self {
         Self {

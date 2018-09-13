@@ -1,4 +1,5 @@
-#![cfg_attr(feature = "cargo-clippy", warn(clippy_pedantic))]
+#![feature(tool_lints)]
+#![warn(clippy::pedantic)]
 extern crate ai_graph;
 use ai_graph::Gene;
 fn main() {

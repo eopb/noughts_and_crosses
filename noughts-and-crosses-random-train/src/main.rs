@@ -1,11 +1,11 @@
-#![cfg_attr(feature = "cargo-clippy", warn(clippy_pedantic))]
-#![allow(single_match_else)]
-#![feature(type_ascription)]
+#![feature(tool_lints)]
+#![warn(clippy::pedantic)]
+#![allow(clippy::single_match_else)]
 extern crate ai_graph;
 extern crate noughts_and_crosses_lib;
 use ai_graph::Gene;
-use noughts_and_crosses_lib::{GameBoard, GameMode, Players, Winner};
-use std::cmp::Ordering::*;
+use noughts_and_crosses_lib::{GameBoard, Players, Winner};
+use std::cmp::Ordering::Equal;
 
 #[derive(Debug, Clone)]
 struct GeneStorage {
@@ -15,7 +15,7 @@ struct GeneStorage {
 
 fn main() {
     let mut scores = Vec::new();
-    for _x in 0..700 {
+    for _x in 0..1000 {
         let gene_tested = Gene::new_random_gene();
         let mut score_values = Vec::new();
         for _x in 0..10000 {
@@ -63,14 +63,10 @@ fn main() {
                 };
             }
         }
-
+        #[allow(clippy::cast_precision_loss)]
         scores.push(GeneStorage {
             gene: gene_tested.clone(),
-            score: score_values
-                .iter()
-                .cloned()
-                .map(|val| val as f64)
-                .sum::<f64>() as f64
+            score: score_values.iter().cloned().map(f64::from).sum::<f64>() as f64
                 / score_values.len() as f64,
         });
     }
@@ -79,9 +75,9 @@ fn main() {
     for score in &scores {
         score_val_temp.push(score.score)
     }
-    println!("{:#?}", score_val_temp);
+    // println!("{:#?}", score_val_temp);
     score_val_temp.sort_by(|a, b| a.partial_cmp(b).unwrap_or(Equal));
-    println!("{:#?}", score_val_temp);
+    // println!("{:#?}", score_val_temp);
     println!("Big value{:#?}", score_val_temp[score_val_temp.len() - 1]);
     println!("Hello, world!");
 }
