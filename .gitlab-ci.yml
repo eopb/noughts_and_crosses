@@ -5,6 +5,7 @@ stages:
   - build
   - test
   - deploy
+  - publish
   - post-run
 
 cache:
@@ -128,6 +129,27 @@ nightly-windows-optimized:
     refs:
       - master
       - dev
+
+
+cratesio:
+  stage: publish
+  cache: {}
+  script:
+    - apt-get update
+    - cargo login $CARGO_LOGIN
+    - cd ai-graph
+    - cargo package
+    - cargo publish
+  when: on_success
+  artifacts:
+    paths:
+      - files
+    expire_in: 2 weeks
+  only:
+    refs:
+      - master
+      - dev
+  allow_failure: true
 
 
 clippy:
