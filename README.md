@@ -28,10 +28,10 @@ This is the game.
 
 This is the library I made for the game and other experiments that use noughts and crosses game boards.
 
-<!-- ### Ai Graph -->
+### Ai Graph
 
-
-
+[![Latest version](https://img.shields.io/crates/l/ai-graph.svg)](https://crates.io/crates/ai-graph)
+[![Latest version](https://img.shields.io/crates/v/ai-graph.svg)](![Crates.io](https://img.shields.io/crates/v/ai-graph.svg))
 ## Dependencies
 
 This project uses rand 0.5 for generating the random numbers used in the artificial intelligence.
