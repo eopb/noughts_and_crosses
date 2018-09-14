@@ -1,5 +1,6 @@
 use crate::Gene;
 
+//TODO Not all checks are finnished.
 impl Gene {
     pub fn validate(&self) -> bool {
         self.all_lines_per_row_equel() && self.all_output_avalible()
