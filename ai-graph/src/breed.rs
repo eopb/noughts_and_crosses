@@ -3,6 +3,7 @@ use crate::MutationLine;
 use crate::MutationNode;
 use rand::Rng;
 
+//TODO check gene types are the same so that only breedable values are passed.
 impl Gene {
     pub fn breed(&self, second_gene: &Self) -> Self {
         let mut new_values = self.clone();

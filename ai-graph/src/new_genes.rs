@@ -16,6 +16,12 @@ impl Gene {
             node_dna: MutationNode::rand_vec2(2, 9),
         }
     }
+    pub fn new_random_basic_gene(depth: i8, hight: i8) -> Self {
+        Self {
+            line_dna: MutationLine::rand_vec3(depth, hight, hight),
+            node_dna: MutationNode::rand_vec2(depth, hight),
+        }
+    }
 }
 
 trait RandVec
