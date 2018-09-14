@@ -5,6 +5,7 @@ use rand::Rng;
 
 //TODO check gene types are the same so that only breedable values are passed.
 impl Gene {
+    /// This function merges two genes together to find an avarage genes. Lines and Nodes that can't be merged to an avarage are randomly selected.
     pub fn breed(&self, second_gene: &Self) -> Self {
         let mut new_values = self.clone();
         // Merge nodes.

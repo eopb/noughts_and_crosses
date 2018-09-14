@@ -25,6 +25,7 @@ enum MutationNode {
 }
 
 #[derive(Clone, Debug)]
+/// Gene stores the "graph". Different graphs will form different output.
 pub struct Gene {
     line_dna: Vec<Vec<Vec<MutationLine>>>,
     node_dna: Vec<Vec<MutationNode>>,

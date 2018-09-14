@@ -7,6 +7,8 @@ struct MutationNodeStorage {
     stored_data: Option<f64>,
 }
 impl Gene {
+    /// This function calculats an output using a set of inputs and a gene.
+    /// If this function takes hard coded values it can be heavily optimised.
     pub fn output(self, input: &[i32]) -> Vec<f64> {
         let mut output = Vec::new();
         let mut node_values = node_value_calc(&self.node_dna);
