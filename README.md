@@ -16,6 +16,8 @@
 
 [Linux](https://gitlab.com/efunb/noughts-and-crosses-ai-collection/-/jobs/artifacts/dev/download?job=nightly-linux-optimized)
 
+[Docs](https://gitlab.com/efunb/noughts-and-crosses-ai-collection/-/jobs/artifacts/dev/download?job=docs)
+
 ## Projects
 
 ### Noughts And Crosses Game
