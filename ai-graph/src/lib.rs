@@ -1,4 +1,4 @@
-//TODO use costom ai graphs rather than the one that is going to be used with noughts and crosses
+//TODO add ai graph with fixed number of inputs and outputs but costom layers
 //TODO More tests that check if the graph is vaild
 
 #![feature(tool_lints)]
