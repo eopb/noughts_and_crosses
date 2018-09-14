@@ -90,7 +90,7 @@ nightly-linux-optimized:
   artifacts:
     paths:
       - files
-    expire_in: 6 months
+    expire_in: 2 weeks
   only:
     refs:
       - master
@@ -123,7 +123,7 @@ nightly-windows-optimized:
   artifacts:
     paths:
       - files
-    expire_in: 6 months
+    expire_in: 2 weeks
   only:
     refs:
       - master
