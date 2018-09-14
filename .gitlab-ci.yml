@@ -130,6 +130,27 @@ nightly-windows-optimized:
       - master
       - dev
 
+docs:
+  stage: deploy
+  cache: {}
+  script:
+    - apt-get update
+    - rustup default nightly
+    - rustup update
+    - (cd ai-graph && cargo doc --no-deps)
+    - rm -r -f docs
+    - mkdir docs
+    - cp target/doc/ docs
+  when: on_success
+  artifacts:
+    paths:
+      - docs
+    expire_in: 2 weeks
+  only:
+    refs:
+      - master
+      - dev
+
 
 cratesio:
   stage: publish
