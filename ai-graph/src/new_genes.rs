@@ -16,7 +16,7 @@ impl Gene {
             node_dna: MutationNode::rand_vec2(2, 9),
         }
     }
-    pub fn new_random_basic_gene(depth: i8, hight: i8) -> Self {
+    pub fn new_random_basic_gene(depth: u8, hight: u8) -> Self {
         Self {
             line_dna: MutationLine::rand_vec3(depth, hight, hight),
             node_dna: MutationNode::rand_vec2(depth, hight),
@@ -29,21 +29,21 @@ where
     Self: Sized,
 {
     fn rand_mut() -> Self;
-    fn rand_vec3(num: u32, num2: u32, num3: u32) -> Vec<Vec<Vec<Self>>> {
+    fn rand_vec3(num: u8, num2: u8, num3: u8) -> Vec<Vec<Vec<Self>>> {
         let mut rand_vec = Vec::new();
         for _x in 0..num {
             rand_vec.push(Self::rand_vec2(num2, num3));
         }
         rand_vec
     }
-    fn rand_vec2(num: u32, num2: u32) -> Vec<Vec<Self>> {
+    fn rand_vec2(num: u8, num2: u8) -> Vec<Vec<Self>> {
         let mut rand_vec = Vec::new();
         for _x in 0..num {
             rand_vec.push(Self::rand_vec(num2));
         }
         rand_vec
     }
-    fn rand_vec(num: u32) -> Vec<Self> {
+    fn rand_vec(num: u8) -> Vec<Self> {
         let mut rand_vec = Vec::new();
         for _x in 0..num {
             rand_vec.push(Self::rand_mut());
