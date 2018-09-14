@@ -5,10 +5,8 @@ impl Gene {
     pub fn validate(&self) -> bool {
         self.sum_lines_per_row_equal() && self.all_output_avalible()
     }
-    pub fn validate_two(&self, _second_gene: &Self) -> bool {
-        self.sum_lines_per_row_equal()
-            && self.all_output_avalible()
-            && self.equal_size(_second_gene)
+    pub fn validate_two(&self, second_gene: &Self) -> bool {
+        self.validate() && second_gene.validate() && self.equal_size(second_gene)
     }
 
     fn sum_lines_per_row_equal(&self) -> bool {
