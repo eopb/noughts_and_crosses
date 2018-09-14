@@ -140,7 +140,7 @@ docs:
     - (cd ai-graph && cargo doc --no-deps)
     - rm -r -f docs
     - mkdir docs
-    - cp target/doc/ docs
+    - cp target/doc docs
   when: on_success
   artifacts:
     paths:
