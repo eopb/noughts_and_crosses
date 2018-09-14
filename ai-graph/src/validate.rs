@@ -18,7 +18,7 @@ impl Gene {
                 }
             }
         }
-        return true;
+        true
     }
     fn all_output_avalible(&self) -> bool {
         true
