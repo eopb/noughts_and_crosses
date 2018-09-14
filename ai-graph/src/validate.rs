@@ -28,8 +28,8 @@ impl Gene {
     }
 
     fn number_of_lines_same_as_number_of_next_nodes(&self) -> bool {
-        // only need to check one line set because other check (sum_lines_per_row_equal) makes sure they are all the same.
         for (block_index, line_block) in self.line_dna.iter().enumerate() {
+            // only need to check one line set because other check (sum_lines_per_row_equal) makes sure they are all the same.
             if !(line_block[0].len() == self.node_dna[block_index].len()) {
                 return false;
             }

@@ -1,6 +1,8 @@
 use crate::Gene;
 use crate::MutationLine;
 use crate::MutationNode;
+
+// Temp way of storing values and type of nodes while outputs are being calculated. Gene.node_dna only stores type MutationNodeStorage stores type and any data it contains.
 #[derive(Debug, Clone, Copy)]
 struct MutationNodeStorage {
     node_type: MutationNode,
