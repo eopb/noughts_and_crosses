@@ -136,6 +136,8 @@ cratesio:
   cache: {}
   script:
     - apt-get update
+    - rustup default nightly
+    - rustup update
     - cargo login $CARGO_LOGIN
     - cd ai-graph
     - cargo package
