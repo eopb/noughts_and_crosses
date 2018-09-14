@@ -30,6 +30,3 @@ pub struct Gene {
     line_dna: Vec<Vec<Vec<MutationLine>>>,
     node_dna: Vec<Vec<MutationNode>>,
 }
-// mod ai_graph {
-//     use Gene;
-// }
