@@ -159,6 +159,7 @@ cratesio:
     - apt-get update
     - rustup default nightly
     - rustup update
+    - echo $TEST
     - cargo login $CARGO_LOGIN
     - cd ai-graph
     - cargo package
