@@ -1,6 +1,6 @@
 [[package]]
 name = "ai-graph"
-version = "0.1.0"
+version = "0.0.1"
 dependencies = [
  "rand 0.5.5 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
@@ -41,7 +41,7 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 name = "noughts-and-crosses-ai-test"
 version = "0.1.0"
 dependencies = [
- "ai-graph 0.1.0",
+ "ai-graph 0.0.1",
  "noughts_and_crosses_lib 0.1.0",
 ]
 
@@ -49,7 +49,7 @@ dependencies = [
 name = "noughts-and-crosses-game"
 version = "0.1.0"
 dependencies = [
- "ai-graph 0.1.0",
+ "ai-graph 0.0.1",
  "noughts_and_crosses_lib 0.1.0",
 ]
 
@@ -57,7 +57,7 @@ dependencies = [
 name = "noughts-and-crosses-random-train"
 version = "0.1.0"
 dependencies = [
- "ai-graph 0.1.0",
+ "ai-graph 0.0.1",
  "noughts_and_crosses_lib 0.1.0",
 ]
 
