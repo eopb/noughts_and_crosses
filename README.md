@@ -32,6 +32,7 @@ This is the library I made for the game and other experiments that use noughts a
 
 [![License](https://img.shields.io/crates/l/ai-graph.svg)](https://crates.io/crates/ai-graph)
 [![Latest version](https://img.shields.io/crates/v/ai-graph.svg)](https://crates.io/crates/ai-graph)
+[![downloads-badge]: https://img.shields.io/crates/d/heatmap.svg](https://crates.io/crates/ai-graph)
 ## Dependencies
 
 This project uses rand 0.5 for generating the random numbers used in the artificial intelligence.
