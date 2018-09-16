@@ -1,4 +1,5 @@
 use crate::Gene;
+use rayon::prelude::*;
 
 //TODO Not all checks are finnished.
 impl Gene {
@@ -30,7 +31,7 @@ impl Gene {
     fn number_of_lines_same_as_number_of_next_nodes(&self) -> bool {
         // only need to check one line set because other check (sum_lines_per_row_equal) makes sure they are all the same.
         self.line_dna
-            .iter()
+            .par_iter()
             .enumerate()
             .any(|(block_index, line_block)| {
                 (line_block[0].len() == self.node_dna[block_index].len())

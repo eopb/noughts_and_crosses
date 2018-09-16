@@ -11,3 +11,4 @@ edition = '2018'
 
 [dependencies]
 rand = "0.5"
+rayon = "1.0.2"
