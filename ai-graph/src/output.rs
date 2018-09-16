@@ -14,7 +14,6 @@ impl Gene {
     pub fn output(self, input: &[i32]) -> Vec<f64> {
         let mut output = Vec::new();
         let mut node_values = node_value_calc(&self.node_dna);
-        // print!("node values {:#?}", node_values);
         if !self.validate() {
             panic!("Gene is not valid")
         };
