@@ -28,15 +28,14 @@ impl Gene {
     }
 
     fn number_of_lines_same_as_number_of_next_nodes(&self) -> bool {
-        for (block_index, line_block) in self.line_dna.iter().enumerate() {
-            // only need to check one line set because other check (sum_lines_per_row_equal) makes sure they are all the same.
-            if !(line_block[0].len() == self.node_dna[block_index].len()) {
-                return false;
-            }
-        }
-        true
+        // only need to check one line set because other check (sum_lines_per_row_equal) makes sure they are all the same.
+        self.line_dna
+            .iter()
+            .enumerate()
+            .any(|(block_index, line_block)| {
+                (line_block[0].len() == self.node_dna[block_index].len())
+            })
     }
-
     fn equal_size(&self, _second_gene: &Self) -> bool {
         true
     }
