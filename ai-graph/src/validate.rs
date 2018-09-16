@@ -4,9 +4,14 @@ use rayon::prelude::*;
 //TODO Not all checks are finnished.
 impl Gene {
     pub fn validate(&self) -> bool {
-        self.sum_lines_per_row_equal()
-            && self.all_output_avalible()
-            && self.number_of_lines_same_as_number_of_next_nodes()
+        // Paralell and.
+        [
+            Self::sum_lines_per_row_equal,
+            Self::all_output_avalible,
+            Self::number_of_lines_same_as_number_of_next_nodes,
+        ]
+            .par_iter()
+            .all(|f| f(self))
     }
     pub fn validate_two(&self, second_gene: &Self) -> bool {
         self.validate() && second_gene.validate() && self.equal_size(second_gene)
