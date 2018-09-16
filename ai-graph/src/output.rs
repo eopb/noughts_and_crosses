@@ -60,7 +60,6 @@ impl Gene {
                 }
             }
         }
-        // print!("node values updated {:#?}", node_values);
         for node_values in node_values[node_values.len() - 1].clone() {
             output.push(match node_values.stored_data {
                 Some(x) => x,
