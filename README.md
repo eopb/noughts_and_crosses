@@ -6,11 +6,9 @@
 [![downloads-badge](https://img.shields.io/crates/d/noughts_and_crosses.svg)](https://crates.io/noughts_and_crosses_lib)
 
 
-### Noughts And Crosses Lib
+
 
 This is the library I made for the game and other experiments that use noughts and crosses game boards.
-
-
 
 
 ## Dependencies
