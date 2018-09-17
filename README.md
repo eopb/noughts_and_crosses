@@ -1,7 +1,9 @@
-# Noughts and crosses ai collection.
+# Noughts and crosses ai crate.
 
 [![pipeline status](https://gitlab.com/efunb/noughts_and_crosses/badges/master/pipeline.svg)](https://gitlab.com/efunb/noughts-and-crosses-ai-collection/commits/master)
-
+[![License](https://img.shields.io/crates/l/noughts_and_crosses.svg)](https://crates.io/noughts_and_crosses_lib)
+[![Latest version](https://img.shields.io/crates/v/noughts_and_crosses.svg)](https://crates.io/noughts_and_crosses_lib)
+[![downloads-badge](https://img.shields.io/crates/d/noughts_and_crosses.svg)](https://crates.io/noughts_and_crosses_lib)
 
 
 ### Noughts And Crosses Lib
@@ -9,9 +11,7 @@
 This is the library I made for the game and other experiments that use noughts and crosses game boards.
 
 
-[![License](https://img.shields.io/crates/l/noughts_and_crosses.svg)](https://crates.io/noughts_and_crosses_lib)
-[![Latest version](https://img.shields.io/crates/v/noughts_and_crosses.svg)](https://crates.io/noughts_and_crosses_lib)
-[![downloads-badge](https://img.shields.io/crates/d/noughts_and_crosses.svg)](https://crates.io/noughts_and_crosses_lib)
+
 
 ## Dependencies
 
