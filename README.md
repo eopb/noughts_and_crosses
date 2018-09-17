@@ -1,9 +1,9 @@
 # Noughts and crosses ai crate.
 
 [![pipeline status](https://gitlab.com/efunb/noughts_and_crosses/badges/master/pipeline.svg)](https://gitlab.com/efunb/noughts_and_crosses/commits/master)
-[![License](https://img.shields.io/crates/l/noughts_and_crosses.svg)](https://crates.io/crates/noughts_and_crosses_lib)
-[![Latest version](https://img.shields.io/crates/v/noughts_and_crosses.svg)](https://crates.io/crates/noughts_and_crosses_lib)
-[![downloads-badge](https://img.shields.io/crates/d/noughts_and_crosses.svg)](https://crates.io/crates/noughts_and_crosses_lib)
+[![License](https://img.shields.io/crates/l/noughts_and_crosses_lib.svg)](https://crates.io/crates/noughts_and_crosses_lib)
+[![Latest version](https://img.shields.io/crates/v/noughts_and_crosses_lib.svg)](https://crates.io/crates/noughts_and_crosses_lib)
+[![downloads-badge](https://img.shields.io/crates/d/noughts_and_crosses_lib.svg)](https://crates.io/crates/noughts_and_crosses_lib)
 
 
 
