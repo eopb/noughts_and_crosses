@@ -8,23 +8,23 @@ impl GameBoard {
     pub fn draw_game_board(&self, game_mode: &GameMode) {
         println!(
             "{}|{}|{}",
-            self.row_one[0].x_or_0(game_mode),
-            self.row_one[1].x_or_0(game_mode),
-            self.row_one[2].x_or_0(game_mode)
+            self.board[0][0].x_or_0(game_mode),
+            self.board[0][1].x_or_0(game_mode),
+            self.board[0][2].x_or_0(game_mode)
         );
         println!("_ _ _");
         println!(
             "{}|{}|{}",
-            self.row_two[0].x_or_0(game_mode),
-            self.row_two[1].x_or_0(game_mode),
-            self.row_two[2].x_or_0(game_mode)
+            self.board[1][0].x_or_0(game_mode),
+            self.board[1][1].x_or_0(game_mode),
+            self.board[1][2].x_or_0(game_mode)
         );
         println!("_ _ _");
         println!(
             "{}|{}|{}",
-            self.row_three[0].x_or_0(game_mode),
-            self.row_three[1].x_or_0(game_mode),
-            self.row_three[2].x_or_0(game_mode)
+            self.board[2][0].x_or_0(game_mode),
+            self.board[2][1].x_or_0(game_mode),
+            self.board[2][2].x_or_0(game_mode)
         );
     }
 }

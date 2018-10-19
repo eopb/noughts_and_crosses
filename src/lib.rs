@@ -9,22 +9,7 @@ pub const IS_DEBUG: bool = false;
 
 #[derive(Copy, Clone, Debug)]
 pub struct GameBoard {
-    row_one: [TileStatus; 3],
-    row_two: [TileStatus; 3],
-    row_three: [TileStatus; 3],
-}
-
-impl Index<usize> for GameBoard {
-    type Output = [TileStatus; 3];
-
-    fn index(&self, index: usize) -> &[TileStatus; 3] {
-        match index {
-            0 => &self.row_one,
-            1 => &self.row_two,
-            2 => &self.row_three,
-            _ => panic!("Gameboard can not be indexed for this value."),
-        }
-    }
+    board: [[TileStatus; 3]; 3],
 }
 
 pub struct MovementReturn {
@@ -85,9 +70,11 @@ pub fn switch_player(current_player: Players) -> Players {
 impl GameBoard {
     pub fn empty_board() -> Self {
         Self {
-            row_one: [TileStatus::Cursor, TileStatus::None, TileStatus::None],
-            row_two: [TileStatus::None, TileStatus::None, TileStatus::None],
-            row_three: [TileStatus::None, TileStatus::None, TileStatus::None],
+            board: [
+                [TileStatus::Cursor, TileStatus::None, TileStatus::None],
+                [TileStatus::None, TileStatus::None, TileStatus::None],
+                [TileStatus::None, TileStatus::None, TileStatus::None],
+            ],
         }
     }
 }
