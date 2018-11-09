@@ -5,285 +5,341 @@ use TileStatus;
 
 impl GameBoard {
     pub fn move_cursor(self, inputed_movement: Movement) -> Option<Self> {
-        if self.row_one[0].is_cursor() {
+        if self.board[0][0].is_cursor() {
             match inputed_movement {
                 Movement::Right => Option::Some(Self {
-                    row_one: [
-                        self.row_one[0].remove_cursor(),
-                        self.row_one[1].add_cursor(),
-                        self.row_one[2],
+                    board: [
+                        [
+                            self.board[0][0].remove_cursor(),
+                            self.board[0][1].add_cursor(),
+                            self.board[0][2],
+                        ],
+                        self.board[1],
+                        self.board[2],
                     ],
-                    ..self
                 }),
                 Movement::Down => Option::Some(Self {
-                    row_one: [
-                        self.row_one[0].remove_cursor(),
-                        self.row_one[1],
-                        self.row_one[2],
+                    board: [
+                        [
+                            self.board[0][0].remove_cursor(),
+                            self.board[0][1],
+                            self.board[0][2],
+                        ],
+                        [
+                            self.board[1][0].add_cursor(),
+                            self.board[1][1],
+                            self.board[1][2],
+                        ],
+                        self.board[2],
                     ],
-                    row_two: [
-                        self.row_two[0].add_cursor(),
-                        self.row_two[1],
-                        self.row_two[2],
-                    ],
-                    ..self
                 }),
                 _ => {
                     println!("This can not be done");
                     Option::None
                 }
             }
-        } else if self.row_one[1].is_cursor() {
+        } else if self.board[0][1].is_cursor() {
             match inputed_movement {
                 Movement::Right => Option::Some(Self {
-                    row_one: [
-                        self.row_one[0],
-                        self.row_one[1].remove_cursor(),
-                        self.row_one[2].add_cursor(),
+                    board: [
+                        [
+                            self.board[0][0],
+                            self.board[0][1].remove_cursor(),
+                            self.board[0][2].add_cursor(),
+                        ],
+                        self.board[1],
+                        self.board[2],
                     ],
-                    ..self
                 }),
                 Movement::Left => Option::Some(Self {
-                    row_one: [
-                        self.row_one[0].add_cursor(),
-                        self.row_one[1].remove_cursor(),
-                        self.row_one[2],
+                    board: [
+                        [
+                            self.board[0][0].add_cursor(),
+                            self.board[0][1].remove_cursor(),
+                            self.board[0][2],
+                        ],
+                        self.board[1],
+                        self.board[2],
                     ],
-                    ..self
                 }),
                 Movement::Down => Option::Some(Self {
-                    row_one: [
-                        self.row_one[0],
-                        self.row_one[1].remove_cursor(),
-                        self.row_one[2],
+                    board: [
+                        [
+                            self.board[0][0],
+                            self.board[0][1].remove_cursor(),
+                            self.board[0][2],
+                        ],
+                        [
+                            self.board[1][0],
+                            self.board[1][1].add_cursor(),
+                            self.board[1][2],
+                        ],
+                        self.board[2],
                     ],
-                    row_two: [
-                        self.row_two[0],
-                        self.row_two[1].add_cursor(),
-                        self.row_two[2],
-                    ],
-                    ..self
                 }),
                 _ => {
                     println!("This can not be done");
                     Option::None
                 }
             }
-        } else if self.row_one[2].is_cursor() {
+        } else if self.board[0][2].is_cursor() {
             match inputed_movement {
                 Movement::Left => Option::Some(Self {
-                    row_one: [
-                        self.row_one[0],
-                        self.row_one[1].add_cursor(),
-                        self.row_one[2].remove_cursor(),
+                    board: [
+                        [
+                            self.board[0][0],
+                            self.board[0][1].add_cursor(),
+                            self.board[0][2].remove_cursor(),
+                        ],
+                        self.board[1],
+                        self.board[2],
                     ],
-                    ..self
                 }),
                 Movement::Down => Option::Some(Self {
-                    row_one: [
-                        self.row_one[0],
-                        self.row_one[1],
-                        self.row_one[2].remove_cursor(),
+                    board: [
+                        [
+                            self.board[0][0],
+                            self.board[0][1],
+                            self.board[0][2].remove_cursor(),
+                        ],
+                        [
+                            self.board[1][0],
+                            self.board[1][1],
+                            self.board[1][2].add_cursor(),
+                        ],
+                        self.board[2],
                     ],
-                    row_two: [
-                        self.row_two[0],
-                        self.row_two[1],
-                        self.row_two[2].add_cursor(),
-                    ],
-                    ..self
                 }),
                 _ => {
                     println!("This can not be done");
                     Option::None
                 }
             }
-        } else if self.row_two[0].is_cursor() {
+        } else if self.board[1][0].is_cursor() {
             match inputed_movement {
                 Movement::Right => Option::Some(Self {
-                    row_two: [
-                        self.row_two[0].remove_cursor(),
-                        self.row_two[1].add_cursor(),
-                        self.row_two[2],
+                    board: [
+                        self.board[0],
+                        [
+                            self.board[1][0].remove_cursor(),
+                            self.board[1][1].add_cursor(),
+                            self.board[1][2],
+                        ],
+                        self.board[2],
                     ],
-                    ..self
                 }),
                 Movement::Down => Option::Some(Self {
-                    row_two: [
-                        self.row_two[0].remove_cursor(),
-                        self.row_two[1],
-                        self.row_two[2],
+                    board: [
+                        self.board[0],
+                        [
+                            self.board[1][0].remove_cursor(),
+                            self.board[1][1],
+                            self.board[1][2],
+                        ],
+                        [
+                            self.board[2][0].add_cursor(),
+                            self.board[2][1],
+                            self.board[2][2],
+                        ],
                     ],
-                    row_three: [
-                        self.row_three[0].add_cursor(),
-                        self.row_three[1],
-                        self.row_three[2],
-                    ],
-                    ..self
                 }),
                 Movement::Up => Option::Some(Self {
-                    row_one: [
-                        self.row_one[0].add_cursor(),
-                        self.row_one[1],
-                        self.row_one[2],
+                    board: [
+                        [
+                            self.board[1][0].add_cursor(),
+                            self.board[1][1],
+                            self.board[1][2],
+                        ],
+                        [
+                            self.board[2][0].remove_cursor(),
+                            self.board[2][1],
+                            self.board[2][2],
+                        ],
+                        self.board[2],
                     ],
-                    row_two: [
-                        self.row_two[0].remove_cursor(),
-                        self.row_two[1],
-                        self.row_two[2],
-                    ],
-                    ..self
                 }),
                 _ => {
                     println!("This can not be done");
                     Option::None
                 }
             }
-        } else if self.row_two[1].is_cursor() {
+        } else if self.board[1][1].is_cursor() {
             match inputed_movement {
                 Movement::Right => Option::Some(Self {
-                    row_two: [
-                        self.row_two[0],
-                        self.row_two[1].remove_cursor(),
-                        self.row_two[2].add_cursor(),
+                    board: [
+                        self.board[0],
+                        [
+                            self.board[1][0],
+                            self.board[1][1].remove_cursor(),
+                            self.board[1][2].add_cursor(),
+                        ],
+                        self.board[2],
                     ],
-                    ..self
                 }),
                 Movement::Left => Option::Some(Self {
-                    row_two: [
-                        self.row_two[0].add_cursor(),
-                        self.row_two[1].remove_cursor(),
-                        self.row_two[2],
+                    board: [
+                        self.board[0],
+                        [
+                            self.board[1][0].add_cursor(),
+                            self.board[1][1].remove_cursor(),
+                            self.board[1][2],
+                        ],
+                        self.board[2],
                     ],
-                    ..self
                 }),
                 Movement::Down => Option::Some(Self {
-                    row_two: [
-                        self.row_two[0],
-                        self.row_two[1].remove_cursor(),
-                        self.row_two[2],
+                    board: [
+                        self.board[0],
+                        [
+                            self.board[1][0],
+                            self.board[1][1].remove_cursor(),
+                            self.board[1][2],
+                        ],
+                        [
+                            self.board[2][0],
+                            self.board[2][1].add_cursor(),
+                            self.board[2][2],
+                        ],
                     ],
-                    row_three: [
-                        self.row_three[0],
-                        self.row_three[1].add_cursor(),
-                        self.row_three[2],
-                    ],
-                    ..self
                 }),
                 Movement::Up => Option::Some(Self {
-                    row_one: [
-                        self.row_one[0],
-                        self.row_one[1].add_cursor(),
-                        self.row_one[2],
+                    board: [
+                        [
+                            self.board[0][0],
+                            self.board[0][1].add_cursor(),
+                            self.board[0][2],
+                        ],
+                        [
+                            self.board[1][0],
+                            self.board[1][1].remove_cursor(),
+                            self.board[1][2],
+                        ],
+                        self.board[2],
                     ],
-                    row_two: [
-                        self.row_two[0],
-                        self.row_two[1].remove_cursor(),
-                        self.row_two[2],
-                    ],
-                    ..self
                 }),
                 _ => {
                     println!("This can not be done");
                     Option::None
                 }
             }
-        } else if self.row_two[2].is_cursor() {
+        } else if self.board[1][2].is_cursor() {
             match inputed_movement {
                 Movement::Left => Option::Some(Self {
-                    row_two: [
-                        self.row_two[0],
-                        self.row_two[1].add_cursor(),
-                        self.row_two[2].remove_cursor(),
+                    board: [
+                        self.board[0],
+                        [
+                            self.board[1][0],
+                            self.board[1][1].add_cursor(),
+                            self.board[1][2].remove_cursor(),
+                        ],
+                        self.board[2],
                     ],
-                    ..self
                 }),
                 Movement::Down => Option::Some(Self {
-                    row_two: [
-                        self.row_two[0],
-                        self.row_two[1],
-                        self.row_two[2].remove_cursor(),
+                    board: [
+                        self.board[0],
+                        [
+                            self.board[1][0],
+                            self.board[1][1],
+                            self.board[1][2].remove_cursor(),
+                        ],
+                        [
+                            self.board[2][0],
+                            self.board[2][1],
+                            self.board[2][2].add_cursor(),
+                        ],
                     ],
-                    row_three: [
-                        self.row_three[0],
-                        self.row_three[1],
-                        self.row_three[2].add_cursor(),
-                    ],
-                    ..self
                 }),
                 Movement::Up => Option::Some(Self {
-                    row_one: [
-                        self.row_one[0],
-                        self.row_one[1],
-                        self.row_one[2].add_cursor(),
+                    board: [
+                        [
+                            self.board[0][0],
+                            self.board[0][1],
+                            self.board[0][2].add_cursor(),
+                        ],
+                        [
+                            self.board[1][0],
+                            self.board[1][1],
+                            self.board[1][2].remove_cursor(),
+                        ],
+                        self.board[2],
                     ],
-                    row_two: [
-                        self.row_two[0],
-                        self.row_two[1],
-                        self.row_two[2].remove_cursor(),
-                    ],
-                    ..self
                 }),
                 _ => {
                     println!("This can not be done");
                     Option::None
                 }
             }
-        } else if self.row_three[0].is_cursor() {
+        } else if self.board[2][0].is_cursor() {
             match inputed_movement {
                 Movement::Right => Option::Some(Self {
-                    row_three: [
-                        self.row_three[0].remove_cursor(),
-                        self.row_three[1].add_cursor(),
-                        self.row_three[2],
+                    board: [
+                        self.board[0],
+                        self.board[1],
+                        [
+                            self.board[2][0].remove_cursor(),
+                            self.board[2][1].add_cursor(),
+                            self.board[2][2],
+                        ],
                     ],
-                    ..self
                 }),
                 Movement::Up => Option::Some(Self {
-                    row_three: [
-                        self.row_three[0].remove_cursor(),
-                        self.row_three[1],
-                        self.row_three[2],
+                    board: [
+                        self.board[0],
+                        [
+                            self.board[1][0].add_cursor(),
+                            self.board[1][1],
+                            self.board[1][2],
+                        ],
+                        [
+                            self.board[2][0].remove_cursor(),
+                            self.board[2][1],
+                            self.board[2][2],
+                        ],
                     ],
-                    row_two: [
-                        self.row_two[0].add_cursor(),
-                        self.row_two[1],
-                        self.row_two[2],
-                    ],
-                    ..self
                 }),
                 _ => {
                     println!("This can not be done");
                     Option::None
                 }
             }
-        } else if self.row_three[1].is_cursor() {
+        } else if self.board[2][1].is_cursor() {
             match inputed_movement {
                 Movement::Right => Option::Some(Self {
-                    row_three: [
-                        self.row_three[0],
-                        self.row_three[1].remove_cursor(),
-                        self.row_three[2].add_cursor(),
+                    board: [
+                        self.board[0],
+                        self.board[1],
+                        [
+                            self.board[2][0],
+                            self.board[2][1].remove_cursor(),
+                            self.board[2][2].add_cursor(),
+                        ],
                     ],
-                    ..self
                 }),
                 Movement::Left => Option::Some(Self {
-                    row_three: [
-                        self.row_three[0].add_cursor(),
-                        self.row_three[1].remove_cursor(),
-                        self.row_three[2],
+                    board: [
+                        self.board[0],
+                        self.board[1],
+                        [
+                            self.board[2][0].add_cursor(),
+                            self.board[2][1].remove_cursor(),
+                            self.board[2][2],
+                        ],
                     ],
-                    ..self
                 }),
                 Movement::Up => Option::Some(Self {
-                    row_three: [
-                        self.row_three[0],
-                        self.row_three[1].remove_cursor(),
-                        self.row_three[2],
-                    ],
-                    row_two: [
-                        self.row_two[0],
-                        self.row_two[1].add_cursor(),
-                        self.row_two[2],
+                    board: [
+                        self.board[0],
+                        [
+                            self.board[1][0],
+                            self.board[1][1].add_cursor(),
+                            self.board[1][2],
+                        ],
+                        [
+                            self.board[2][0],
+                            self.board[2][1].remove_cursor(),
+                            self.board[2][2],
+                        ],
                     ],
                     ..self
                 }),
@@ -292,28 +348,33 @@ impl GameBoard {
                     Option::None
                 }
             }
-        } else if self.row_three[2].is_cursor() {
+        } else if self.board[2][2].is_cursor() {
             match inputed_movement {
                 Movement::Left => Option::Some(Self {
-                    row_three: [
-                        self.row_three[0],
-                        self.row_three[1].add_cursor(),
-                        self.row_three[2].remove_cursor(),
+                    board: [
+                        self.board[0],
+                        self.board[1],
+                        [
+                            self.board[2][0],
+                            self.board[2][1].add_cursor(),
+                            self.board[2][2].remove_cursor(),
+                        ],
                     ],
-                    ..self
                 }),
                 Movement::Up => Option::Some(Self {
-                    row_three: [
-                        self.row_three[0],
-                        self.row_three[1],
-                        self.row_three[2].remove_cursor(),
+                    board: [
+                        self.board[0],
+                        [
+                            self.board[1][0],
+                            self.board[1][1],
+                            self.board[1][2].add_cursor(),
+                        ],
+                        [
+                            self.board[2][0],
+                            self.board[2][1],
+                            self.board[2][2].remove_cursor(),
+                        ],
                     ],
-                    row_two: [
-                        self.row_two[0],
-                        self.row_two[1],
-                        self.row_two[2].add_cursor(),
-                    ],
-                    ..self
                 }),
                 _ => {
                     println!("This can not be done");
@@ -321,8 +382,7 @@ impl GameBoard {
                 }
             }
         } else {
-            println!("here");
-            panic!();
+            panic!("No cursor found!");
         }
     }
 }

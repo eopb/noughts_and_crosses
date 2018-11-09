@@ -8,9 +8,7 @@ use IS_DEBUG;
 
 #[derive(Copy, Clone, Debug)]
 pub struct RatingBoard {
-    row_one: [Option<f64>; 3],
-    row_two: [Option<f64>; 3],
-    row_three: [Option<f64>; 3],
+    board: [[Option<f64>; 3]; 3],
 }
 
 impl GameBoard {

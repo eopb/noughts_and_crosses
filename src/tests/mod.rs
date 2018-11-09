@@ -4,15 +4,15 @@ use TileStatus;
 
 impl GameBoard {
     pub fn is_board_full(self) -> bool {
-        !(self.row_one[0].no_player())
-            && !(self.row_one[1].no_player())
-            && !(self.row_one[2].no_player())
-            && !(self.row_two[0].no_player())
-            && !(self.row_two[1].no_player())
-            && !(self.row_two[2].no_player())
-            && !(self.row_three[0].no_player())
-            && !(self.row_three[1].no_player())
-            && !(self.row_three[2].no_player())
+        !(self.board[0][0].no_player())
+            && !(self.board[0][1].no_player())
+            && !(self.board[0][2].no_player())
+            && !(self.board[1][0].no_player())
+            && !(self.board[1][1].no_player())
+            && !(self.board[1][2].no_player())
+            && !(self.board[2][0].no_player())
+            && !(self.board[2][1].no_player())
+            && !(self.board[2][2].no_player())
     }
 }
 

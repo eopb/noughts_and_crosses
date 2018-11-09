@@ -71,111 +71,138 @@ fn fetch_input() -> Movement {
 }
 
 fn place_player_on_cursor(game_board: GameBoard, current_player: Players) -> Option<GameBoard> {
-    if game_board.row_one[0].is_cursor() {
-        match game_board.row_one[0] {
+    if game_board.board[0][0].is_cursor() {
+        match game_board.board[0][0] {
             TileStatus::Cursor => Option::Some(GameBoard {
-                row_one: [
-                    game_board.row_one[0].place_player(current_player),
-                    game_board.row_one[1],
-                    game_board.row_one[2],
+                board: [
+                    [
+                        game_board.board[0][0].place_player(current_player),
+                        game_board.board[0][1],
+                        game_board.board[0][2],
+                    ],
+                    game_board.board[1],
+                    game_board.board[2],
                 ],
-                ..game_board
             }),
             _ => Option::None,
         }
-    } else if game_board.row_one[1].is_cursor() {
-        match game_board.row_one[1] {
+    } else if game_board.board[0][1].is_cursor() {
+        match game_board.board[0][1] {
             TileStatus::Cursor => Option::Some(GameBoard {
-                row_one: [
-                    game_board.row_one[0],
-                    game_board.row_one[1].place_player(current_player),
-                    game_board.row_one[2],
+                board: [
+                    [
+                        game_board.board[0][0],
+                        game_board.board[0][1].place_player(current_player),
+                        game_board.board[0][2],
+                    ],
+                    game_board.board[1],
+                    game_board.board[2],
                 ],
-                ..game_board
             }),
             _ => Option::None,
         }
-    } else if game_board.row_one[2].is_cursor() {
-        match game_board.row_one[2] {
+    } else if game_board.board[0][2].is_cursor() {
+        match game_board.board[0][2] {
             TileStatus::Cursor => Option::Some(GameBoard {
-                row_one: [
-                    game_board.row_one[0],
-                    game_board.row_one[1],
-                    game_board.row_one[2].place_player(current_player),
+                board: [
+                    [
+                        game_board.board[0][0],
+                        game_board.board[0][1],
+                        game_board.board[0][2].place_player(current_player),
+                    ],
+                    game_board.board[1],
+                    game_board.board[2],
                 ],
-                ..game_board
             }),
             _ => Option::None,
         }
-    } else if game_board.row_two[0].is_cursor() {
-        match game_board.row_two[0] {
+    } else if game_board.board[1][0].is_cursor() {
+        match game_board.board[1][0] {
             TileStatus::Cursor => Option::Some(GameBoard {
-                row_two: [
-                    game_board.row_two[0].place_player(current_player),
-                    game_board.row_two[1],
-                    game_board.row_two[2],
+                board: [
+                    game_board.board[0],
+                    [
+                        game_board.board[1][0].place_player(current_player),
+                        game_board.board[1][1],
+                        game_board.board[1][2],
+                    ],
+                    game_board.board[2],
                 ],
-                ..game_board
             }),
             _ => Option::None,
         }
-    } else if game_board.row_two[1].is_cursor() {
-        match game_board.row_two[1] {
+    } else if game_board.board[1][1].is_cursor() {
+        match game_board.board[1][1] {
             TileStatus::Cursor => Option::Some(GameBoard {
-                row_two: [
-                    game_board.row_two[0],
-                    game_board.row_two[1].place_player(current_player),
-                    game_board.row_two[2],
+                board: [
+                    game_board.board[0],
+                    [
+                        game_board.board[1][0],
+                        game_board.board[1][1].place_player(current_player),
+                        game_board.board[1][2],
+                    ],
+                    game_board.board[2],
                 ],
-                ..game_board
             }),
             _ => Option::None,
         }
-    } else if game_board.row_two[2].is_cursor() {
-        match game_board.row_two[2] {
+    } else if game_board.board[1][2].is_cursor() {
+        match game_board.board[1][2] {
             TileStatus::Cursor => Option::Some(GameBoard {
-                row_two: [
-                    game_board.row_two[0],
-                    game_board.row_two[1],
-                    game_board.row_two[2].place_player(current_player),
+                board: [
+                    game_board.board[0],
+                    [
+                        game_board.board[1][0],
+                        game_board.board[1][1],
+                        game_board.board[1][2].place_player(current_player),
+                    ],
+                    game_board.board[2],
                 ],
-                ..game_board
             }),
             _ => Option::None,
         }
-    } else if game_board.row_three[0].is_cursor() {
-        match game_board.row_three[0] {
+    } else if game_board.board[2][0].is_cursor() {
+        match game_board.board[2][0] {
             TileStatus::Cursor => Option::Some(GameBoard {
-                row_three: [
-                    game_board.row_three[0].place_player(current_player),
-                    game_board.row_three[1],
-                    game_board.row_three[2],
+                board: [
+                    game_board.board[0],
+                    game_board.board[1],
+                    [
+                        game_board.board[2][0].place_player(current_player),
+                        game_board.board[2][1],
+                        game_board.board[2][2],
+                    ],
                 ],
-                ..game_board
             }),
             _ => Option::None,
         }
-    } else if game_board.row_three[1].is_cursor() {
-        match game_board.row_three[1] {
+    } else if game_board.board[2][1].is_cursor() {
+        match game_board.board[2][1] {
             TileStatus::Cursor => Option::Some(GameBoard {
-                row_three: [
-                    game_board.row_three[0],
-                    game_board.row_three[1].place_player(current_player),
-                    game_board.row_three[2],
+                board: [
+                    game_board.board[0],
+                    game_board.board[1],
+                    [
+                        game_board.board[2][0],
+                        game_board.board[2][1].place_player(current_player),
+                        game_board.board[2][2],
+                    ],
                 ],
-                ..game_board
             }),
             _ => Option::None,
         }
-    } else if game_board.row_three[2].is_cursor() {
-        match game_board.row_three[2] {
+    } else if game_board.board[2][2].is_cursor() {
+        match game_board.board[2][2] {
             TileStatus::Cursor => Option::Some(GameBoard {
-                row_three: [
-                    game_board.row_three[0],
-                    game_board.row_three[1],
-                    game_board.row_three[2].place_player(current_player),
+                board: [
+                    game_board.board[0],
+                    game_board.board[1],
+                    [
+                        game_board.board[2][0],
+                        game_board.board[2][1],
+                        game_board.board[2][2].place_player(current_player),
+                    ],
                 ],
-                ..game_board
             }),
             _ => Option::None,
         }

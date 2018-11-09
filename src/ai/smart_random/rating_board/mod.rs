@@ -7,137 +7,175 @@ use IS_DEBUG;
 mod process_rating_board;
 pub fn full_mean_rating(game_board: GameBoard, player_to_place: Players) -> RatingBoard {
     RatingBoard {
-        row_one: [
-            if game_board.row_one[0].no_player() {
-                Option::Some(
-                    GameBoard {
-                        row_one: [
-                            game_board.row_one[0].place_player(player_to_place),
-                            game_board.row_one[1],
-                            game_board.row_one[2],
-                        ],
-                        ..game_board
-                    }.rate_tile(player_to_place),
-                )
-            } else {
-                Option::None
-            },
-            if game_board.row_one[1].no_player() {
-                Option::Some(
-                    GameBoard {
-                        row_one: [
-                            game_board.row_one[0],
-                            game_board.row_one[1].place_player(player_to_place),
-                            game_board.row_one[2],
-                        ],
-                        ..game_board
-                    }.rate_tile(player_to_place),
-                )
-            } else {
-                Option::None
-            },
-            if game_board.row_one[2].no_player() {
-                Option::Some(
-                    GameBoard {
-                        row_one: [
-                            game_board.row_one[0],
-                            game_board.row_one[1],
-                            game_board.row_one[2].place_player(player_to_place),
-                        ],
-                        ..game_board
-                    }.rate_tile(player_to_place),
-                )
-            } else {
-                Option::None
-            },
-        ],
-        row_two: [
-            if game_board.row_two[0].no_player() {
-                Option::Some(
-                    GameBoard {
-                        row_two: [
-                            game_board.row_two[0].place_player(player_to_place),
-                            game_board.row_two[1],
-                            game_board.row_two[2],
-                        ],
-                        ..game_board
-                    }.rate_tile(player_to_place),
-                )
-            } else {
-                Option::None
-            },
-            if game_board.row_two[1].no_player() {
-                Option::Some(
-                    GameBoard {
-                        row_two: [
-                            game_board.row_two[0],
-                            game_board.row_two[1].place_player(player_to_place),
-                            game_board.row_two[2],
-                        ],
-                        ..game_board
-                    }.rate_tile(player_to_place),
-                )
-            } else {
-                Option::None
-            },
-            if game_board.row_two[2].no_player() {
-                Option::Some(
-                    GameBoard {
-                        row_two: [
-                            game_board.row_two[0],
-                            game_board.row_two[1],
-                            game_board.row_two[2].place_player(player_to_place),
-                        ],
-                        ..game_board
-                    }.rate_tile(player_to_place),
-                )
-            } else {
-                Option::None
-            },
-        ],
-        row_three: [
-            if game_board.row_three[0].no_player() {
-                Option::Some(
-                    GameBoard {
-                        row_three: [
-                            game_board.row_three[0].place_player(player_to_place),
-                            game_board.row_three[1],
-                            game_board.row_three[2],
-                        ],
-                        ..game_board
-                    }.rate_tile(player_to_place),
-                )
-            } else {
-                Option::None
-            },
-            if game_board.row_three[1].no_player() {
-                Option::Some(
-                    GameBoard {
-                        row_three: [
-                            game_board.row_three[0],
-                            game_board.row_three[1].place_player(player_to_place),
-                            game_board.row_three[2],
-                        ],
-                        ..game_board
-                    }.rate_tile(player_to_place),
-                )
-            } else {
-                Option::None
-            },
-            if game_board.row_three[2].no_player() {
-                Option::Some(
-                    GameBoard {
-                        row_three: [
-                            game_board.row_three[0],
-                            game_board.row_three[1],
-                            game_board.row_three[2].place_player(player_to_place),
-                        ],
-                        ..game_board
-                    }.rate_tile(player_to_place),
-                )
-            } else {
-                Option::None
-            },
+        board: [
+            [
+                if game_board.board[0][0].no_player() {
+                    Option::Some(
+                        GameBoard {
+                            board: [
+                                [
+                                    game_board.board[0][0].place_player(player_to_place),
+                                    game_board.board[0][1],
+                                    game_board.board[0][2],
+                                ],
+                                game_board.board[1],
+                                game_board.board[2],
+                            ],
+                        }
+                        .rate_tile(player_to_place),
+                    )
+                } else {
+                    Option::None
+                },
+                if game_board.board[0][1].no_player() {
+                    Option::Some(
+                        GameBoard {
+                            board: [
+                                [
+                                    game_board.board[0][0],
+                                    game_board.board[0][1].place_player(player_to_place),
+                                    game_board.board[0][2],
+                                ],
+                                game_board.board[1],
+                                game_board.board[2],
+                            ],
+                        }
+                        .rate_tile(player_to_place),
+                    )
+                } else {
+                    Option::None
+                },
+                if game_board.board[0][2].no_player() {
+                    Option::Some(
+                        GameBoard {
+                            board: [
+                                [
+                                    game_board.board[0][0],
+                                    game_board.board[0][1],
+                                    game_board.board[0][2].place_player(player_to_place),
+                                ],
+                                game_board.board[1],
+                                game_board.board[2],
+                            ],
+                        }
+                        .rate_tile(player_to_place),
+                    )
+                } else {
+                    Option::None
+                },
+            ],
+            [
+                if game_board.board[1][0].no_player() {
+                    Option::Some(
+                        GameBoard {
+                            board: [
+                                game_board.board[0],
+                                [
+                                    game_board.board[1][0].place_player(player_to_place),
+                                    game_board.board[1][1],
+                                    game_board.board[1][2],
+                                ],
+                                game_board.board[2],
+                            ],
+                        }
+                        .rate_tile(player_to_place),
+                    )
+                } else {
+                    Option::None
+                },
+                if game_board.board[1][1].no_player() {
+                    Option::Some(
+                        GameBoard {
+                            board: [
+                                game_board.board[0],
+                                [
+                                    game_board.board[1][0],
+                                    game_board.board[1][1].place_player(player_to_place),
+                                    game_board.board[1][2],
+                                ],
+                                game_board.board[2],
+                            ],
+                        }
+                        .rate_tile(player_to_place),
+                    )
+                } else {
+                    Option::None
+                },
+                if game_board.board[1][2].no_player() {
+                    Option::Some(
+                        GameBoard {
+                            board: [
+                                game_board.board[0],
+                                [
+                                    game_board.board[1][0],
+                                    game_board.board[1][1],
+                                    game_board.board[1][2].place_player(player_to_place),
+                                ],
+                                game_board.board[2],
+                            ],
+                        }
+                        .rate_tile(player_to_place),
+                    )
+                } else {
+                    Option::None
+                },
+            ],
+            [
+                if game_board.board[2][0].no_player() {
+                    Option::Some(
+                        GameBoard {
+                            board: [
+                                game_board.board[0],
+                                game_board.board[1],
+                                [
+                                    game_board.board[2][0].place_player(player_to_place),
+                                    game_board.board[2][1],
+                                    game_board.board[2][2],
+                                ],
+                            ],
+                        }
+                        .rate_tile(player_to_place),
+                    )
+                } else {
+                    Option::None
+                },
+                if game_board.board[2][1].no_player() {
+                    Option::Some(
+                        GameBoard {
+                            board: [
+                                game_board.board[0],
+                                game_board.board[1],
+                                [
+                                    game_board.board[2][0],
+                                    game_board.board[2][1].place_player(player_to_place),
+                                    game_board.board[2][2],
+                                ],
+                            ],
+                        }
+                        .rate_tile(player_to_place),
+                    )
+                } else {
+                    Option::None
+                },
+                if game_board.board[2][2].no_player() {
+                    Option::Some(
+                        GameBoard {
+                            board: [
+                                game_board.board[0],
+                                game_board.board[1],
+                                [
+                                    game_board.board[2][0],
+                                    game_board.board[2][1],
+                                    game_board.board[2][2].place_player(player_to_place),
+                                ],
+                            ],
+                        }
+                        .rate_tile(player_to_place),
+                    )
+                } else {
+                    Option::None
+                },
+            ],
         ],
     }
 }
