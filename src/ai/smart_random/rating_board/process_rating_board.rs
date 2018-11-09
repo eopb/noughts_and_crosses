@@ -17,126 +17,153 @@ impl GameBoard {
             // println!("Trying2 {}", random_tile);
 
             if highest_rating_ai(option_inputs[0], &option_inputs) {
-                if self.row_one[0].no_player() {
+                if self.board[0][0].no_player() {
                     return Some(Self {
-                        row_one: [
-                            self.row_one[0].place_player(player_to_place),
-                            self.row_one[1],
-                            self.row_one[2],
+                        board: [
+                            [
+                                self.board[0][0].place_player(player_to_place),
+                                self.board[0][1],
+                                self.board[0][2],
+                            ],
+                            self.board[1],
+                            self.board[2],
                         ],
-                        ..self
                     });
                 } else {
                     option_inputs[0] = None;
                 }
             }
             if highest_rating_ai(option_inputs[1], &option_inputs) {
-                if self.row_one[1].no_player() {
+                if self.board[0][1].no_player() {
                     return Some(Self {
-                        row_one: [
-                            self.row_one[0],
-                            self.row_one[1].place_player(player_to_place),
-                            self.row_one[2],
+                        board: [
+                            [
+                                self.board[0][0],
+                                self.board[0][1].place_player(player_to_place),
+                                self.board[0][2],
+                            ],
+                            self.board[1],
+                            self.board[2],
                         ],
-                        ..self
                     });
                 } else {
                     option_inputs[1] = None;
                 }
             }
             if highest_rating_ai(option_inputs[2], &option_inputs) {
-                if self.row_one[2].no_player() {
+                if self.board[0][2].no_player() {
                     return Some(Self {
-                        row_one: [
-                            self.row_one[0],
-                            self.row_one[1],
-                            self.row_one[2].place_player(player_to_place),
+                        board: [
+                            [
+                                self.board[0][0],
+                                self.board[0][1],
+                                self.board[0][2].place_player(player_to_place),
+                            ],
+                            self.board[1],
+                            self.board[2],
                         ],
-                        ..self
                     });
                 } else {
                     option_inputs[2] = None;
                 }
             }
             if highest_rating_ai(option_inputs[3], &option_inputs) {
-                if self.row_two[0].no_player() {
+                if self.board[1][0].no_player() {
                     return Some(Self {
-                        row_two: [
-                            self.row_two[0].place_player(player_to_place),
-                            self.row_two[1],
-                            self.row_two[2],
+                        board: [
+                            self.board[0],
+                            [
+                                self.board[1][0].place_player(player_to_place),
+                                self.board[1][1],
+                                self.board[1][2],
+                            ],
+                            self.board[2],
                         ],
-                        ..self
                     });
                 } else {
                     option_inputs[3] = None;
                 }
             }
             if highest_rating_ai(option_inputs[4], &option_inputs) {
-                if self.row_two[1].no_player() {
+                if self.board[1][1].no_player() {
                     return Some(Self {
-                        row_two: [
-                            self.row_two[0],
-                            self.row_two[1].place_player(player_to_place),
-                            self.row_two[2],
+                        board: [
+                            self.board[0],
+                            [
+                                self.board[1][0],
+                                self.board[1][1].place_player(player_to_place),
+                                self.board[1][2],
+                            ],
+                            self.board[2],
                         ],
-                        ..self
                     });
                 } else {
                     option_inputs[4] = None;
                 }
             }
             if highest_rating_ai(option_inputs[5], &option_inputs) {
-                if self.row_two[2].no_player() {
+                if self.board[1][2].no_player() {
                     return Some(Self {
-                        row_two: [
-                            self.row_two[0],
-                            self.row_two[1],
-                            self.row_two[2].place_player(player_to_place),
+                        board: [
+                            self.board[0],
+                            [
+                                self.board[1][0],
+                                self.board[1][1],
+                                self.board[1][2].place_player(player_to_place),
+                            ],
+                            self.board[2],
                         ],
-                        ..self
                     });
                 } else {
                     option_inputs[5] = None;
                 }
             }
             if highest_rating_ai(option_inputs[6], &option_inputs) {
-                if self.row_three[0].no_player() {
+                if self.board[2][0].no_player() {
                     return Some(Self {
-                        row_three: [
-                            self.row_three[0].place_player(player_to_place),
-                            self.row_three[1],
-                            self.row_three[2],
+                        board: [
+                            self.board[0],
+                            self.board[1],
+                            [
+                                self.board[2][0].place_player(player_to_place),
+                                self.board[2][1],
+                                self.board[2][2],
+                            ],
                         ],
-                        ..self
                     });
                 } else {
                     option_inputs[6] = None;
                 }
             }
             if highest_rating_ai(option_inputs[7], &option_inputs) {
-                if self.row_three[1].no_player() {
+                if self.board[2][1].no_player() {
                     return Some(Self {
-                        row_three: [
-                            self.row_three[0],
-                            self.row_three[1].place_player(player_to_place),
-                            self.row_three[2],
+                        board: [
+                            self.board[0],
+                            self.board[1],
+                            [
+                                self.board[2][0],
+                                self.board[2][1].place_player(player_to_place),
+                                self.board[2][2],
+                            ],
                         ],
-                        ..self
                     });
                 } else {
                     option_inputs[7] = None;
                 }
             }
             if highest_rating_ai(option_inputs[8], &option_inputs) {
-                if self.row_three[2].no_player() {
+                if self.board[2][2].no_player() {
                     return Some(Self {
-                        row_three: [
-                            self.row_three[0],
-                            self.row_three[1],
-                            self.row_three[2].place_player(player_to_place),
+                        board: [
+                            self.board[0],
+                            self.board[1],
+                            [
+                                self.board[2][0],
+                                self.board[2][1],
+                                self.board[2][2].place_player(player_to_place),
+                            ],
                         ],
-                        ..self
                     });
                 } else {
                     option_inputs[8] = None;
@@ -153,94 +180,121 @@ impl GameBoard {
             if IS_DEBUG {
                 println!("Trying2 {}", random_tile);
             };
-            if highest_rating(rating_board.row_one[0], rating_board) && (random_tile == 1) {
+            if highest_rating(rating_board.board[0][0], rating_board) && (random_tile == 1) {
                 return Self {
-                    row_one: [
-                        self.row_one[0].place_player(player_to_place),
-                        self.row_one[1],
-                        self.row_one[2],
+                    board: [
+                        [
+                            self.board[0][0].place_player(player_to_place),
+                            self.board[0][1],
+                            self.board[0][2],
+                        ],
+                        self.board[1],
+                        self.board[2],
                     ],
-                    ..self
                 };
             }
-            if highest_rating(rating_board.row_one[1], rating_board) && (random_tile == 2) {
+            if highest_rating(rating_board.board[0][1], rating_board) && (random_tile == 2) {
                 return Self {
-                    row_one: [
-                        self.row_one[0],
-                        self.row_one[1].place_player(player_to_place),
-                        self.row_one[2],
+                    board: [
+                        [
+                            self.board[0][0],
+                            self.board[0][1].place_player(player_to_place),
+                            self.board[0][2],
+                        ],
+                        self.board[1],
+                        self.board[2],
                     ],
-                    ..self
                 };
             }
-            if highest_rating(rating_board.row_one[2], rating_board) && (random_tile == 3) {
+            if highest_rating(rating_board.board[0][2], rating_board) && (random_tile == 3) {
                 return Self {
-                    row_one: [
-                        self.row_one[0],
-                        self.row_one[1],
-                        self.row_one[2].place_player(player_to_place),
+                    board: [
+                        [
+                            self.board[0][0],
+                            self.board[0][1],
+                            self.board[0][2].place_player(player_to_place),
+                        ],
+                        self.board[1],
+                        self.board[2],
                     ],
-                    ..self
                 };
             }
-            if highest_rating(rating_board.row_two[0], rating_board) && (random_tile == 4) {
+            if highest_rating(rating_board.board[1][0], rating_board) && (random_tile == 4) {
                 return Self {
-                    row_two: [
-                        self.row_two[0].place_player(player_to_place),
-                        self.row_two[1],
-                        self.row_two[2],
+                    board: [
+                        self.board[0],
+                        [
+                            self.board[1][0].place_player(player_to_place),
+                            self.board[1][1],
+                            self.board[1][2],
+                        ],
+                        self.board[2],
                     ],
-                    ..self
                 };
             }
-            if highest_rating(rating_board.row_two[1], rating_board) && (random_tile == 5) {
+            if highest_rating(rating_board.board[1][1], rating_board) && (random_tile == 5) {
                 return Self {
-                    row_two: [
-                        self.row_two[0],
-                        self.row_two[1].place_player(player_to_place),
-                        self.row_two[2],
+                    board: [
+                        self.board[0],
+                        [
+                            self.board[1][0],
+                            self.board[1][1].place_player(player_to_place),
+                            self.board[1][2],
+                        ],
+                        self.board[2],
                     ],
-                    ..self
                 };
             }
-            if highest_rating(rating_board.row_two[2], rating_board) && (random_tile == 6) {
+            if highest_rating(rating_board.board[1][2], rating_board) && (random_tile == 6) {
                 return Self {
-                    row_two: [
-                        self.row_two[0],
-                        self.row_two[1],
-                        self.row_two[2].place_player(player_to_place),
+                    board: [
+                        self.board[0],
+                        [
+                            self.board[1][0],
+                            self.board[1][1],
+                            self.board[1][2].place_player(player_to_place),
+                        ],
+                        self.board[2],
                     ],
-                    ..self
                 };
             }
-            if highest_rating(rating_board.row_three[0], rating_board) && (random_tile == 7) {
+            if highest_rating(rating_board.board[2][0], rating_board) && (random_tile == 7) {
                 return Self {
-                    row_three: [
-                        self.row_three[0].place_player(player_to_place),
-                        self.row_three[1],
-                        self.row_three[2],
+                    board: [
+                        self.board[0],
+                        self.board[1],
+                        [
+                            self.board[2][0].place_player(player_to_place),
+                            self.board[2][1],
+                            self.board[2][2],
+                        ],
                     ],
-                    ..self
                 };
             }
-            if highest_rating(rating_board.row_three[1], rating_board) && (random_tile == 8) {
+            if highest_rating(rating_board.board[2][1], rating_board) && (random_tile == 8) {
                 return Self {
-                    row_three: [
-                        self.row_three[0],
-                        self.row_three[1].place_player(player_to_place),
-                        self.row_three[2],
+                    board: [
+                        self.board[0],
+                        self.board[1],
+                        [
+                            self.board[2][0],
+                            self.board[2][1].place_player(player_to_place),
+                            self.board[2][2],
+                        ],
                     ],
-                    ..self
                 };
             }
-            if highest_rating(rating_board.row_three[2], rating_board) && (random_tile == 9) {
+            if highest_rating(rating_board.board[2][2], rating_board) && (random_tile == 9) {
                 return Self {
-                    row_three: [
-                        self.row_three[0],
-                        self.row_three[1],
-                        self.row_three[2].place_player(player_to_place),
+                    board: [
+                        self.board[0],
+                        self.board[1],
+                        [
+                            self.board[2][0],
+                            self.board[2][1],
+                            self.board[2][2].place_player(player_to_place),
+                        ],
                     ],
-                    ..self
                 };
             }
             if self.is_board_full() {
@@ -262,31 +316,31 @@ fn highest_rating(rating_being_tested: Option<f64>, rating_board: RatingBoard) -
     match rating_being_tested {
         Option::None => false,
         Option::Some(rating_being_tested) => {
-            (match rating_board.row_one[0] {
+            (match rating_board.board[0][0] {
                 None => true,
                 Some(rating) => rating_being_tested >= rating,
-            }) && (match rating_board.row_one[1] {
+            }) && (match rating_board.board[0][1] {
                 None => true,
                 Some(rating) => rating_being_tested >= rating,
-            }) && (match rating_board.row_one[2] {
+            }) && (match rating_board.board[0][2] {
                 None => true,
                 Some(rating) => rating_being_tested >= rating,
-            }) && (match rating_board.row_two[0] {
+            }) && (match rating_board.board[1][0] {
                 None => true,
                 Some(rating) => rating_being_tested >= rating,
-            }) && (match rating_board.row_two[1] {
+            }) && (match rating_board.board[1][1] {
                 None => true,
                 Some(rating) => rating_being_tested >= rating,
-            }) && (match rating_board.row_two[2] {
+            }) && (match rating_board.board[1][2] {
                 None => true,
                 Some(rating) => rating_being_tested >= rating,
-            }) && (match rating_board.row_three[0] {
+            }) && (match rating_board.board[2][0] {
                 None => true,
                 Some(rating) => rating_being_tested >= rating,
-            }) && (match rating_board.row_three[1] {
+            }) && (match rating_board.board[2][1] {
                 None => true,
                 Some(rating) => rating_being_tested >= rating,
-            }) && (match rating_board.row_three[2] {
+            }) && (match rating_board.board[2][2] {
                 None => true,
                 Some(rating) => rating_being_tested >= rating,
             })
